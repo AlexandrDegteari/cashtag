@@ -48,40 +48,8 @@ const routes = [
             name: "user-auction",
             path: "/user-auction",
             component: () => import("pages/User/Auction")
-          },
-          {
-            name: "user-wallet",
-            path: "/user-wallet",
-            component: () => import("pages/User/Wallet")
-          },
-          {
-            name: "user-withdraw",
-            path: "/user-withdraw",
-            component: () => import("pages/User/Withdraw")
           }
         ]
-      },
-      {
-        path: "payment",
-        name: "payment",
-        beforeEnter: ifNotAuthenticated,
-        component: () => import("pages/Payment.vue")
-      },
-      {
-        path: "payment2",
-        name: "payment2",
-        beforeEnter: ifNotAuthenticated,
-        component: () => import("pages/Payment2.vue")
-      },
-      {
-        path: "buy-credit",
-        beforeEnter: ifNotAuthenticated,
-        component: () => import("pages/BuyCredit.vue")
-      },
-      {
-        path: "buy-credit2",
-        beforeEnter: ifNotAuthenticated,
-        component: () => import("pages/BuyCredit2.vue")
       },
       {
         name: "auction",

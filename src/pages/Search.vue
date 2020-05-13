@@ -3,32 +3,10 @@
     <main>
       <div class="bg">
         <div class="container q-pt-xl ">
-          <div class="form relative-position">
-            <form action="">
-              <div class="input1">
-                <input
-                  id="input1"
-                  type="text"
-                  placeholder="Select a category..."
-                />
-                <label for="input1"></label>
-              </div>
-              <div class="input2">
-                <input
-                  id="input2"
-                  type="text"
-                  placeholder="Enter title auction"
-                />
-                <label for="input2"></label>
-              </div>
-              <button class="btn search">Search</button>
-            </form>
-          </div>
           <div class=" q-pt-xl q-pb-xl">
-            <img class="title" src="../assets/Title_auc.png" alt="Auctions" />
-            <div v-if="auctions" class="row">
+            <div v-if="restaurants" class="row">
               <div
-                v-for="(auc, key) in auctions"
+                v-for="(rest, key) in restaurants"
                 :key="key"
                 class="col-sm-6 col-md-4"
               >
@@ -36,41 +14,19 @@
                   <div
                     class="q-pb-sm coin-image"
                     :style="{
-                      'background-image': 'url(' + auc.bimage + ')'
+                      'background-image': 'url(' + rest.bimage + ')'
                     }"
                   />
-                  <h2>{{ auc.name }}</h2>
-                  <p class="blue-text q-pb-md font-20">
-                    Value {{ Math.round(auc.price) }} €
-                  </p>
-                  <div
-                    class="row  w-100 text-center d-flex justify-around q-pt-sm q-pb-md"
-                  >
-                    <div class="col-6 q-pl-md">
-                      <div class="price">
-                        <p class="price-tag">
-                          {{ Math.round(auc.maxPrice) }} €
-                        </p>
-                        <p class="green-price">Max Price</p>
-                      </div>
-                    </div>
-                    <div class="col-6 q-pr-md">
-                      <div class="bid">
-                        <p class="price-tag">
-                          {{ Math.round(auc.bidsLeft) }} €
-                        </p>
-                        <p class="golden">Bids Left</p>
-                      </div>
-                    </div>
+                  <h2>{{ rest.name }}</h2>
+                  <div class="price">
+                    <p class="price-tag">{{ rest.googleId }}</p>
                   </div>
-                  <span class="text-uppercase font-12 opacity-9"
-                    >Payment Accepted</span
+                  <button
+                    onclick="window.open('https://search.google.com/local/writereview?placeid='+ rest.googleId )"
+                    class="btn"
                   >
-                  <img src="../assets/bit111.png" alt="" />
-                  <small class="green-color q-pb-sm">BitBid</small>
-                  <router-link :to="{ path: '/payment' }" exact>
-                    <button class="btn">Place bid to win</button></router-link
-                  >
+                    Rate this Restaurant
+                  </button>
                 </div>
               </div>
             </div>
@@ -85,77 +41,32 @@
 export default {
   data() {
     return {
-      auctions: null,
-      selectedAuction: null
+      restaurants: null,
+      selectedRestaurant: null
     };
   },
   methods: {
-    getAuctions() {
+    getRestaurants() {
       this.$axios
         .get("http://localhost:4000/auctions")
         .then(response => {
-          this.auctions = response.data;
+          this.restaurants = response.data;
         })
         .catch(err => {
           console.log(err);
         });
     },
-    selectAuction(id) {
-      this.selectedAuction = this.auctions.find(item => item.id === id);
-    },
-    getValue(value) {
-      return value === 0 ? "No" : "Yes";
+    selectRestaurant(id) {
+      this.selectedRestaurant = this.restaurants.find(item => item.id === id);
     }
   },
   beforeMount() {
-    this.getAuctions();
+    this.getRestaurants();
   }
 };
 </script>
 
 <style scoped>
-.input1 {
-  background: url("../assets/Field_1.png");
-  height: 49px;
-  width: 330px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-::placeholder {
-  color: #fff;
-}
-
-.input2 {
-  background: url("../assets/Field_2.png");
-  height: 49px;
-  width: 465px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-input {
-  background: none;
-  border: none;
-  color: #fff;
-  outline: none;
-}
-
-#input1 {
-  width: 300px;
-}
-#input2 {
-  width: 435px;
-}
-form {
-  background: url("../assets/bckg_form.png") no-repeat, center, center;
-  height: 132px;
-  background-size: contain;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  background-position: center;
-}
 h2 {
   margin-bottom: 0.5rem;
 }
@@ -169,43 +80,7 @@ h2 {
   padding-top: 20px;
 }
 
-.bid {
-  background: url("../assets/C2.png") no-repeat, center, center;
-  height: 60px;
-  background-size: contain;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-position: center;
-}
-.price {
-  background: url("../assets/C1.png") no-repeat, center, center;
-  height: 60px;
-  background-size: contain;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-position: center;
-}
-.slider {
-  background: url("../assets/Slider.png") no-repeat, center;
-  height: 361px;
-  background-size: contain;
-  width: auto;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  padding-left: 50px;
-}
-.slide-content {
-  max-width: 40%;
-}
-
 .package-block {
-  background: url("../assets/Caseta_Lot.png") no-repeat center center;
-  background-size: contain;
   display: flex;
   align-items: center;
   height: 593px;
@@ -214,8 +89,8 @@ h2 {
   align-content: center;
   margin: 50px 15px 30px 0;
 }
-.btn {
-  background-image: url("../assets/auc-but.png");
-  width: 240px;
+.coin-image {
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 </style>

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const api = "https://api.kairos888.com/v1/";
+const api = "http://localhost:4000";
 axios.defaults.headers.common["Authorization"] = localStorage.getItem(
   "access_token"
 );

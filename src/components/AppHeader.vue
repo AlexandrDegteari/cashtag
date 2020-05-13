@@ -23,14 +23,6 @@
               </li>
               <li class="hide-sp">
                 <router-link
-                  :to="{ name: 'payment' }"
-                  exact
-                  active-class="active"
-                  ><img src="../assets/2_Aucc.png" alt=""
-                /></router-link>
-              </li>
-              <li class="hide-sp">
-                <router-link
                   :to="{ name: 'login' }"
                   v-if="!isLoggedIn()"
                   exact
@@ -77,7 +69,7 @@
                       </q-item>
                     </router-link>
                     <router-link
-                      :to="{ path: '/user-transactions' }"
+                      :to="{ path: '/user-restaurants' }"
                       exact
                       active-class="active"
                     >
@@ -88,60 +80,7 @@
                           </q-avatar>
                         </q-item-section>
                         <q-item-section>
-                          <q-item-label>Transaction</q-item-label>
-                        </q-item-section>
-                        <q-item-section side> </q-item-section>
-                      </q-item>
-                    </router-link>
-                    <router-link
-                      :to="{ path: '/user-auctions' }"
-                      exact
-                      active-class="active"
-                    >
-                      <q-item v-close-popup>
-                        <q-item-section avatar>
-                          <q-avatar>
-                            <img src="../assets/Aucc.png" alt="" />
-                          </q-avatar>
-                        </q-item-section>
-                        <q-item-section>
-                          <q-item-label>Auctions</q-item-label>
-                        </q-item-section>
-                        <q-item-section side> </q-item-section>
-                      </q-item>
-                    </router-link>
-                    <router-link
-                      :to="{ path: '/user-wallet' }"
-                      exact
-                      active-class="active"
-                    >
-                      <q-item v-close-popup>
-                        <q-item-section avatar>
-                          <q-avatar>
-                            <q-avatar>
-                              <img src="../assets/user/wallet.svg" alt="" />
-                            </q-avatar>
-                          </q-avatar>
-                        </q-item-section>
-                        <q-item-section>
-                          <q-item-label> Wallet Addresses</q-item-label>
-                        </q-item-section>
-                        <q-item-section side> </q-item-section>
-                      </q-item>
-                    </router-link>
-                    <router-link
-                      :to="{ path: '/user-withdraw' }"
-                      exact
-                      active-class="active"
-                    >
-                      <q-item v-close-popup>
-                        <q-item-section avatar>
-                          <q-avatar>
-                            <img src="../assets/user/withdraw.svg" alt="" />
-                          </q-avatar>
-                        </q-item-section>
-                        <q-item-section>
-                          <q-item-label>Withdraw</q-item-label>
+                          <q-item-label>Restaurants</q-item-label>
                         </q-item-section>
                         <q-item-section side> </q-item-section>
                       </q-item>
@@ -464,7 +403,7 @@
                       </q-item>
                     </router-link>
                     <router-link
-                      :to="{ path: '/user-transactions' }"
+                      :to="{ path: '/user-restaurants' }"
                       exact
                       active-class="active"
                     >
@@ -475,7 +414,7 @@
                           </q-avatar>
                         </q-item-section>
                         <q-item-section>
-                          <q-item-label>Transaction</q-item-label>
+                          <q-item-label>Restaurants</q-item-label>
                         </q-item-section>
                         <q-item-section side> </q-item-section>
                       </q-item>
@@ -540,95 +479,6 @@
               <template v-slot:label>
                 <img src="../assets/menu.svg" alt="" />
               </template>
-              <!--              <q-list>-->
-              <!--                <router-link-->
-              <!--                  :to="{ path: 'user-auctions' }"-->
-              <!--                  exact-->
-              <!--                  active-class="active"-->
-              <!--                >-->
-              <!--                  <q-item v-close-popup>-->
-              <!--                    <q-item-section avatar>-->
-              <!--                      <q-avatar>-->
-              <!--                        <img src="../assets/Home_icon.png" alt="" />-->
-              <!--                      </q-avatar>-->
-              <!--                    </q-item-section>-->
-              <!--                    <q-item-section>-->
-              <!--                      <q-item-label>Profile</q-item-label>-->
-              <!--                    </q-item-section>-->
-              <!--                    <q-item-section side> </q-item-section>-->
-              <!--                  </q-item>-->
-              <!--                </router-link>-->
-              <!--                <router-link-->
-              <!--                  :to="{ path: '/user-transactions' }"-->
-              <!--                  exact-->
-              <!--                  active-class="active"-->
-              <!--                >-->
-              <!--                  <q-item v-close-popup>-->
-              <!--                    <q-item-section avatar>-->
-              <!--                      <q-avatar>-->
-              <!--                        <img src="../assets/Aucc.png" alt="" />-->
-              <!--                      </q-avatar>-->
-              <!--                    </q-item-section>-->
-              <!--                    <q-item-section>-->
-              <!--                      <q-item-label>Transaction</q-item-label>-->
-              <!--                    </q-item-section>-->
-              <!--                    <q-item-section side> </q-item-section>-->
-              <!--                  </q-item>-->
-              <!--                </router-link>-->
-              <!--                <router-link-->
-              <!--                  :to="{ path: '/user-auctions' }"-->
-              <!--                  exact-->
-              <!--                  active-class="active"-->
-              <!--                >-->
-              <!--                  <q-item v-close-popup>-->
-              <!--                    <q-item-section avatar>-->
-              <!--                      <q-avatar>-->
-              <!--                        <img src="../assets/2_Aucc.png" alt="" />-->
-              <!--                      </q-avatar>-->
-              <!--                    </q-item-section>-->
-              <!--                    <q-item-section>-->
-              <!--                      <q-item-label>Auctions</q-item-label>-->
-              <!--                    </q-item-section>-->
-              <!--                    <q-item-section side> </q-item-section>-->
-              <!--                  </q-item>-->
-              <!--                </router-link>-->
-              <!--                <router-link-->
-              <!--                  :to="{ path: '/user-wallet' }"-->
-              <!--                  exact-->
-              <!--                  active-class="active"-->
-              <!--                >-->
-              <!--                  <q-item v-close-popup>-->
-              <!--                    <q-item-section avatar>-->
-              <!--                      <q-avatar>-->
-              <!--                        <q-avatar>-->
-              <!--                          <img src="../assets/man_1.png" alt="" />-->
-              <!--                        </q-avatar>-->
-              <!--                      </q-avatar>-->
-              <!--                    </q-item-section>-->
-              <!--                    <q-item-section>-->
-              <!--                      <q-item-label> Wallet Addresses</q-item-label>-->
-              <!--                    </q-item-section>-->
-              <!--                    <q-item-section side> </q-item-section>-->
-              <!--                  </q-item>-->
-              <!--                </router-link>-->
-              <!--                <router-link-->
-              <!--                  :to="{ path: '/user-withdraw' }"-->
-              <!--                  exact-->
-              <!--                  active-class="active"-->
-              <!--                >-->
-              <!--                  <q-item v-close-popup>-->
-              <!--                    <q-item-section avatar>-->
-              <!--                      <q-avatar>-->
-              <!--                        <img src="../assets/Man_2.png" alt="" />-->
-              <!--                      </q-avatar>-->
-              <!--                    </q-item-section>-->
-              <!--                    <q-item-section>-->
-              <!--                      <q-item-label>Withdraw</q-item-label>-->
-              <!--                    </q-item-section>-->
-              <!--                    <q-item-section side> </q-item-section>-->
-              <!--                  </q-item>-->
-              <!--                </router-link>-->
-              <!--              </q-list>-->
             </q-btn-dropdown>
           </div>
         </div>
@@ -659,11 +509,10 @@ export default {
 
 <style scoped>
 .header-bg {
-  background: url("../assets/line.png");
-  height: 232px;
-  /*background-size: cover;*/
+  background: #0b3172;
   position: relative;
-  margin: 0 auto -220px;
+  margin: 0 auto -20px;
+  padding: 10px 0;
 }
 
 .logo {

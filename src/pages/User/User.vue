@@ -17,28 +17,7 @@
                 exact
                 tag="li"
                 active-class="active"
-                >Transaction</router-link
-              >
-              <router-link
-                :to="{ path: '/user-auctions' }"
-                exact
-                tag="li"
-                active-class="active"
-                >Auctions</router-link
-              >
-              <router-link
-                :to="{ path: '/user-wallet' }"
-                exact
-                tag="li"
-                active-class="active"
-                >Wallet Addresses</router-link
-              >
-              <router-link
-                :to="{ path: '/user-withdraw' }"
-                exact
-                tag="li"
-                active-class="active"
-                >Withdraw</router-link
+                >Restaurants</router-link
               >
             </ul>
           </div>
@@ -81,7 +60,6 @@ export default {
 }
 
 .nav li {
-  background: url("../../assets/menu.png") no-repeat, center;
   width: 100%;
   padding: 6px 30px 10px 10px;
   margin-left: -30px;
@@ -92,13 +70,9 @@ export default {
   align-items: center;
   font-size: 17px;
 }
-.nav li:last-child {
-  background: url("../../assets/menu-last.png") no-repeat, center;
-}
 
 .nav li.active,
 .nav li:hover {
-  background: url("../../assets/menu-active.png") no-repeat, center;
   color: #0b3172;
 }
 

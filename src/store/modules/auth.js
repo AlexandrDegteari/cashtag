@@ -1,7 +1,6 @@
 import Errors from "./../../modules/errors";
 import axios from "axios";
 
-// const apiUrl = "https://api.kairos888.com/";
 const apiUrl = "http://localhost:4000";
 
 const state = {
