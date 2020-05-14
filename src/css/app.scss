@@ -58,7 +58,15 @@ table{
 }
 a{
   text-decoration: none;
+<<<<<<< HEAD
   color: darkgray;
+=======
+  color: #000;
+}
+
+h1, h2{
+  font-family: 'Venus Rising Cyrillic', sans-serif;
+>>>>>>> ab8ce0968e4f3874e7265c6a37f604fcefda453f
 }
 
 h1{
@@ -175,7 +183,11 @@ main {
   border-radius: 10px;
   margin: 10px 0;
   padding: 12px 50px;
+<<<<<<< HEAD
   color: #2d2d2d;
+=======
+  color: #000;
+>>>>>>> ab8ce0968e4f3874e7265c6a37f604fcefda453f
   font-weight: bold;
   cursor: pointer;
   text-transform: uppercase;
@@ -234,6 +246,10 @@ h2 {
   margin-bottom: 1rem;
   text-transform: uppercase;
   font-size: 22px;
+<<<<<<< HEAD
+=======
+  color: #000;
+>>>>>>> ab8ce0968e4f3874e7265c6a37f604fcefda453f
   letter-spacing: 1.2px;
 }
 
