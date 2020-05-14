@@ -5,7 +5,7 @@
         <div class="container">
           <div class="nav">
             <router-link :to="{ path: '/' }" exact active-class="active">
-              <h1 class="logo">CashTag</h1></router-link
+              <h1 class="logo">Cashtag</h1></router-link
             >
             <ul class="nav-bar">
               <li class="hide-sp">
@@ -517,7 +517,7 @@ export default {
 
 <style scoped>
 .header-bg {
-  background: #0b3172;
+  background: #027be3;
   position: relative;
   margin: 0 auto -20px;
   padding: 10px 0;
