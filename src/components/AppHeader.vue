@@ -23,6 +23,14 @@
               </li>
               <li class="hide-sp">
                 <router-link
+                  :to="{ name: 'restaurants' }"
+                  exact
+                  active-class="active"
+                  ><img src="../assets/2_Aucc.png" alt=""
+                /></router-link>
+              </li>
+              <li class="hide-sp">
+                <router-link
                   :to="{ name: 'login' }"
                   v-if="!isLoggedIn()"
                   exact
