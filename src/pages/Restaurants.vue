@@ -19,10 +19,10 @@
                   />
                   <h2>{{ rest.username }}</h2>
                   <p>{{ rest.email }}</p>
+                  <p>{{ getRestaurantsData(rest.googleId) }}</p>
                   <div class="price">
                     <p class="price-tag">{{ rest.googleId }}</p>
                   </div>
-                  <p>{{ restaurantsData }}</p>
                   <QrCodeGen
                     :value="
                       'https://search.google.com/local/writereview?placeid=' +
@@ -70,24 +70,32 @@ export default {
           console.log(err);
         });
     },
-    getRestaurantsData() {
-      // this.$axios
-      //   .get(
-      //     "https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJa2bVbaxcBAURDMj_jEzGDqI&key=AIzaSyBNljWVEJJkYtalmgBaG_P1I5ZjviZ8j6A"
-      //   )
-      //   .then(response => {
-      //     this.restaurantsData = response.data;
-      //   })
-      //   .catch(err => {
-      //     console.log(err);
-      //   });
+    getRestaurantsData(placeId) {
+      const proxy = "https://cors-anywhere.herokuapp.com/";
+      const url =
+        "https://maps.googleapis.com/maps/api/place/details/json?placeid=";
+      const apiKey = "AIzaSyBNljWVEJJkYtalmgBaG_P1I5ZjviZ8j6A";
+      console.log(proxy + url + placeId + "&key=" + apiKey);
+      this.$axios
+        .get(proxy + url + placeId + "&key=" + apiKey)
+        .then(response => {
+          this.restaurantsData = console.log(response.data.result.name);
+        })
+        .then(response => {
+          return response.json();
+        })
+        .catch(err => {
+          console.log(err);
+        });
     },
+
     selectRestaurant(id) {
       this.selectedRestaurant = this.restaurants.find(item => item.id === id);
     }
   },
   beforeMount() {
     this.getRestaurants();
+    // this.getRestaurantsData();
   }
 };
 </script>
