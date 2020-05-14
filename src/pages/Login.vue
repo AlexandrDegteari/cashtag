@@ -26,14 +26,14 @@
               </div>
               <div class="buttons">
                 <button class="btn">Login</button>
-                <!--                <router-link-->
-                <!--                  :to="{ path: '/register' }"-->
-                <!--                  exact-->
-                <!--                  active-class="active"-->
-                <!--                  ><button onclick="prevent()" class="btn">-->
-                <!--                    Sign Up-->
-                <!--                  </button></router-link-->
-                <!--                >-->
+                <router-link
+                  :to="{ path: '/register' }"
+                  exact
+                  active-class="active"
+                  ><button onclick="prevent()" class="btn">
+                    Sign Up
+                  </button></router-link
+                >
               </div>
               <div class="forgot">
                 <div>
@@ -97,7 +97,6 @@ h2 {
 .forgot {
   display: flex;
   justify-content: space-between;
-  /*min-width: 320px;*/
   align-items: center;
   font-size: 10px;
 }

@@ -2,16 +2,6 @@
   <div>
     <form class="container-fluid">
       <div class="row">
-        <div class="col-lg col-md-12 upload-images-container mt-3 pl-0 d-flex">
-          <div class="black-block w-100">
-            <div class="upload-images">
-              <img :src="avatar" alt="" />
-            </div>
-            <span class="open-modal">
-              EDIT picture
-            </span>
-          </div>
-        </div>
         <div class="col-xl col-lg-12 col-md-12 black-block mt-3">
           <profile-form :user="response" @updatedForm="getUser" />
         </div>
@@ -29,12 +19,6 @@
                   :value="response.email"
                   disabled
                 />
-                <label class="mt-2 text-uppercase" for="code">2fa Code</label>
-                <input class="mt-1" id="code" type="text" />
-                <div class="status-pending mt-4 pt-2">
-                  <span>Status</span>
-                  <div class="ml-2">Pending: 71:34:26</div>
-                </div>
               </div>
               <div class="col-md-6 pl-md-0  mt-2">
                 <label for="oldPassword">Old Password</label>
@@ -114,41 +98,6 @@
         </div>
       </div>
     </form>
-
-    <!--    <v-dialog v-model="dialogAvatar" max-width="300">-->
-    <!--      <div class="dialog-avatar">-->
-    <!--        <div class="text-center mb-3">-->
-    <!--          <label for="uploadInput" class="btn btn-primary upload-photo">-->
-    <!--            SELECT FILE-->
-    <!--          </label>-->
-    <!--          <input-->
-    <!--            @change="readImage"-->
-    <!--            type="file"-->
-    <!--            id="uploadInput"-->
-    <!--            value="SELECT FILES"-->
-    <!--            accept="image/png, image/jpeg"-->
-    <!--          />-->
-    <!--        </div>-->
-    <!--        <v-img :src="base64 ? base64 : avatar" max-height="250" contain />-->
-    <!--        <div class="d-flex justify-content-between mt-3">-->
-    <!--          <button-->
-    <!--            @click="updateAvatar()"-->
-    <!--            :disableb="!base64"-->
-    <!--            class="upload-result btn btn-primary pl-4 pr-4"-->
-    <!--          >-->
-    <!--            SAVE-->
-    <!--          </button>-->
-    <!--          <button-->
-    <!--            @click="dialogAvatar = false"-->
-    <!--            class="btn btn-primary"-->
-    <!--            type="button"-->
-    <!--          >-->
-    <!--            ok-->
-    <!--          </button>-->
-    <!--        </div>-->
-    <!--      </div>-->
-    <!--    </v-dialog>-->
-
     <button @click="logout" class="btn btn-primary ml-2 mb-2" type="button">
       Log out
     </button>

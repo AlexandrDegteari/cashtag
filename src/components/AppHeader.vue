@@ -69,7 +69,7 @@
                       </q-item>
                     </router-link>
                     <router-link
-                      :to="{ path: '/user-restaurants' }"
+                      :to="{ path: '/restaurants' }"
                       exact
                       active-class="active"
                     >
