@@ -57,6 +57,16 @@ const routes = [
         component: () => import("pages/Search.vue")
       },
       {
+        name: "review",
+        path: "review",
+        component: () => import("pages/Review.vue")
+      },
+      {
+        name: "voucher",
+        path: "voucher",
+        component: () => import("pages/Voucher.vue")
+      },
+      {
         name: "restaurants",
         path: "restaurants",
         component: () => import("pages/Restaurants.vue")
