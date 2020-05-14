@@ -8,14 +8,27 @@
             <p>
               Please make a review for our restaurant and take your free coffee
             </p>
+            <a
+              v-if="!reviews"
+              target="_blank"
+              :href="
+                'https://search.google.com/local/writereview?placeid=' +
+                  'rest.googleId'
+              "
+            >
+              <button class="btn" :click="makeReview">
+                Make review now!
+              </button></a
+            >
             <router-link
+              v-if="reviews"
               :to="{ path: '/voucher' }"
               exact
               tag="li"
               active-class="active"
             >
               <button class="btn">
-                Make review now!
+                Take your voucher!
               </button></router-link
             >
           </div>
@@ -27,7 +40,24 @@
 
 <script>
 export default {
-  name: "Review"
+  data() {
+    return {
+      restaurants: null,
+      selectedRestaurant: null,
+      reviews: false
+    };
+  },
+  methods: {
+    makeReview() {
+      window.open(
+        "https://search.google.com/local/writereview?placeid=" + "rest.googleId"
+      );
+      // setTimeout(function() {
+      //   this.review = true;
+      // }, 3000);
+      this.reviews = true;
+    }
+  }
 };
 </script>
 
