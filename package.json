@@ -15,6 +15,7 @@
     "@quasar/extras": "^1.0.0",
     "axios": "^0.18.1",
     "jwt-decode": "^2.2.0",
+    "qrcode.vue": "^1.7.0",
     "quasar": "^1.0.0",
     "vue-i18n": "^8.0.0",
     "vuelidate": "^0.7.5",

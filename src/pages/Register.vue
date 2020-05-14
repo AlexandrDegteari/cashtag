@@ -78,60 +78,23 @@
               <p v-if="!$v.passwordConfirmation.sameAsPassword" class="error">
                 Passwords must be identical
               </p>
-              <div class="input input4 q-mb-md">
-                <!--                <div class="q-pa-md" style="max-width: 300px">-->
-                <!--                  <div class="q-gutter-md">-->
-                <!--                    <q-select-->
-                <!--                      v-if="countries"-->
-                <!--                      class="mt-1"-->
-                <!--                      :options="countries"-->
-                <!--                      v-model="$v.country.$model"-->
-                <!--                      menu-props="auto"-->
-                <!--                      hide-details-->
-                <!--                      single-line-->
-                <!--                      item-text="name"-->
-                <!--                      item-value="id"-->
-                <!--                      dense-->
-                <!--                      background-color="#1f2526"-->
-                <!--                    ></q-select>-->
-                <!--                  </div>-->
-                <!--                </div>-->
-                <div>
-                  <input
-                    id="input4"
-                    type="text"
-                    v-model="$v.country.$model"
-                    placeholder="Select Country"
-                  />
-                  <label for="input4"></label>
-                </div>
-              </div>
-              <p v-if="$v.country.$dirty && !$v.country.required" class="error">
-                Country is required
-              </p>
-              <div class="input input4 q-mb-md">
+              <div class="input input2 q-mb-md">
                 <input
-                  id="input5"
+                  id="input4"
                   type="text"
-                  v-model.trim="$v.city.$model"
-                  placeholder="City"
+                  v-model="$v.googleId.$model"
+                  placeholder="Google Places ID"
                 />
-                <label for="input5"></label>
+                <label for="input3"></label>
               </div>
-              <p v-if="$v.city.$dirty && !$v.city.required" class="error">
-                City is required
-              </p>
-              <div class="input input4 q-mb-md">
-                <input
-                  id="input6"
-                  type="text"
-                  v-model.trim="$v.address.$model"
-                  placeholder="Address"
-                />
-                <label for="input6"></label>
-              </div>
-              <p v-if="$v.address.$dirty && !$v.address.required" class="error">
-                Address is required
+              <p
+                v-if="
+                  $v.passwordConfirmation.$dirty &&
+                    !$v.passwordConfirmation.required
+                "
+                class="error m-0"
+              >
+                Confirm Password is required
               </p>
               <div class="forgot q-pb-md">
                 <div>
@@ -143,21 +106,9 @@
                   />
                   <label>Terms & Conditions</label>
                 </div>
-                <div>
-                  <q-checkbox
-                    color="blue"
-                    keep-color
-                    size="sm"
-                    v-model="$v.age.$model"
-                  />
-                  <label>I am 18+</label>
-                </div>
               </div>
               <p v-if="$v.terms.$dirty && !$v.terms.sameAs" class="error">
                 Terms & Conditions are required
-              </p>
-              <p v-if="$v.age.$dirty && !$v.age.sameAs" class="error">
-                Age 18+ are required
               </p>
               <button @click="register" class="btn text-center">
                 Create account
@@ -205,12 +156,8 @@ export default {
       email: null,
       password: null,
       passwordConfirmation: null,
-      city: null,
-      country: null,
-      address: null,
+      googleId: null,
       terms: false,
-      age: false,
-      countries: null,
       availableUsername: null,
       availableEmail: null,
       modalDate: false
@@ -219,16 +166,13 @@ export default {
   validations: {
     username: { required },
     email: { required, email },
-    country: { required },
-    city: { required },
-    address: { required },
+    googleId: { required },
     password: { required },
     passwordConfirmation: {
       required,
       sameAsPassword: sameAs("password")
     },
-    terms: { sameAs: sameAs(() => true) },
-    age: { sameAs: sameAs(() => true) }
+    terms: { sameAs: sameAs(() => true) }
   },
   watch: {},
   methods: {
@@ -243,9 +187,7 @@ export default {
         username: this.username,
         email: this.email,
         password: this.password,
-        country: this.country,
-        city: this.city,
-        address: this.address
+        googleId: this.googleId
       };
       this.$store
         .dispatch("authRegister", user)
@@ -260,13 +202,6 @@ export default {
       // .catch(error => {
       //   this.errors = error.response.data;
       // });
-    },
-    getCountries() {
-      RequestService.GetCountries()
-        .then(response => {
-          this.countries = response;
-        })
-        .catch(() => {});
     },
     checkUsername() {
       clearTimeout(this.debounceUsername);
@@ -291,9 +226,6 @@ export default {
           .catch(() => {});
       }, 1000);
     }
-  },
-  beforeMount() {
-    this.getCountries();
   }
 };
 </script>

@@ -18,9 +18,6 @@
       </div>
       <div class="row mt-3">
         <div class="col-lg-6 pb-3">
-          <address-form :address="response.address" @updatedForm="getUser" />
-        </div>
-        <div class="col-lg-6 pb-3">
           <form @submit.prevent="submitPasswordForm">
             <div class="row black-block">
               <div class="col-md-6 mt-2">
@@ -163,14 +160,12 @@ import UserService from "../services/user.service";
 import { validationMixin } from "vuelidate";
 import { required, sameAs } from "vuelidate/lib/validators";
 
-import AddressForm from "./AddressForm";
 import ProfileForm from "./ProfileForm";
 
 export default {
   mixins: [validationMixin],
   components: {
-    ProfileForm,
-    AddressForm
+    ProfileForm
   },
   data() {
     return {

@@ -21,12 +21,21 @@
                   <div class="price">
                     <p class="price-tag">{{ rest.googleId }}</p>
                   </div>
-                  <button
-                    onclick="window.open('https://search.google.com/local/writereview?placeid='+ rest.googleId )"
-                    class="btn"
+                  <QrCodeGen
+                    :value="
+                      'https://search.google.com/local/writereview?placeid=' +
+                        rest.googleId
+                    "
                   >
-                    Rate this Restaurant
-                  </button>
+                  </QrCodeGen>
+                  <a
+                    target="_blank"
+                    :href="
+                      'https://search.google.com/local/writereview?placeid=' +
+                        rest.googleId
+                    "
+                    >Rate it!</a
+                  >
                 </div>
               </div>
             </div>
@@ -38,7 +47,9 @@
 </template>
 
 <script>
+import QrCodeGen from "../components/AppQrCodeGen";
 export default {
+  components: { QrCodeGen },
   data() {
     return {
       restaurants: null,
@@ -83,7 +94,6 @@ h2 {
 .package-block {
   display: flex;
   align-items: center;
-  height: 593px;
   justify-content: center;
   flex-direction: column;
   align-content: center;

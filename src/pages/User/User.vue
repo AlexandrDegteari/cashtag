@@ -12,13 +12,6 @@
                 active-class="active"
                 >Profile</router-link
               >
-              <router-link
-                :to="{ path: '/user-transactions' }"
-                exact
-                tag="li"
-                active-class="active"
-                >Restaurants</router-link
-              >
             </ul>
           </div>
           <router-view></router-view>

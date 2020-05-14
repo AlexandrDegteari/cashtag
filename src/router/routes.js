@@ -1,4 +1,5 @@
 import { store } from "../store/";
+// eslint-disable-next-line no-unused-vars
 const ifNotAuthenticated = (to, from, next) => {
   if (store.getters.isAuthenticated) {
     next();
@@ -32,22 +33,6 @@ const routes = [
             path: "/",
             component: () => import("pages/Profile")
             // beforeEnter: ifAuthenticated
-          },
-          {
-            name: "user-transactions",
-            path: "/user-transactions",
-            component: () => import("pages/User/Transactions"),
-            beforeEnter: ifNotAuthenticated
-          },
-          {
-            name: "user-auctions",
-            path: "/user-auctions",
-            component: () => import("pages/User/Auctions")
-          },
-          {
-            name: "user-auction",
-            path: "/user-auction",
-            component: () => import("pages/User/Auction")
           }
         ]
       },
@@ -55,11 +40,6 @@ const routes = [
         name: "auction",
         path: "auction",
         component: () => import("pages/Profile.vue")
-      },
-      {
-        name: "auctions",
-        path: "auctions",
-        component: () => import("pages/User/Auction.vue")
       },
       {
         name: "login",
