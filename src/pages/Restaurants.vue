@@ -72,7 +72,7 @@ export default {
     getRestaurantsData() {
       this.$axios
         .get(
-          "https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJa2bVbaxcBAURDMj_jEzGDqI}}&key=AIzaSyC3VRx2leK7i5iHnBvFuE8skcHY0jQwTfA"
+          "https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJa2bVbaxcBAURDMj_jEzGDqI&key=AIzaSyBNljWVEJJkYtalmgBaG_P1I5ZjviZ8j6A"
         )
         .then(response => {
           this.restaurantsData = response.data;
