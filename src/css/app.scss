@@ -1,40 +1,3 @@
-// app global css in SCSS form
-@import "../fonts/GOTHAMPRO-BLACK.ttf";
-@import "../fonts/GOTHAMPRO-BOLD.ttf";
-@import "../fonts/GOTHAMPRO-LIGHT.ttf";
-@import "../fonts/GOTHAMPRO.ttf";
-@import "../fonts/VENUSRIS.ttf";
-@import "../fonts/VENUSRIS.ttf";
-
-//@font-face {
-//  font-family: VenusRising;
-//  src: url("../fonts/GOTHAMPRO.TTF");
-//}
-@font-face {
-  font-family: 'Venus Rising Cyrillic';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Venus Rising Cyrillic'), local('VenusRisingCyrillic-Regular'),
-  url("../fonts/venus-rising-cyrillic.woff") format('woff'),
-  url("../fonts/venus-rising-cyrillic.ttf") format('truetype');
-}
-
-@font-face {
-  font-family: 'Gotham Pro';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Gotham Pro'), local('Gotham Pro Regular'),
-  url("../fonts/GOTHAMPRO.ttf") format('truetype');
-}
-
-@font-face {
-  font-family: 'Gotham Pro';
-  font-style: normal;
-  font-weight: 600;
-  src: local('Gotham Pro'), local('Gotham Pro'),
-  url("../fonts/GOTHAMPRO-BOLD.ttf") format('truetype');
-}
-
 .wrapper {
   display: flex;
   min-height: calc(100vh - 60px);
@@ -91,7 +54,7 @@ table{
 
 
 *{
-  font-family: Gotham Pro, sans-serif;
+  font-family: Roboto, sans-serif;
 }
 a{
   text-decoration: none;
@@ -108,7 +71,7 @@ h1{
   margin-bottom: 1rem;
 }
 body{
-  color:#fff;
+  color:#1d1d1d;
   //min-width: 1200px;
 }
 img{
@@ -277,7 +240,7 @@ h2 {
 }
 
 .wrapper {
-  background-color: #050d14;
+  background-color: #fff;
   width: 100%;
 }
 
@@ -356,10 +319,10 @@ h2 {
 }
 
 input {
-  background: none;
+  background: #e6e6e6;
   padding: 10px 20px;
   border: 1px solid #fff;
-  color: #fff;
+  color: #2d2d2d;
   outline: none;
   font-size: 14px;
   border-radius: 10px;
