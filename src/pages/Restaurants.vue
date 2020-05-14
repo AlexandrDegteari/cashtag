@@ -17,7 +17,8 @@
                       'background-image': 'url(' + rest.bimage + ')'
                     }"
                   />
-                  <h2>{{ rest.name }}</h2>
+                  <h2>{{ rest.username }}</h2>
+                  <p>{{ rest.email }}</p>
                   <div class="price">
                     <p class="price-tag">{{ rest.googleId }}</p>
                   </div>

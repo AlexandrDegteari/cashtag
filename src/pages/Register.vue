@@ -88,13 +88,10 @@
                 <label for="input3"></label>
               </div>
               <p
-                v-if="
-                  $v.passwordConfirmation.$dirty &&
-                    !$v.passwordConfirmation.required
-                "
+                v-if="$v.googleId.$dirty && !$v.googleId.required"
                 class="error m-0"
               >
-                Confirm Password is required
+                Google Id is required
               </p>
               <div class="forgot q-pb-md">
                 <div>
