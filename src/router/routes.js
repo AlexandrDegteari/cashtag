@@ -50,12 +50,14 @@ const routes = [
       },
       {
         name: "review",
-        path: "review",
+        path: "review/:googleId",
+        params: {},
+        props: true,
         component: () => import("pages/Review.vue")
       },
       {
         name: "voucher",
-        path: "voucher",
+        path: "voucher/:googleId",
         component: () => import("pages/Voucher.vue")
       },
       {

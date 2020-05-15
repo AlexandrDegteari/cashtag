@@ -18,23 +18,23 @@
                 <tr v-for="(rest, key) in restaurants" :key="key">
                   <th>{{ rest.username }}</th>
                   <th>{{ rest.email }}</th>
-                  <th>{{ getRestaurantsData(rest.googleId) }}</th>
                   <th>{{ rest.googleId }}</th>
                   <th>
                     <QrCodeGen
                       :value="
-                        'https://search.google.com/local/writereview?placeid=' +
+                        'http://cashtag.michaelringlein.com/#/restaurants/' +
                           rest.googleId
                       "
                     >
                     </QrCodeGen>
-                    <a
-                      target="_blank"
-                      :href="
-                        'https://search.google.com/local/writereview?placeid=' +
-                          rest.googleId
-                      "
-                      >Rate it!</a
+                    <router-link
+                      :to="{
+                        name: 'review',
+                        params: { googleId: rest.googleId }
+                      }"
+                      exact
+                      active-class="active"
+                      >Rate this Restaurant</router-link
                     >
                   </th>
                 </tr>
@@ -69,26 +69,6 @@ export default {
         .catch(err => {
           console.log(err);
         });
-    },
-    getRestaurantsData(placeId) {
-      const proxy = "https://cors-anywhere.herokuapp.com/";
-      const url =
-        "https://maps.googleapis.com/maps/api/place/details/json?placeid=";
-      const apiKey = "AIzaSyBNljWVEJJkYtalmgBaG_P1I5ZjviZ8j6A";
-      this.$axios
-        .get(proxy + url + placeId + "&key=" + apiKey)
-        .then(response => {
-          this.response = response;
-          this.restaurantName = console.log(response.data.result.name);
-          return response;
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    },
-
-    selectRestaurant(id) {
-      this.selectedRestaurant = this.restaurants.find(item => item.id === id);
     }
   },
   beforeMount() {
