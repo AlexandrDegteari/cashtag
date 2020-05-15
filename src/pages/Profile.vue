@@ -23,6 +23,27 @@
                     <li>
                       <span>Google ID: {{ restaurantData.googleId }}</span>
                     </li>
+
+                    <li>
+                      <span
+                        >Restaurant Name:
+                        {{ restaurantData.restaurantName }}</span
+                      >
+                    </li>
+                    <li>
+                      <span
+                        >Restaurant Address:
+                        {{ restaurantData.restaurantAddress }}</span
+                      >
+                      <span></span>
+                    </li>
+                    <li>
+                      <span
+                        >Restaurant Avatar:
+                        {{ restaurantData.restaurantAvatar }}</span
+                      >
+                      <img :src="restaurantData.restaurantAvatar" alt="" />
+                    </li>
                   </ul>
                 </div>
                 <br />

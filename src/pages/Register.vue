@@ -84,10 +84,11 @@
                 <input
                   id="input4"
                   type="text"
+                  @change="getRestaurantsData()"
                   v-model="$v.googleId.$model"
                   placeholder="Google Places ID"
                 />
-                <label for="input3"></label>
+                <label for="input4"></label>
               </div>
               <p
                 v-if="$v.googleId.$dirty && !$v.googleId.required"
@@ -95,6 +96,56 @@
               >
                 Google Id is required
               </p>
+              <div class="input input2 q-mb-md">
+                <input
+                  id="input5"
+                  type="text"
+                  v-model="$v.restaurantName.$model"
+                  placeholder="Restaurant Name"
+                />
+                <label for="input5"></label>
+              </div>
+              <p
+                v-if="$v.restaurantName.$dirty && !$v.restaurantName.required"
+                class="error m-0"
+              >
+                Restaurant Name required
+              </p>
+              <div class="input input2 q-mb-md">
+                <input
+                  id="input8"
+                  type="text"
+                  v-model="$v.restaurantAddress.$model"
+                  placeholder="Restaurant Address"
+                />
+                <label for="input8"></label>
+              </div>
+              <p
+                v-if="
+                  $v.restaurantAddress.$dirty && !$v.restaurantAddress.required
+                "
+                class="error m-0"
+              >
+                Restaurant Address required
+              </p>
+              <div class="input input2 q-mb-md">
+                <input
+                  id="input6"
+                  type="text"
+                  v-model="$v.restaurantAvatar.$model"
+                  placeholder="Restaurant Name"
+                />
+                <label for="input3"></label>
+              </div>
+              <p
+                v-if="
+                  $v.restaurantAvatar.$dirty && !$v.restaurantAvatar.required
+                "
+                class="error m-0"
+              >
+                Restaurant Avatar required
+              </p>
+              <img :src="this.restaurantAvatar" alt="" />
               <div class="forgot q-pb-md">
                 <div>
                   <q-checkbox
@@ -148,6 +199,10 @@ export default {
   data() {
     return {
       response: null,
+      restaurantsData: null,
+      restaurantName: null,
+      restaurantAvatar: null,
+      restaurantAddress: null,
       errors: null,
       successRegistration: false,
       username: null,
@@ -166,6 +221,9 @@ export default {
     username: { required },
     email: { required, email },
     googleId: { required },
+    restaurantName: { required },
+    restaurantAvatar: { required },
+    restaurantAddress: { required },
     password: { required },
     passwordConfirmation: {
       required,
@@ -186,7 +244,10 @@ export default {
         username: this.username,
         email: this.email,
         password: this.password,
-        googleId: this.googleId
+        googleId: this.googleId,
+        restaurantName: this.restaurantName,
+        restaurantAvatar: this.restaurantAvatar,
+        restaurantAddress: this.restaurantAddress
       };
       this.$store
         .dispatch("authRegister", user)
@@ -201,6 +262,26 @@ export default {
       // .catch(error => {
       //   this.errors = error.response.data;
       // });
+    },
+    getRestaurantsData() {
+      console.log("getData");
+      const proxy = "https://cors-anywhere.herokuapp.com/";
+      const url =
+        "https://maps.googleapis.com/maps/api/place/details/json?placeid=";
+      const apiKey = "AIzaSyBNljWVEJJkYtalmgBaG_P1I5ZjviZ8j6A";
+      this.$axios
+        .get(proxy + url + this.googleId + "&key=" + apiKey)
+        .then(response => {
+          this.restaurantsData = response;
+          this.restaurantName = response.data.result.name;
+          this.restaurantAvatar = response.data.result.icon;
+          this.restaurantAddress = response.data.result.formatted_address;
+          console.log(response);
+          return response;
+        })
+        .catch(err => {
+          console.log(err);
+        });
     },
     checkUsername() {
       clearTimeout(this.debounceUsername);

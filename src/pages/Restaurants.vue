@@ -101,26 +101,10 @@ export default {
 h2 {
   margin-bottom: 0.5rem;
 }
-.price-tag {
-  font-weight: bold;
-  font-size: 20px;
-}
+
 .text-bg p {
   margin: 0 auto;
   max-width: 734px;
   padding-top: 20px;
-}
-
-.package-block {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  align-content: center;
-  margin: 50px 15px 30px 0;
-}
-.coin-image {
-  background-size: contain;
-  background-repeat: no-repeat;
 }
 </style>
