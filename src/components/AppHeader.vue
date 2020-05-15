@@ -10,24 +10,24 @@
             <ul class="nav-bar">
               <li class="hide-sp">
                 <router-link :to="{ path: '/' }" exact active-class="active"
-                  ><img src="../assets/Home_icon.png" alt=""
-                /></router-link>
+                  >Home</router-link
+                >
               </li>
               <li class="hide-sp">
                 <router-link
                   :to="{ name: 'search' }"
                   exact
                   active-class="active"
-                  ><img src="../assets/Aucc.png" alt=""
-                /></router-link>
+                  >Restaurants1</router-link
+                >
               </li>
               <li class="hide-sp">
                 <router-link
                   :to="{ name: 'restaurants' }"
                   exact
                   active-class="active"
-                  ><img src="../assets/2_Aucc.png" alt=""
-                /></router-link>
+                  >Restaurants2</router-link
+                >
               </li>
               <li class="hide-sp">
                 <router-link
@@ -36,8 +36,8 @@
                   exact
                   active-class="active"
                 >
-                  <img src="../assets/man_1.png" alt=""
-                /></router-link>
+                  Login</router-link
+                >
               </li>
               <li class="hide-sp">
                 <router-link
@@ -46,448 +46,448 @@
                   exact
                   active-class="active"
                 >
-                  <img src="../assets/Man_2.png" alt=""
-                /></router-link>
-              </li>
-              <li>
-                <q-btn-dropdown
-                  class="q-mr-xs q-ml-xs hide-sp"
-                  v-if="isLoggedIn()"
-                  :content-style="{ backgroundColor: '#063666' }"
+                  Register</router-link
                 >
-                  <template v-slot:label>
-                    <img src="../assets/user/Man.png" alt="" />
-                  </template>
-                  <q-list>
-                    <router-link
-                      :to="{ path: 'user-auctions' }"
-                      exact
-                      active-class="active"
-                    >
-                      <q-item v-close-popup>
-                        <q-item-section avatar>
-                          <q-avatar>
-                            <img src="../assets/user/Man.png" alt="" />
-                          </q-avatar>
-                        </q-item-section>
-                        <q-item-section>
-                          <q-item-label>Profile</q-item-label>
-                        </q-item-section>
-                        <q-item-section side> </q-item-section>
-                      </q-item>
-                    </router-link>
-                    <router-link
-                      :to="{ path: '/restaurants' }"
-                      exact
-                      active-class="active"
-                    >
-                      <q-item v-close-popup>
-                        <q-item-section avatar>
-                          <q-avatar>
-                            <img src="../assets/user/coin.svg" alt="" />
-                          </q-avatar>
-                        </q-item-section>
-                        <q-item-section>
-                          <q-item-label>Restaurants</q-item-label>
-                        </q-item-section>
-                        <q-item-section side> </q-item-section>
-                      </q-item>
-                    </router-link>
-                    <div @click="logout">
-                      <q-item v-close-popup>
-                        <q-item-section avatar>
-                          <q-avatar>
-                            <img src="../assets/user/logout.svg" alt="" />
-                          </q-avatar>
-                        </q-item-section>
-                        <q-item-section>
-                          <q-item-label>Log out</q-item-label>
-                        </q-item-section>
-                        <q-item-section side> </q-item-section>
-                      </q-item>
-                    </div>
-                  </q-list>
-                </q-btn-dropdown>
               </li>
-              <li>
-                <q-btn-dropdown
-                  class=" q-mr-xs q-ml-xs hide-sp"
-                  :content-style="{ backgroundColor: '#063666' }"
-                >
-                  <template v-slot:label>
-                    <img class="ava" src="../assets/lang/eng.png" alt="" />
-                  </template>
-                  <q-list>
-                    <q-item clickable v-close-popup>
-                      <q-item-section avatar>
-                        <q-avatar>
-                          <img
-                            class="ava"
-                            src="../assets/lang/Arab.png"
-                            alt=""
-                          />
-                        </q-avatar>
-                      </q-item-section>
-                      <q-item-section>
-                        <q-item-label> Arabic</q-item-label>
-                      </q-item-section>
-                      <q-item-section side> </q-item-section>
-                    </q-item>
-                    <q-item clickable v-close-popup>
-                      <q-item-section avatar>
-                        <q-avatar>
-                          <img
-                            class="ava"
-                            src="../assets/lang/pers.png"
-                            alt=""
-                          />
-                        </q-avatar>
-                      </q-item-section>
-                      <q-item-section>
-                        <q-item-label> Persian</q-item-label>
-                      </q-item-section>
-                      <q-item-section side> </q-item-section>
-                    </q-item>
-                    <q-item clickable v-close-popup>
-                      <q-item-section avatar>
-                        <q-avatar>
-                          <img class="ava" src="../assets/lang/tr.png" alt="" />
-                        </q-avatar>
-                      </q-item-section>
-                      <q-item-section>
-                        <q-item-label> Turkish</q-item-label>
-                      </q-item-section>
-                      <q-item-section side> </q-item-section>
-                    </q-item>
-                    <q-item clickable v-close-popup>
-                      <q-item-section avatar>
-                        <q-avatar>
-                          <q-avatar>
-                            <img
-                              class="ava"
-                              src="../assets/lang/chi.png"
-                              alt=""
-                            />
-                          </q-avatar>
-                        </q-avatar>
-                      </q-item-section>
-                      <q-item-section>
-                        <q-item-label> Chinese</q-item-label>
-                      </q-item-section>
-                      <q-item-section side> </q-item-section>
-                    </q-item>
-                    <q-item clickable v-close-popup>
-                      <q-item-section avatar>
-                        <q-avatar>
-                          <img
-                            class="ava"
-                            src="../assets/lang/eng.png"
-                            alt=""
-                          />
-                        </q-avatar>
-                      </q-item-section>
-                      <q-item-section>
-                        <q-item-label> English</q-item-label>
-                      </q-item-section>
-                      <q-item-section side> </q-item-section>
-                    </q-item>
-                  </q-list>
-                </q-btn-dropdown>
-              </li>
+              <!--              <li>-->
+              <!--                <q-btn-dropdown-->
+              <!--                  class="q-mr-xs q-ml-xs hide-sp"-->
+              <!--                  v-if="isLoggedIn()"-->
+              <!--                  :content-style="{ backgroundColor: '#063666' }"-->
+              <!--                >-->
+              <!--                  <template v-slot:label>-->
+              <!--                    <img src="../assets/user/Man.png" alt="" />-->
+              <!--                  </template>-->
+              <!--                  <q-list>-->
+              <!--                    <router-link-->
+              <!--                      :to="{ path: 'user-auctions' }"-->
+              <!--                      exact-->
+              <!--                      active-class="active"-->
+              <!--                    >-->
+              <!--                      <q-item v-close-popup>-->
+              <!--                        <q-item-section avatar>-->
+              <!--                          <q-avatar>-->
+              <!--                            <img src="../assets/user/Man.png" alt="" />-->
+              <!--                          </q-avatar>-->
+              <!--                        </q-item-section>-->
+              <!--                        <q-item-section>-->
+              <!--                          <q-item-label>Profile</q-item-label>-->
+              <!--                        </q-item-section>-->
+              <!--                        <q-item-section side> </q-item-section>-->
+              <!--                      </q-item>-->
+              <!--                    </router-link>-->
+              <!--                    <router-link-->
+              <!--                      :to="{ path: '/restaurants' }"-->
+              <!--                      exact-->
+              <!--                      active-class="active"-->
+              <!--                    >-->
+              <!--                      <q-item v-close-popup>-->
+              <!--                        <q-item-section avatar>-->
+              <!--                          <q-avatar>-->
+              <!--                            <img src="../assets/user/coin.svg" alt="" />-->
+              <!--                          </q-avatar>-->
+              <!--                        </q-item-section>-->
+              <!--                        <q-item-section>-->
+              <!--                          <q-item-label>Restaurants</q-item-label>-->
+              <!--                        </q-item-section>-->
+              <!--                        <q-item-section side> </q-item-section>-->
+              <!--                      </q-item>-->
+              <!--                    </router-link>-->
+              <!--                    <div @click="logout">-->
+              <!--                      <q-item v-close-popup>-->
+              <!--                        <q-item-section avatar>-->
+              <!--                          <q-avatar>-->
+              <!--                            <img src="../assets/user/logout.svg" alt="" />-->
+              <!--                          </q-avatar>-->
+              <!--                        </q-item-section>-->
+              <!--                        <q-item-section>-->
+              <!--                          <q-item-label>Log out</q-item-label>-->
+              <!--                        </q-item-section>-->
+              <!--                        <q-item-section side> </q-item-section>-->
+              <!--                      </q-item>-->
+              <!--                    </div>-->
+              <!--                  </q-list>-->
+              <!--                </q-btn-dropdown>-->
+              <!--              </li>-->
+              <!--              <li>-->
+              <!--                <q-btn-dropdown-->
+              <!--                  class=" q-mr-xs q-ml-xs hide-sp"-->
+              <!--                  :content-style="{ backgroundColor: '#063666' }"-->
+              <!--                >-->
+              <!--                  <template v-slot:label>-->
+              <!--                    <img class="ava" src="../assets/lang/eng.png" alt="" />-->
+              <!--                  </template>-->
+              <!--                  <q-list>-->
+              <!--                    <q-item clickable v-close-popup>-->
+              <!--                      <q-item-section avatar>-->
+              <!--                        <q-avatar>-->
+              <!--                          <img-->
+              <!--                            class="ava"-->
+              <!--                            src="../assets/lang/Arab.png"-->
+              <!--                            alt=""-->
+              <!--                          />-->
+              <!--                        </q-avatar>-->
+              <!--                      </q-item-section>-->
+              <!--                      <q-item-section>-->
+              <!--                        <q-item-label> Arabic</q-item-label>-->
+              <!--                      </q-item-section>-->
+              <!--                      <q-item-section side> </q-item-section>-->
+              <!--                    </q-item>-->
+              <!--                    <q-item clickable v-close-popup>-->
+              <!--                      <q-item-section avatar>-->
+              <!--                        <q-avatar>-->
+              <!--                          <img-->
+              <!--                            class="ava"-->
+              <!--                            src="../assets/lang/pers.png"-->
+              <!--                            alt=""-->
+              <!--                          />-->
+              <!--                        </q-avatar>-->
+              <!--                      </q-item-section>-->
+              <!--                      <q-item-section>-->
+              <!--                        <q-item-label> Persian</q-item-label>-->
+              <!--                      </q-item-section>-->
+              <!--                      <q-item-section side> </q-item-section>-->
+              <!--                    </q-item>-->
+              <!--                    <q-item clickable v-close-popup>-->
+              <!--                      <q-item-section avatar>-->
+              <!--                        <q-avatar>-->
+              <!--                          <img class="ava" src="../assets/lang/tr.png" alt="" />-->
+              <!--                        </q-avatar>-->
+              <!--                      </q-item-section>-->
+              <!--                      <q-item-section>-->
+              <!--                        <q-item-label> Turkish</q-item-label>-->
+              <!--                      </q-item-section>-->
+              <!--                      <q-item-section side> </q-item-section>-->
+              <!--                    </q-item>-->
+              <!--                    <q-item clickable v-close-popup>-->
+              <!--                      <q-item-section avatar>-->
+              <!--                        <q-avatar>-->
+              <!--                          <q-avatar>-->
+              <!--                            <img-->
+              <!--                              class="ava"-->
+              <!--                              src="../assets/lang/chi.png"-->
+              <!--                              alt=""-->
+              <!--                            />-->
+              <!--                          </q-avatar>-->
+              <!--                        </q-avatar>-->
+              <!--                      </q-item-section>-->
+              <!--                      <q-item-section>-->
+              <!--                        <q-item-label> Chinese</q-item-label>-->
+              <!--                      </q-item-section>-->
+              <!--                      <q-item-section side> </q-item-section>-->
+              <!--                    </q-item>-->
+              <!--                    <q-item clickable v-close-popup>-->
+              <!--                      <q-item-section avatar>-->
+              <!--                        <q-avatar>-->
+              <!--                          <img-->
+              <!--                            class="ava"-->
+              <!--                            src="../assets/lang/eng.png"-->
+              <!--                            alt=""-->
+              <!--                          />-->
+              <!--                        </q-avatar>-->
+              <!--                      </q-item-section>-->
+              <!--                      <q-item-section>-->
+              <!--                        <q-item-label> English</q-item-label>-->
+              <!--                      </q-item-section>-->
+              <!--                      <q-item-section side> </q-item-section>-->
+              <!--                    </q-item>-->
+              <!--                  </q-list>-->
+              <!--                </q-btn-dropdown>-->
+              <!--              </li>-->
             </ul>
-            <q-btn-dropdown
-              class="q-mr-xs q-ml-xs hide-pc q-mb-sm"
-              :content-style="{ backgroundColor: '#063666' }"
-              flat
-              stretch
-              dense
-              dropdown-icon="none"
-            >
-              <q-list>
-                <q-btn-dropdown
-                  class=" q-mr-xs q-ml-xs "
-                  :content-style="{ backgroundColor: '#063666' }"
-                >
-                  <template v-slot:label>
-                    <img class="ava" src="../assets/lang/eng.png" alt="" />
-                  </template>
-                  <q-list>
-                    <q-item clickable v-close-popup>
-                      <q-item-section avatar>
-                        <q-avatar>
-                          <img
-                            class="ava"
-                            src="../assets/lang/Arab.png"
-                            alt=""
-                          />
-                        </q-avatar>
-                      </q-item-section>
-                      <q-item-section>
-                        <q-item-label> Arabic</q-item-label>
-                      </q-item-section>
-                      <q-item-section side> </q-item-section>
-                    </q-item>
-                    <q-item clickable v-close-popup>
-                      <q-item-section avatar>
-                        <q-avatar>
-                          <img
-                            class="ava"
-                            src="../assets/lang/pers.png"
-                            alt=""
-                          />
-                        </q-avatar>
-                      </q-item-section>
-                      <q-item-section>
-                        <q-item-label> Persian</q-item-label>
-                      </q-item-section>
-                      <q-item-section side> </q-item-section>
-                    </q-item>
-                    <q-item clickable v-close-popup>
-                      <q-item-section avatar>
-                        <q-avatar>
-                          <img class="ava" src="../assets/lang/tr.png" alt="" />
-                        </q-avatar>
-                      </q-item-section>
-                      <q-item-section>
-                        <q-item-label> Turkish</q-item-label>
-                      </q-item-section>
-                      <q-item-section side> </q-item-section>
-                    </q-item>
-                    <q-item clickable v-close-popup>
-                      <q-item-section avatar>
-                        <q-avatar>
-                          <q-avatar>
-                            <img
-                              class="ava"
-                              src="../assets/lang/chi.png"
-                              alt=""
-                            />
-                          </q-avatar>
-                        </q-avatar>
-                      </q-item-section>
-                      <q-item-section>
-                        <q-item-label> Chinese</q-item-label>
-                      </q-item-section>
-                      <q-item-section side> </q-item-section>
-                    </q-item>
-                    <q-item clickable v-close-popup>
-                      <q-item-section avatar>
-                        <q-avatar>
-                          <img
-                            class="ava"
-                            src="../assets/lang/eng.png"
-                            alt=""
-                          />
-                        </q-avatar>
-                      </q-item-section>
-                      <q-item-section>
-                        <q-item-label> English</q-item-label>
-                      </q-item-section>
-                      <q-item-section side> </q-item-section>
-                    </q-item>
-                  </q-list>
-                </q-btn-dropdown>
-                <q-btn-dropdown
-                  class="q-mr-xs q-ml-xs "
-                  :content-style="{ backgroundColor: '#063666' }"
-                >
-                  <template v-slot:label>
-                    <img src="../assets/Home_icon.png" alt="" />
-                  </template>
-                  <q-list>
-                    <router-link
-                      :to="{ path: '/' }"
-                      exact
-                      active-class="active"
-                    >
-                      <q-item v-close-popup>
-                        <q-item-section avatar>
-                          <q-avatar>
-                            <img src="../assets/Home_icon.png" alt="" />
-                          </q-avatar>
-                        </q-item-section>
-                        <q-item-section>
-                          <q-item-label>Home</q-item-label>
-                        </q-item-section>
+            <!--            <q-btn-dropdown-->
+            <!--              class="q-mr-xs q-ml-xs hide-pc q-mb-sm"-->
+            <!--              :content-style="{ backgroundColor: '#063666' }"-->
+            <!--              flat-->
+            <!--              stretch-->
+            <!--              dense-->
+            <!--              dropdown-icon="none"-->
+            <!--            >-->
+            <!--              <q-list>-->
+            <!--                <q-btn-dropdown-->
+            <!--                  class=" q-mr-xs q-ml-xs "-->
+            <!--                  :content-style="{ backgroundColor: '#063666' }"-->
+            <!--                >-->
+            <!--                  <template v-slot:label>-->
+            <!--                    <img class="ava" src="../assets/lang/eng.png" alt="" />-->
+            <!--                  </template>-->
+            <!--                  <q-list>-->
+            <!--                    <q-item clickable v-close-popup>-->
+            <!--                      <q-item-section avatar>-->
+            <!--                        <q-avatar>-->
+            <!--                          <img-->
+            <!--                            class="ava"-->
+            <!--                            src="../assets/lang/Arab.png"-->
+            <!--                            alt=""-->
+            <!--                          />-->
+            <!--                        </q-avatar>-->
+            <!--                      </q-item-section>-->
+            <!--                      <q-item-section>-->
+            <!--                        <q-item-label> Arabic</q-item-label>-->
+            <!--                      </q-item-section>-->
+            <!--                      <q-item-section side> </q-item-section>-->
+            <!--                    </q-item>-->
+            <!--                    <q-item clickable v-close-popup>-->
+            <!--                      <q-item-section avatar>-->
+            <!--                        <q-avatar>-->
+            <!--                          <img-->
+            <!--                            class="ava"-->
+            <!--                            src="../assets/lang/pers.png"-->
+            <!--                            alt=""-->
+            <!--                          />-->
+            <!--                        </q-avatar>-->
+            <!--                      </q-item-section>-->
+            <!--                      <q-item-section>-->
+            <!--                        <q-item-label> Persian</q-item-label>-->
+            <!--                      </q-item-section>-->
+            <!--                      <q-item-section side> </q-item-section>-->
+            <!--                    </q-item>-->
+            <!--                    <q-item clickable v-close-popup>-->
+            <!--                      <q-item-section avatar>-->
+            <!--                        <q-avatar>-->
+            <!--                          <img class="ava" src="../assets/lang/tr.png" alt="" />-->
+            <!--                        </q-avatar>-->
+            <!--                      </q-item-section>-->
+            <!--                      <q-item-section>-->
+            <!--                        <q-item-label> Turkish</q-item-label>-->
+            <!--                      </q-item-section>-->
+            <!--                      <q-item-section side> </q-item-section>-->
+            <!--                    </q-item>-->
+            <!--                    <q-item clickable v-close-popup>-->
+            <!--                      <q-item-section avatar>-->
+            <!--                        <q-avatar>-->
+            <!--                          <q-avatar>-->
+            <!--                            <img-->
+            <!--                              class="ava"-->
+            <!--                              src="../assets/lang/chi.png"-->
+            <!--                              alt=""-->
+            <!--                            />-->
+            <!--                          </q-avatar>-->
+            <!--                        </q-avatar>-->
+            <!--                      </q-item-section>-->
+            <!--                      <q-item-section>-->
+            <!--                        <q-item-label> Chinese</q-item-label>-->
+            <!--                      </q-item-section>-->
+            <!--                      <q-item-section side> </q-item-section>-->
+            <!--                    </q-item>-->
+            <!--                    <q-item clickable v-close-popup>-->
+            <!--                      <q-item-section avatar>-->
+            <!--                        <q-avatar>-->
+            <!--                          <img-->
+            <!--                            class="ava"-->
+            <!--                            src="../assets/lang/eng.png"-->
+            <!--                            alt=""-->
+            <!--                          />-->
+            <!--                        </q-avatar>-->
+            <!--                      </q-item-section>-->
+            <!--                      <q-item-section>-->
+            <!--                        <q-item-label> English</q-item-label>-->
+            <!--                      </q-item-section>-->
+            <!--                      <q-item-section side> </q-item-section>-->
+            <!--                    </q-item>-->
+            <!--                  </q-list>-->
+            <!--                </q-btn-dropdown>-->
+            <!--                <q-btn-dropdown-->
+            <!--                  class="q-mr-xs q-ml-xs "-->
+            <!--                  :content-style="{ backgroundColor: '#063666' }"-->
+            <!--                >-->
+            <!--                  <template v-slot:label>-->
+            <!--                    <img src="../assets/Home_icon.png" alt="" />-->
+            <!--                  </template>-->
+            <!--                  <q-list>-->
+            <!--                    <router-link-->
+            <!--                      :to="{ path: '/' }"-->
+            <!--                      exact-->
+            <!--                      active-class="active"-->
+            <!--                    >-->
+            <!--                      <q-item v-close-popup>-->
+            <!--                        <q-item-section avatar>-->
+            <!--                          <q-avatar>-->
+            <!--                            <img src="../assets/Home_icon.png" alt="" />-->
+            <!--                          </q-avatar>-->
+            <!--                        </q-item-section>-->
+            <!--                        <q-item-section>-->
+            <!--                          <q-item-label>Home</q-item-label>-->
+            <!--                        </q-item-section>-->
 
-                        <q-item-section side> </q-item-section>
-                      </q-item>
-                    </router-link>
-                    <router-link
-                      :to="{ path: '/auction' }"
-                      exact
-                      active-class="active"
-                    >
-                      <q-item v-close-popup>
-                        <q-item-section avatar>
-                          <q-avatar>
-                            <img src="../assets/Aucc.png" alt="" />
-                          </q-avatar>
-                        </q-item-section>
-                        <q-item-section>
-                          <q-item-label>Auction</q-item-label>
-                        </q-item-section>
-                        <q-item-section side> </q-item-section>
-                      </q-item>
-                    </router-link>
-                    <router-link
-                      :to="{ path: '/auctions' }"
-                      exact
-                      active-class="active"
-                    >
-                      <q-item v-close-popup>
-                        <q-item-section avatar>
-                          <q-avatar>
-                            <img src="../assets/2_Aucc.png" alt="" />
-                          </q-avatar>
-                        </q-item-section>
-                        <q-item-section>
-                          <q-item-label>Auctions</q-item-label>
-                        </q-item-section>
-                        <q-item-section side> </q-item-section>
-                      </q-item>
-                    </router-link>
-                    <router-link
-                      :to="{ path: '/login' }"
-                      exact
-                      active-class="active"
-                    >
-                      <q-item v-close-popup>
-                        <q-item-section avatar>
-                          <q-avatar>
-                            <q-avatar>
-                              <img src="../assets/man_1.png" alt="" />
-                            </q-avatar>
-                          </q-avatar>
-                        </q-item-section>
-                        <q-item-section>
-                          <q-item-label> Login</q-item-label>
-                        </q-item-section>
-                        <q-item-section side> </q-item-section>
-                      </q-item>
-                    </router-link>
-                    <router-link
-                      :to="{ path: '/register' }"
-                      exact
-                      active-class="active"
-                    >
-                      <q-item clickable v-close-popup>
-                        <q-item-section avatar>
-                          <q-avatar>
-                            <img src="../assets/Man_2.png" alt="" />
-                          </q-avatar>
-                        </q-item-section>
-                        <q-item-section>
-                          <q-item-label>Register</q-item-label>
-                        </q-item-section>
-                        <q-item-section side> </q-item-section>
-                      </q-item>
-                    </router-link>
-                  </q-list>
-                </q-btn-dropdown>
-                <q-btn-dropdown
-                  class="q-mr-xs q-ml-xs"
-                  :content-style="{ backgroundColor: '#063666' }"
-                >
-                  <template v-slot:label>
-                    <img src="../assets/Man_2.png" alt="" />
-                  </template>
-                  <q-list>
-                    <router-link
-                      :to="{ path: 'user-auctions' }"
-                      exact
-                      active-class="active"
-                    >
-                      <q-item v-close-popup>
-                        <q-item-section avatar>
-                          <q-avatar>
-                            <img src="../assets/Home_icon.png" alt="" />
-                          </q-avatar>
-                        </q-item-section>
-                        <q-item-section>
-                          <q-item-label>Profile</q-item-label>
-                        </q-item-section>
-                        <q-item-section side> </q-item-section>
-                      </q-item>
-                    </router-link>
-                    <router-link
-                      :to="{ path: '/user-restaurants' }"
-                      exact
-                      active-class="active"
-                    >
-                      <q-item v-close-popup>
-                        <q-item-section avatar>
-                          <q-avatar>
-                            <img src="../assets/Aucc.png" alt="" />
-                          </q-avatar>
-                        </q-item-section>
-                        <q-item-section>
-                          <q-item-label>Restaurants</q-item-label>
-                        </q-item-section>
-                        <q-item-section side> </q-item-section>
-                      </q-item>
-                    </router-link>
-                    <router-link
-                      :to="{ path: '/user-auctions' }"
-                      exact
-                      active-class="active"
-                    >
-                      <q-item v-close-popup>
-                        <q-item-section avatar>
-                          <q-avatar>
-                            <img src="../assets/2_Aucc.png" alt="" />
-                          </q-avatar>
-                        </q-item-section>
-                        <q-item-section>
-                          <q-item-label>Auctions</q-item-label>
-                        </q-item-section>
-                        <q-item-section side> </q-item-section>
-                      </q-item>
-                    </router-link>
-                    <router-link
-                      :to="{ path: '/user-wallet' }"
-                      exact
-                      active-class="active"
-                    >
-                      <q-item v-close-popup>
-                        <q-item-section avatar>
-                          <q-avatar>
-                            <q-avatar>
-                              <img src="../assets/man_1.png" alt="" />
-                            </q-avatar>
-                          </q-avatar>
-                        </q-item-section>
-                        <q-item-section>
-                          <q-item-label> Wallet Addresses</q-item-label>
-                        </q-item-section>
-                        <q-item-section side> </q-item-section>
-                      </q-item>
-                    </router-link>
-                    <router-link
-                      :to="{ path: '/user-withdraw' }"
-                      exact
-                      active-class="active"
-                    >
-                      <q-item v-close-popup>
-                        <q-item-section avatar>
-                          <q-avatar>
-                            <img src="../assets/Man_2.png" alt="" />
-                          </q-avatar>
-                        </q-item-section>
-                        <q-item-section>
-                          <q-item-label>Withdraw</q-item-label>
-                        </q-item-section>
-                        <q-item-section side> </q-item-section>
-                      </q-item>
-                    </router-link>
-                  </q-list>
-                </q-btn-dropdown>
-              </q-list>
+            <!--                        <q-item-section side> </q-item-section>-->
+            <!--                      </q-item>-->
+            <!--                    </router-link>-->
+            <!--                    <router-link-->
+            <!--                      :to="{ path: '/auction' }"-->
+            <!--                      exact-->
+            <!--                      active-class="active"-->
+            <!--                    >-->
+            <!--                      <q-item v-close-popup>-->
+            <!--                        <q-item-section avatar>-->
+            <!--                          <q-avatar>-->
+            <!--                            <img src="../assets/Aucc.png" alt="" />-->
+            <!--                          </q-avatar>-->
+            <!--                        </q-item-section>-->
+            <!--                        <q-item-section>-->
+            <!--                          <q-item-label>Auction</q-item-label>-->
+            <!--                        </q-item-section>-->
+            <!--                        <q-item-section side> </q-item-section>-->
+            <!--                      </q-item>-->
+            <!--                    </router-link>-->
+            <!--                    <router-link-->
+            <!--                      :to="{ path: '/auctions' }"-->
+            <!--                      exact-->
+            <!--                      active-class="active"-->
+            <!--                    >-->
+            <!--                      <q-item v-close-popup>-->
+            <!--                        <q-item-section avatar>-->
+            <!--                          <q-avatar>-->
+            <!--                            <img src="../assets/2_Aucc.png" alt="" />-->
+            <!--                          </q-avatar>-->
+            <!--                        </q-item-section>-->
+            <!--                        <q-item-section>-->
+            <!--                          <q-item-label>Auctions</q-item-label>-->
+            <!--                        </q-item-section>-->
+            <!--                        <q-item-section side> </q-item-section>-->
+            <!--                      </q-item>-->
+            <!--                    </router-link>-->
+            <!--                    <router-link-->
+            <!--                      :to="{ path: '/login' }"-->
+            <!--                      exact-->
+            <!--                      active-class="active"-->
+            <!--                    >-->
+            <!--                      <q-item v-close-popup>-->
+            <!--                        <q-item-section avatar>-->
+            <!--                          <q-avatar>-->
+            <!--                            <q-avatar>-->
+            <!--                              <img src="../assets/man_1.png" alt="" />-->
+            <!--                            </q-avatar>-->
+            <!--                          </q-avatar>-->
+            <!--                        </q-item-section>-->
+            <!--                        <q-item-section>-->
+            <!--                          <q-item-label> Login</q-item-label>-->
+            <!--                        </q-item-section>-->
+            <!--                        <q-item-section side> </q-item-section>-->
+            <!--                      </q-item>-->
+            <!--                    </router-link>-->
+            <!--                    <router-link-->
+            <!--                      :to="{ path: '/register' }"-->
+            <!--                      exact-->
+            <!--                      active-class="active"-->
+            <!--                    >-->
+            <!--                      <q-item clickable v-close-popup>-->
+            <!--                        <q-item-section avatar>-->
+            <!--                          <q-avatar>-->
+            <!--                            <img src="../assets/Man_2.png" alt="" />-->
+            <!--                          </q-avatar>-->
+            <!--                        </q-item-section>-->
+            <!--                        <q-item-section>-->
+            <!--                          <q-item-label>Register</q-item-label>-->
+            <!--                        </q-item-section>-->
+            <!--                        <q-item-section side> </q-item-section>-->
+            <!--                      </q-item>-->
+            <!--                    </router-link>-->
+            <!--                  </q-list>-->
+            <!--                </q-btn-dropdown>-->
+            <!--                <q-btn-dropdown-->
+            <!--                  class="q-mr-xs q-ml-xs"-->
+            <!--                  :content-style="{ backgroundColor: '#063666' }"-->
+            <!--                >-->
+            <!--                  <template v-slot:label>-->
+            <!--                    <img src="../assets/Man_2.png" alt="" />-->
+            <!--                  </template>-->
+            <!--                  <q-list>-->
+            <!--                    <router-link-->
+            <!--                      :to="{ path: 'user-auctions' }"-->
+            <!--                      exact-->
+            <!--                      active-class="active"-->
+            <!--                    >-->
+            <!--                      <q-item v-close-popup>-->
+            <!--                        <q-item-section avatar>-->
+            <!--                          <q-avatar>-->
+            <!--                            <img src="../assets/Home_icon.png" alt="" />-->
+            <!--                          </q-avatar>-->
+            <!--                        </q-item-section>-->
+            <!--                        <q-item-section>-->
+            <!--                          <q-item-label>Profile</q-item-label>-->
+            <!--                        </q-item-section>-->
+            <!--                        <q-item-section side> </q-item-section>-->
+            <!--                      </q-item>-->
+            <!--                    </router-link>-->
+            <!--                    <router-link-->
+            <!--                      :to="{ path: '/user-restaurants' }"-->
+            <!--                      exact-->
+            <!--                      active-class="active"-->
+            <!--                    >-->
+            <!--                      <q-item v-close-popup>-->
+            <!--                        <q-item-section avatar>-->
+            <!--                          <q-avatar>-->
+            <!--                            <img src="../assets/Aucc.png" alt="" />-->
+            <!--                          </q-avatar>-->
+            <!--                        </q-item-section>-->
+            <!--                        <q-item-section>-->
+            <!--                          <q-item-label>Restaurants</q-item-label>-->
+            <!--                        </q-item-section>-->
+            <!--                        <q-item-section side> </q-item-section>-->
+            <!--                      </q-item>-->
+            <!--                    </router-link>-->
+            <!--                    <router-link-->
+            <!--                      :to="{ path: '/user-auctions' }"-->
+            <!--                      exact-->
+            <!--                      active-class="active"-->
+            <!--                    >-->
+            <!--                      <q-item v-close-popup>-->
+            <!--                        <q-item-section avatar>-->
+            <!--                          <q-avatar>-->
+            <!--                            <img src="../assets/2_Aucc.png" alt="" />-->
+            <!--                          </q-avatar>-->
+            <!--                        </q-item-section>-->
+            <!--                        <q-item-section>-->
+            <!--                          <q-item-label>Auctions</q-item-label>-->
+            <!--                        </q-item-section>-->
+            <!--                        <q-item-section side> </q-item-section>-->
+            <!--                      </q-item>-->
+            <!--                    </router-link>-->
+            <!--                    <router-link-->
+            <!--                      :to="{ path: '/user-wallet' }"-->
+            <!--                      exact-->
+            <!--                      active-class="active"-->
+            <!--                    >-->
+            <!--                      <q-item v-close-popup>-->
+            <!--                        <q-item-section avatar>-->
+            <!--                          <q-avatar>-->
+            <!--                            <q-avatar>-->
+            <!--                              <img src="../assets/man_1.png" alt="" />-->
+            <!--                            </q-avatar>-->
+            <!--                          </q-avatar>-->
+            <!--                        </q-item-section>-->
+            <!--                        <q-item-section>-->
+            <!--                          <q-item-label> Wallet Addresses</q-item-label>-->
+            <!--                        </q-item-section>-->
+            <!--                        <q-item-section side> </q-item-section>-->
+            <!--                      </q-item>-->
+            <!--                    </router-link>-->
+            <!--                    <router-link-->
+            <!--                      :to="{ path: '/user-withdraw' }"-->
+            <!--                      exact-->
+            <!--                      active-class="active"-->
+            <!--                    >-->
+            <!--                      <q-item v-close-popup>-->
+            <!--                        <q-item-section avatar>-->
+            <!--                          <q-avatar>-->
+            <!--                            <img src="../assets/Man_2.png" alt="" />-->
+            <!--                          </q-avatar>-->
+            <!--                        </q-item-section>-->
+            <!--                        <q-item-section>-->
+            <!--                          <q-item-label>Withdraw</q-item-label>-->
+            <!--                        </q-item-section>-->
+            <!--                        <q-item-section side> </q-item-section>-->
+            <!--                      </q-item>-->
+            <!--                    </router-link>-->
+            <!--                  </q-list>-->
+            <!--                </q-btn-dropdown>-->
+            <!--              </q-list>-->
 
-              <template v-slot:label>
-                <img src="../assets/menu.svg" alt="" />
-              </template>
-            </q-btn-dropdown>
+            <!--              <template v-slot:label>-->
+            <!--                <img src="../assets/menu.svg" alt="" />-->
+            <!--              </template>-->
+            <!--            </q-btn-dropdown>-->
           </div>
         </div>
       </div>
@@ -554,10 +554,11 @@ export default {
 .nav-bar li a {
   padding: 0 5px;
   border-bottom: 2px solid transparent;
+  color: #fff;
 }
 .nav li a.active,
 .nav li a:hover {
-  border-bottom: 2px solid #05d21b;
+  border-bottom: 2px solid blue;
 }
 .nav li.hide-sp {
   margin-top: 5px;

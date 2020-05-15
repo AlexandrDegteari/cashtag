@@ -11,15 +11,17 @@
                 class="col-sm-6 col-md-4"
               >
                 <div class="package-block">
-                  <div
-                    class="q-pb-sm coin-image"
-                    :style="{
-                      'background-image': 'url(' + rest.bimage + ')'
-                    }"
-                  />
+                  <!--                  <div-->
+                  <!--                    class="q-pb-sm coin-image"-->
+                  <!--                    :style="{-->
+                  <!--                      'background-image': 'url(' + rest.bimage + ')'-->
+                  <!--                    }"-->
+                  <!--                  />-->
                   <h2>{{ rest.username }}</h2>
                   <p>{{ rest.email }}</p>
-                  <p>{{ getRestaurantsData(rest.googleId) }}</p>
+                  <p>
+                    {{ getRestaurantsData(rest.googleId) }}
+                  </p>
                   <div class="price">
                     <p class="price-tag">{{ rest.googleId }}</p>
                   </div>
@@ -56,6 +58,7 @@ export default {
     return {
       restaurants: null,
       restaurantsData: null,
+      restaurantName: null,
       selectedRestaurant: null
     };
   },
@@ -75,14 +78,12 @@ export default {
       const url =
         "https://maps.googleapis.com/maps/api/place/details/json?placeid=";
       const apiKey = "AIzaSyBNljWVEJJkYtalmgBaG_P1I5ZjviZ8j6A";
-      console.log(proxy + url + placeId + "&key=" + apiKey);
       this.$axios
         .get(proxy + url + placeId + "&key=" + apiKey)
         .then(response => {
-          this.restaurantsData = console.log(response.data.result.name);
-        })
-        .then(response => {
-          return response.json();
+          this.response = response;
+          this.restaurantName = console.log(response.data.result.name);
+          return response;
         })
         .catch(err => {
           console.log(err);
@@ -95,7 +96,6 @@ export default {
   },
   beforeMount() {
     this.getRestaurants();
-    // this.getRestaurantsData();
   }
 };
 </script>

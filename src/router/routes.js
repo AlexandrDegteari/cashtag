@@ -24,21 +24,13 @@ const routes = [
     component: () => import("pages/Layout.vue"),
     children: [
       {
-        name: "home",
+        name: "",
         path: "/",
-        component: () => import("pages/User/User.vue"),
-        children: [
-          {
-            name: "user-profile",
-            path: "/",
-            component: () => import("pages/Profile")
-            // beforeEnter: ifAuthenticated
-          }
-        ]
+        component: () => import("pages/Home.vue")
       },
       {
-        name: "auction",
-        path: "auction",
+        name: "profile",
+        path: "profile",
         component: () => import("pages/Profile.vue")
       },
       {

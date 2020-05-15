@@ -1,26 +1,11 @@
 <template>
   <div>
     <form class="container-fluid">
-      <div class="row">
-        <div class="col-xl col-lg-12 col-md-12 black-block mt-3">
-          <profile-form :user="response" @updatedForm="getUser" />
-        </div>
-      </div>
       <div class="row mt-3">
         <div class="col-lg-6 pb-3">
           <form @submit.prevent="submitPasswordForm">
             <div class="row black-block">
-              <div class="col-md-6 mt-2">
-                <label for="mail">E-mail</label>
-                <input
-                  class="mt-1"
-                  id="mail"
-                  type="text"
-                  :value="response.email"
-                  disabled
-                />
-              </div>
-              <div class="col-md-6 pl-md-0  mt-2">
+              <div class="col-md-12 pl-md-0  mt-2">
                 <label for="oldPassword">Old Password</label>
                 <input
                   v-model="$v.passwordForm.currentPassword.$model"
@@ -98,24 +83,15 @@
         </div>
       </div>
     </form>
-    <button @click="logout" class="btn btn-primary ml-2 mb-2" type="button">
-      Log out
-    </button>
   </div>
 </template>
 
 <script>
-import UserService from "../services/user.service";
 import { validationMixin } from "vuelidate";
 import { required, sameAs } from "vuelidate/lib/validators";
 
-import ProfileForm from "./ProfileForm";
-
 export default {
   mixins: [validationMixin],
-  components: {
-    ProfileForm
-  },
   data() {
     return {
       response: null,
@@ -140,17 +116,13 @@ export default {
     }
   },
   methods: {
-    logout() {
-      this.$store.dispatch("authLogout").then(() => {
-        this.$router.push("/login");
-      });
-    },
     submitPasswordForm() {
       this.$v.passwordForm.$touch();
       if (this.$v.passwordForm.$invalid) {
         return;
       }
 
+      // eslint-disable-next-line no-unused-vars
       const password = {
         current_password: this.passwordForm.currentPassword,
         password: this.passwordForm.password,
@@ -159,22 +131,6 @@ export default {
 
       this.passwordMessage = null;
       this.passwordError = null;
-
-      UserService.UpdatePassword(password)
-        .then(response => {
-          this.passwordMessage = response.data.message;
-        })
-        .catch(error => {
-          this.passwordError = error.response.data.message;
-        });
-    },
-    getUser() {
-      UserService.GetUserInfo()
-        .then(response => {
-          this.response = response;
-          this.avatar = response.avatar;
-        })
-        .catch(() => {});
     },
     readImage(e) {
       const reader = new FileReader();
@@ -184,21 +140,7 @@ export default {
       if (e.target.files.length) {
         reader.readAsDataURL(e.target.files[0]);
       }
-    },
-    updateAvatar() {
-      if (!this.base64) return;
-      UserService.UpdateAvatar({ imagebase64: this.base64 })
-        .then(response => {
-          this.avatar = response.avatar;
-          this.base64 = null;
-        })
-        .catch(error => {
-          console.log(error);
-        });
     }
-  },
-  beforeMount() {
-    this.getUser();
   }
 };
 </script>
