@@ -4,45 +4,42 @@
       <div class="bg">
         <div class="container q-pt-xl ">
           <div class=" q-pt-xl q-pb-xl">
-            <div v-if="restaurants" class="row">
-              <div
-                v-for="(rest, key) in restaurants"
-                :key="key"
-                class="col-sm-6 col-md-4"
-              >
-                <div class="package-block">
-                  <!--                  <div-->
-                  <!--                    class="q-pb-sm coin-image"-->
-                  <!--                    :style="{-->
-                  <!--                      'background-image': 'url(' + rest.bimage + ')'-->
-                  <!--                    }"-->
-                  <!--                  />-->
-                  <h2>{{ rest.username }}</h2>
-                  <p>{{ rest.email }}</p>
-                  <p>
-                    {{ getRestaurantsData(rest.googleId) }}
-                  </p>
-                  <div class="price">
-                    <p class="price-tag">{{ rest.googleId }}</p>
-                  </div>
-                  <QrCodeGen
-                    :value="
-                      'https://search.google.com/local/writereview?placeid=' +
-                        rest.googleId
-                    "
-                  >
-                  </QrCodeGen>
-                  <a
-                    target="_blank"
-                    :href="
-                      'https://search.google.com/local/writereview?placeid=' +
-                        rest.googleId
-                    "
-                    >Rate it!</a
-                  >
-                </div>
-              </div>
-            </div>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">First</th>
+                  <th scope="col">Last</th>
+                  <th scope="col">Another</th>
+                  <th scope="col">Handle</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(rest, key) in restaurants" :key="key">
+                  <th>{{ rest.username }}</th>
+                  <th>{{ rest.email }}</th>
+                  <th>{{ getRestaurantsData(rest.googleId) }}</th>
+                  <th>{{ rest.googleId }}</th>
+                  <th>
+                    <QrCodeGen
+                      :value="
+                        'https://search.google.com/local/writereview?placeid=' +
+                          rest.googleId
+                      "
+                    >
+                    </QrCodeGen>
+                    <a
+                      target="_blank"
+                      :href="
+                        'https://search.google.com/local/writereview?placeid=' +
+                          rest.googleId
+                      "
+                      >Rate it!</a
+                    >
+                  </th>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
