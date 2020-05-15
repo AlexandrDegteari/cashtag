@@ -15,10 +15,12 @@
               </li>
               <li class="hide-sp">
                 <router-link
-                  :to="{ name: 'search' }"
+                  :to="{ name: 'profile' }"
+                  v-if="isLoggedIn()"
                   exact
                   active-class="active"
-                  >Restaurants1</router-link
+                >
+                  Profile</router-link
                 >
               </li>
               <li class="hide-sp">
@@ -26,7 +28,7 @@
                   :to="{ name: 'restaurants' }"
                   exact
                   active-class="active"
-                  >Restaurants2</router-link
+                  >Restaurants</router-link
                 >
               </li>
               <li class="hide-sp">
@@ -48,6 +50,9 @@
                 >
                   Register</router-link
                 >
+              </li>
+              <li>
+                <div v-if="isLoggedIn()" @click="logout"><a>Log out</a></div>
               </li>
               <!--              <li>-->
               <!--                <q-btn-dropdown-->
@@ -560,7 +565,7 @@ export default {
 .nav li a:hover {
   border-bottom: 2px solid blue;
 }
-.nav li.hide-sp {
+.nav li {
   margin-top: 5px;
 }
 
