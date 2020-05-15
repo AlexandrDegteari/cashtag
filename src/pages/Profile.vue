@@ -7,6 +7,26 @@
             <div class="row mt-3 justify-content-center">
               <div class="col-lg-6 pb-3">
                 <h1>Profile Page</h1>
+                <div v-if="restaurantData" class="row">
+                  <ul>
+                    <li>
+                      <span>Manager Name: {{ restaurantData.username }}</span>
+                    </li>
+                    <li>
+                      <span>Manager Email: {{ restaurantData.email }}</span>
+                    </li>
+                    <li>
+                      <span
+                        >Created Date: {{ restaurantData.createdDate }}</span
+                      >
+                    </li>
+                    <li>
+                      <span>Google ID: {{ restaurantData.googleId }}</span>
+                    </li>
+                  </ul>
+                </div>
+                <br />
+                <h2>Change password</h2>
                 <form @submit.prevent="submitPasswordForm">
                   <div class="row black-block">
                     <div class="col-md-12 pl-md-0  mt-2">
@@ -106,6 +126,7 @@ export default {
   data() {
     return {
       response: null,
+      restaurantData: null,
       dialogAvatar: false,
       avatar: null,
       base64: null,
@@ -127,6 +148,16 @@ export default {
     }
   },
   methods: {
+    getCurrentRestaurantData() {
+      this.$axios
+        .get("http://localhost:4000/users/current")
+        .then(response => {
+          this.restaurantData = response.data;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
     submitPasswordForm() {
       this.$v.passwordForm.$touch();
       if (this.$v.passwordForm.$invalid) {
@@ -152,6 +183,9 @@ export default {
         reader.readAsDataURL(e.target.files[0]);
       }
     }
+  },
+  beforeMount() {
+    this.getCurrentRestaurantData();
   }
 };
 </script>
