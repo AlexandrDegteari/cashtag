@@ -119,10 +119,10 @@
                       >
                         Restaurant Avatar required
                       </p>
-                      <!--                    <img :src="this.restaurantAvatar" alt="" />-->
+                      <!--                      <img :src="this.restaurantAvatar" alt="" />-->
                     </div>
                     <div
-                      class="col-lg-6 q-pa-sm text-right py-0 line-btn-success"
+                      class="col-lg-12 q-pa-sm text-right py-0 line-btn-success"
                     >
                       <button
                         @click="submitProfileForm"
@@ -137,93 +137,93 @@
                     </div>
                   </div>
                 </form>
-                <form @submit.prevent="submitPasswordForm">
-                  <div class="row q-pb-md q-pt-xl">
-                    <div class="col-md-6 q-pa-sm pl-md-0 mt-2 q-pa-sm">
-                      <label for="oldPassword">Old Password</label>
-                      <input
-                        v-model="$v.passwordForm.currentPassword.$model"
-                        class="mt-1"
-                        id="oldPassword"
-                        type="password"
-                      />
-                      <p
-                        v-if="
-                          $v.passwordForm.currentPassword.$dirty &&
-                            !$v.passwordForm.currentPassword.required
-                        "
-                        class="error"
-                      >
-                        Old Password is required
-                      </p>
-                    </div>
-                  </div>
-                  <div class="row q-pb-md">
-                    <div class="col-md-6 q-pa-sm pl-md-0 mt-2 q-pa-sm">
-                      <label class="mt-2" for="new-password"
-                        >New Password</label
-                      >
-                      <input
-                        v-model="$v.passwordForm.password.$model"
-                        class="mt-1"
-                        id="new-password"
-                        type="password"
-                      />
-                      <p
-                        v-if="
-                          $v.passwordForm.password.$dirty &&
-                            !$v.passwordForm.password.required
-                        "
-                        class="error"
-                      >
-                        New Password is required
-                      </p>
-                    </div>
-                    <div class="col-md-6 q-pa-sm pl-md-0 mt-2 q-pa-sm">
-                      <label class="mt-2" for="passwordConfirmation"
-                        >New Password Confirmation</label
-                      >
-                      <input
-                        v-model="$v.passwordForm.passwordConfirmation.$model"
-                        class="mt-1"
-                        id="passwordConfirmation"
-                        type="password"
-                      />
-                      <p
-                        v-if="
-                          $v.passwordForm.passwordConfirmation.$dirty &&
-                            !$v.passwordForm.passwordConfirmation.required
-                        "
-                        class="error"
-                      >
-                        Password Confirmation is required
-                      </p>
-                      <p
-                        v-if="
-                          !$v.passwordForm.passwordConfirmation.sameAsPassword
-                        "
-                        class="error"
-                      >
-                        Passwords must be identical
-                      </p>
-                    </div>
-                  </div>
-                  <div class="row q-pb-md">
-                    <div class="col-lg-6 q-pa-sm text-right">
-                      <input
-                        class="btn btn-primary ml-2 mb-2 mt-2"
-                        type="submit"
-                        value="Update Password"
-                      />
-                    </div>
-                    <p class="text-success ml-3" v-if="passwordMessage">
-                      {{ passwordMessage }}
-                    </p>
-                    <p class="text-danger ml-3" v-if="passwordError">
-                      {{ passwordError }}
-                    </p>
-                  </div>
-                </form>
+                <!--                <form @submit.prevent="submitPasswordForm">-->
+                <!--                  <div class="row q-pb-md q-pt-xl">-->
+                <!--                    <div class="col-md-6 q-pa-sm pl-md-0 mt-2 q-pa-sm">-->
+                <!--                      <label for="oldPassword">Old Password</label>-->
+                <!--                      <input-->
+                <!--                        v-model="$v.passwordForm.currentPassword.$model"-->
+                <!--                        class="mt-1"-->
+                <!--                        id="oldPassword"-->
+                <!--                        type="password"-->
+                <!--                      />-->
+                <!--                      <p-->
+                <!--                        v-if="-->
+                <!--                          $v.passwordForm.currentPassword.$dirty &&-->
+                <!--                            !$v.passwordForm.currentPassword.required-->
+                <!--                        "-->
+                <!--                        class="error"-->
+                <!--                      >-->
+                <!--                        Old Password is required-->
+                <!--                      </p>-->
+                <!--                    </div>-->
+                <!--                  </div>-->
+                <!--                  <div class="row q-pb-md">-->
+                <!--                    <div class="col-md-6 q-pa-sm pl-md-0 mt-2 q-pa-sm">-->
+                <!--                      <label class="mt-2" for="new-password"-->
+                <!--                        >New Password</label-->
+                <!--                      >-->
+                <!--                      <input-->
+                <!--                        v-model="$v.passwordForm.password.$model"-->
+                <!--                        class="mt-1"-->
+                <!--                        id="new-password"-->
+                <!--                        type="password"-->
+                <!--                      />-->
+                <!--                      <p-->
+                <!--                        v-if="-->
+                <!--                          $v.passwordForm.password.$dirty &&-->
+                <!--                            !$v.passwordForm.password.required-->
+                <!--                        "-->
+                <!--                        class="error"-->
+                <!--                      >-->
+                <!--                        New Password is required-->
+                <!--                      </p>-->
+                <!--                    </div>-->
+                <!--                    <div class="col-md-6 q-pa-sm pl-md-0 mt-2 q-pa-sm">-->
+                <!--                      <label class="mt-2" for="passwordConfirmation"-->
+                <!--                        >New Password Confirmation</label-->
+                <!--                      >-->
+                <!--                      <input-->
+                <!--                        v-model="$v.passwordForm.passwordConfirmation.$model"-->
+                <!--                        class="mt-1"-->
+                <!--                        id="passwordConfirmation"-->
+                <!--                        type="password"-->
+                <!--                      />-->
+                <!--                      <p-->
+                <!--                        v-if="-->
+                <!--                          $v.passwordForm.passwordConfirmation.$dirty &&-->
+                <!--                            !$v.passwordForm.passwordConfirmation.required-->
+                <!--                        "-->
+                <!--                        class="error"-->
+                <!--                      >-->
+                <!--                        Password Confirmation is required-->
+                <!--                      </p>-->
+                <!--                      <p-->
+                <!--                        v-if="-->
+                <!--                          !$v.passwordForm.passwordConfirmation.sameAsPassword-->
+                <!--                        "-->
+                <!--                        class="error"-->
+                <!--                      >-->
+                <!--                        Passwords must be identical-->
+                <!--                      </p>-->
+                <!--                    </div>-->
+                <!--                  </div>-->
+                <!--                  <div class="row q-pb-md">-->
+                <!--                    <div class="col-lg-6 q-pa-sm text-right">-->
+                <!--                      <input-->
+                <!--                        class="btn btn-primary ml-2 mb-2 mt-2"-->
+                <!--                        type="submit"-->
+                <!--                        value="Update Password"-->
+                <!--                      />-->
+                <!--                    </div>-->
+                <!--                    <p class="text-success ml-3" v-if="passwordMessage">-->
+                <!--                      {{ passwordMessage }}-->
+                <!--                    </p>-->
+                <!--                    <p class="text-danger ml-3" v-if="passwordError">-->
+                <!--                      {{ passwordError }}-->
+                <!--                    </p>-->
+                <!--                  </div>-->
+                <!--                </form>-->
               </div>
             </div>
           </form>
