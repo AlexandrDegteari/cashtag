@@ -5,9 +5,7 @@
         <div class="container q-pt-xl">
           <div class="form relative-position ">
             <form v-on:submit.prevent>
-              <h2 class="q-pt-lg">
-                Add Restaurant
-              </h2>
+              <h1 class="q-pt-lg">Add Restaurant</h1>
               <div class="input input1 q-mt-md q-mb-md">
                 <input
                   id="input"

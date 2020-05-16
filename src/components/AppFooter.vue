@@ -37,7 +37,7 @@
               </li>
             </ul>
             <span class="copy d-block text-right"
-              >2020 © All Rights Reserved.</span
+              >2020 © Cashtag - All Rights Reserved.</span
             >
           </div>
         </div>

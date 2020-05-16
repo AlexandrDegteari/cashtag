@@ -6,8 +6,11 @@
   position: relative;
 }
 .logo {
-  margin-left: 200px;
+  
   max-width: 200px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 200px;
 }
 .q-tabs {
   background: #EFF1F2;
@@ -52,7 +55,7 @@ main {
   //background: url("../assets/bg.png") no-repeat center left;
   background-size: cover;
   margin: 0 auto;
-  padding: 90px 0 90px 0;
+  padding: 0px 0 90px 0;
   flex: 1;
   width: 100%;
 }
@@ -101,6 +104,36 @@ input {
   border: 1px solid #fff;
   border-radius: 10px;
 }
+
+.btn {
+  background: #42B478;
+  border: none;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 10px 0;
+  padding: 12px 50px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.btn:hover {
+  opacity: 0.75;
+}
+
+.btn-secondary {
+  background: white;
+  border: 2px solid #42B478;
+  color: #42B478;
+}
+
+.btn-secondary:hover {
+  background: #42B478;
+  color: white;
+  opacity: 1;
+}
+
 
 .wrapper {
   display: flex;
@@ -244,23 +277,6 @@ h2,h3,h4,h5,h6,p,span{
 
 .border-right-blue{
   border-right: 1px solid #3b8fe9;
-}
-
-.btn {
-  background: #42B478;
-  border: none;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin: 10px 0;
-  padding: 12px 50px;
-  cursor: pointer;
-  text-transform: uppercase;
-}
-.btn:hover {
-  opacity: 0.75;
 }
 
 .opacity-9{
