@@ -21,7 +21,7 @@ const GetUserInfo = () => {
 
 const UpdateAvatar = avatar => {
   return axios
-    .patch(`${api}/users/current/avatar`, avatar)
+    .put(`${api}/users/avatar`, avatar)
     .then(response => {
       if (response.data) {
         return response.data;
@@ -33,8 +33,10 @@ const UpdateAvatar = avatar => {
     });
 };
 const UpdateProfile = profile => {
+  var accessTokenObj = JSON.parse(localStorage.getItem("Token:"));
+  console.log(accessTokenObj);
   return axios
-    .patch(`${api}user/profile`, profile)
+    .put(`${api}/users/` + accessTokenObj, profile)
     .then(response => {
       if (response.data) {
         return response.data;
@@ -45,9 +47,7 @@ const UpdateProfile = profile => {
       return { error };
     });
 };
-const UpdateAddress = address => {
-  return axios.patch(`${api}user/address`, address);
-};
+
 const UpdatePassword = password => {
   return axios.put(`${api}/users/current/password`, password);
 };
@@ -56,6 +56,5 @@ export default {
   GetUserInfo,
   UpdateAvatar,
   UpdateProfile,
-  UpdateAddress,
   UpdatePassword
 };

@@ -19,7 +19,10 @@
                 <th>{{ rest.restaurantAddress }}</th>
                 <th>{{ rest.googleId }}</th>
                 <th>
-                  <a class="cursor-pointer" @click="rest.googleId = true">
+                  <a
+                    class="cursor-pointer"
+                    @click="rest.restaurantAvatar = true"
+                  >
                     Generate QR Code
                   </a>
                 </th>
@@ -34,7 +37,7 @@
                     >Review page</router-link
                   >
                 </th>
-                <q-dialog v-model.trim="rest.googleId">
+                <q-dialog v-model.trim="rest.restaurantAvatar">
                   <q-card>
                     <q-card-section>
                       <div class="text-h6">
