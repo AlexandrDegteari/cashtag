@@ -101,9 +101,6 @@ a {
 a:hover {
   opacity: 0.8;
 }
-.copy {
-  color 
-}
 @media (max-width: 1024px) {
   .copy {
     text-align: center;
