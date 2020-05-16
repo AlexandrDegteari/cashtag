@@ -5,7 +5,7 @@
         <div class="container q-pt-xl">
           <div class="form relative-position">
             <form @submit.prevent="loginFormSubmit">
-              <h2 class="q-pt-md">Login</h2>
+              <h1 class="q-pt-md">Login</h1>
               <div class="input input1 q-mb-sm">
                 <input
                   v-model="username"
@@ -30,7 +30,7 @@
                   :to="{ path: '/register' }"
                   exact
                   active-class="active"
-                  ><button onclick="prevent()" class="btn">
+                  ><button onclick="prevent()" class="btn btn-secondary">
                     Sign Up
                   </button></router-link
                 >
@@ -91,22 +91,19 @@ export default {
 </script>
 
 <style scoped>
-h2 {
-  font-size: 14px;
-}
 .forgot {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 10px;
+  font-size: 14px;
+  font-weight: medium;
 }
 .buttons {
   display: flex;
   justify-content: space-between;
 }
-
-::placeholder {
-  color: #fff;
+.btn {
+  width: 225px;
 }
 
 form {
