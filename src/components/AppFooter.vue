@@ -17,31 +17,26 @@
             class="col-md-3 d-flex justify-content-center justify-content-sm-end py-2 py-lg-0 q-pr-md"
           >
             <router-link :to="{ path: '/' }" exact active-class="active">
-              <h1 class="logo">CashTag</h1></router-link
-            >
+              <img class="logo" src="../assets/Cashtag-Black.png" />
+            </router-link>
           </div>
           <div class="col-md-4 text-center text-sm-left q-pr-md">
             <ul class="d-flex justify-end m-0 wrap footer-menu">
               <li class="list-inline-item mr-0_1">
-                <a class="text-white" href="#" target="_blank">
+                <a href="#" target="_blank">
                   Privacy Policy
                 </a>
-                <span class="text-white">|</span>
+                <span>|</span>
               </li>
               <li class="list-inline-item mr-0_1">
-                <a class="text-white" href="#" target="_blank">
-                  Cookie Policy</a
-                >
-                <span class="text-white">|</span>
+                <a href="#" target="_blank"> Cookie Policy</a>
+                <span>|</span>
               </li>
-
               <li class="list-inline-item mr-0_1">
-                <a class="text-white" href="#" target="_blank">
-                  Terms &amp; Conditions</a
-                >
+                <a href="#" target="_blank"> Terms &amp; Conditions</a>
               </li>
             </ul>
-            <span class="copy d-block text-right text-white"
+            <span class="copy d-block text-right"
               >2020 © All Rights Reserved.</span
             >
           </div>
@@ -56,12 +51,6 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-footer {
-  font-size: 12px;
-  background-color: #000 !important;
-  padding: 15px 0;
-  line-height: 1.5;
-}
 .social-links a {
   background: url("../assets/sprite-social.png");
   background-position-x: 0;
@@ -111,6 +100,9 @@ a {
 }
 a:hover {
   opacity: 0.8;
+}
+.copy {
+  color 
 }
 @media (max-width: 1024px) {
   .copy {
