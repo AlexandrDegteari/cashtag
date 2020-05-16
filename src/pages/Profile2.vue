@@ -19,8 +19,8 @@
               <!--              </div>-->
               <div class="col-lg-12 col-md-12 black-block mt-3">
                 <form class="q-pt-xl" @submit.prevent="submitProfileForm">
-                  <div class="row">
-                    <div class="col-md-6 mt-2">
+                  <div class="row q-pb-md">
+                    <div class="col-md-6 q-pa-sm">
                       <label for="mail">E-mail</label>
                       <input
                         class="mt-1"
@@ -29,7 +29,7 @@
                         :value="response.email"
                       />
                     </div>
-                    <div class="col-md-6 mt-2 ">
+                    <div class="col-md-6 mt-2  q-pa-sm">
                       <label for="username">Username</label>
                       <input
                         :value="response.username"
@@ -39,7 +39,9 @@
                         disabled
                       />
                     </div>
-                    <div class="col-md-6 mt-2 ">
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6 mt-2 q-pa-sm">
                       <div class="input input2 q-mb-md">
                         <label for="input5">Restaurant Name</label>
                         <input
@@ -59,7 +61,7 @@
                         Restaurant Name required
                       </p>
                     </div>
-                    <div class="col-md-6 mt-2 ">
+                    <div class="col-md-6 mt-2 q-pa-sm">
                       <div class="input input2 q-mb-md">
                         <label for="input8">Restaurant Address</label>
                         <input
@@ -79,7 +81,7 @@
                         Restaurant Address required
                       </p>
                     </div>
-                    <div class="col-md-6 mt-2 ">
+                    <div class="col-md-6 mt-2 q-pa-sm">
                       <label class="mt-2 text-uppercase" for="code"
                         >Google Places ID</label
                       >
@@ -97,7 +99,7 @@
                         Google Id is required
                       </p>
                     </div>
-                    <div class="col-md-6 mt-2 ">
+                    <div class="col-md-6 mt-2 q-pa-sm">
                       <div class="input input2 q-mb-md">
                         <label for="input6">Restaurant Avatar</label>
                         <input
@@ -118,7 +120,9 @@
                       </p>
                       <!--                    <img :src="this.restaurantAvatar" alt="" />-->
                     </div>
-                    <div class="col-lg-12 text-right py-0 line-btn-success">
+                    <div
+                      class="col-lg-6 q-pa-sm text-right py-0 line-btn-success"
+                    >
                       <button
                         @click="submitProfileForm"
                         type="button"
@@ -133,8 +137,8 @@
                   </div>
                 </form>
                 <form @submit.prevent="submitPasswordForm">
-                  <div class="row black-block">
-                    <div class="col-md-12 pl-md-0  mt-2">
+                  <div class="row q-pb-md q-pt-xl">
+                    <div class="col-md-6 q-pa-sm pl-md-0 mt-2 q-pa-sm">
                       <label for="oldPassword">Old Password</label>
                       <input
                         v-model="$v.passwordForm.currentPassword.$model"
@@ -151,7 +155,10 @@
                       >
                         Old Password is required
                       </p>
-
+                    </div>
+                  </div>
+                  <div class="row q-pb-md">
+                    <div class="col-md-6 q-pa-sm pl-md-0 mt-2 q-pa-sm">
                       <label class="mt-2" for="new-password"
                         >New Password</label
                       >
@@ -170,9 +177,10 @@
                       >
                         New Password is required
                       </p>
-
+                    </div>
+                    <div class="col-md-6 q-pa-sm pl-md-0 mt-2 q-pa-sm">
                       <label class="mt-2" for="passwordConfirmation"
-                        >Password Confirmation</label
+                        >New Password Confirmation</label
                       >
                       <input
                         v-model="$v.passwordForm.passwordConfirmation.$model"
@@ -198,7 +206,9 @@
                         Passwords must be identical
                       </p>
                     </div>
-                    <div class="col-lg-12 text-right pl-md-0 my-0">
+                  </div>
+                  <div class="row q-pb-md">
+                    <div class="col-lg-6 q-pa-sm text-right">
                       <input
                         class="btn btn-primary ml-2 mb-2 mt-2"
                         type="submit"
