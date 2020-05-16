@@ -49,7 +49,6 @@
                         "
                       >
                       </QrCodeGen>
-                      <p>{{ rest.restaurantName }}</p>
                     </q-card-section>
 
                     <q-card-actions align="right">
