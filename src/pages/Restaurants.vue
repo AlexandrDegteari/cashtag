@@ -22,7 +22,7 @@
                   <th>
                     <QrCodeGen
                       :value="
-                        'http://cashtag.michaelringlein.com/#/restaurants/' +
+                        'http://cashtag.michaelringlein.com/#/review/' +
                           rest.googleId
                       "
                     >
@@ -62,7 +62,7 @@ export default {
   methods: {
     getRestaurants() {
       this.$axios
-        .get("http://localhost:4000/users")
+        .get("https://protected-garden-19195.herokuapp.com/users")
         .then(response => {
           this.restaurants = response.data;
         })

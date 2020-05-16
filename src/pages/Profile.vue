@@ -171,7 +171,7 @@ export default {
   methods: {
     getCurrentRestaurantData() {
       this.$axios
-        .get("http://localhost:4000/users/current")
+        .get("https://protected-garden-19195.herokuapp.com/users/current")
         .then(response => {
           this.restaurantData = response.data;
         })

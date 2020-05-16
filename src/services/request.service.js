@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const api = "http://localhost:4000";
+const api = "https://protected-garden-19195.herokuapp.com";
 
 const CheckUsername = username => {
   return axios

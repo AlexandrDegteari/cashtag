@@ -1,8 +1,7 @@
 import Vue from "vue";
 import axios from "axios";
 
-// const api = "https://api.kairos888.com/v1/";
-const api = "http://localhost:4000";
+const api = "https://protected-garden-19195.herokuapp.com";
 axios.defaults.headers.common["Authorization"] = localStorage.getItem(
   "access_token"
 );
@@ -21,7 +20,7 @@ const actions = {
   userRequest: ({ commit, dispatch }) => {
     commit("userRequest");
     axios
-      .get(`${api}user/info`)
+      .get(`${api}/users/current`)
       .then(resp => {
         commit("userSuccess", resp.data);
       })

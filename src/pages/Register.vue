@@ -135,7 +135,7 @@
                   v-model="$v.restaurantAvatar.$model"
                   placeholder="Restaurant Name"
                 />
-                <label for="input3"></label>
+                <label for="input6"></label>
               </div>
               <p
                 v-if="
