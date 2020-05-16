@@ -1,4 +1,5 @@
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 
 const api = "https://protected-garden-19195.herokuapp.com";
 axios.defaults.headers.common["Authorization"] = localStorage.getItem(
@@ -33,10 +34,9 @@ const UpdateAvatar = avatar => {
     });
 };
 const UpdateProfile = profile => {
-  var accessTokenObj = JSON.parse(localStorage.getItem("Token:"));
-  console.log(accessTokenObj);
+  const userId = jwt_decode(localStorage.getItem("access_token")).sub;
   return axios
-    .put(`${api}/users/` + accessTokenObj, profile)
+    .put(`${api}/users/` + userId, profile)
     .then(response => {
       if (response.data) {
         return response.data;

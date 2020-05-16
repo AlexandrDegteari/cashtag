@@ -88,6 +88,7 @@
                         id="code"
                         placeholder="Google Places ID"
                         type="text"
+                        v-model="$v.googleId.$model"
                       />
 
                       <p
@@ -132,87 +133,87 @@
                     </div>
                   </div>
                 </form>
-                <form @submit.prevent="submitPasswordForm">
-                  <div class="row black-block">
-                    <div class="col-md-12 pl-md-0  mt-2">
-                      <label for="oldPassword">Old Password</label>
-                      <input
-                        v-model="$v.passwordForm.currentPassword.$model"
-                        class="mt-1"
-                        id="oldPassword"
-                        type="password"
-                      />
-                      <p
-                        v-if="
-                          $v.passwordForm.currentPassword.$dirty &&
-                            !$v.passwordForm.currentPassword.required
-                        "
-                        class="error"
-                      >
-                        Old Password is required
-                      </p>
+                <!--                <form @submit.prevent="submitPasswordForm">-->
+                <!--                  <div class="row black-block">-->
+                <!--                    <div class="col-md-12 pl-md-0  mt-2">-->
+                <!--                      <label for="oldPassword">Old Password</label>-->
+                <!--                      <input-->
+                <!--                        v-model="$v.passwordForm.currentPassword.$model"-->
+                <!--                        class="mt-1"-->
+                <!--                        id="oldPassword"-->
+                <!--                        type="password"-->
+                <!--                      />-->
+                <!--                      <p-->
+                <!--                        v-if="-->
+                <!--                          $v.passwordForm.currentPassword.$dirty &&-->
+                <!--                            !$v.passwordForm.currentPassword.required-->
+                <!--                        "-->
+                <!--                        class="error"-->
+                <!--                      >-->
+                <!--                        Old Password is required-->
+                <!--                      </p>-->
 
-                      <label class="mt-2" for="new-password"
-                        >New Password</label
-                      >
-                      <input
-                        v-model="$v.passwordForm.password.$model"
-                        class="mt-1"
-                        id="new-password"
-                        type="password"
-                      />
-                      <p
-                        v-if="
-                          $v.passwordForm.password.$dirty &&
-                            !$v.passwordForm.password.required
-                        "
-                        class="error"
-                      >
-                        New Password is required
-                      </p>
+                <!--                      <label class="mt-2" for="new-password"-->
+                <!--                        >New Password</label-->
+                <!--                      >-->
+                <!--                      <input-->
+                <!--                        v-model="$v.passwordForm.password.$model"-->
+                <!--                        class="mt-1"-->
+                <!--                        id="new-password"-->
+                <!--                        type="password"-->
+                <!--                      />-->
+                <!--                      <p-->
+                <!--                        v-if="-->
+                <!--                          $v.passwordForm.password.$dirty &&-->
+                <!--                            !$v.passwordForm.password.required-->
+                <!--                        "-->
+                <!--                        class="error"-->
+                <!--                      >-->
+                <!--                        New Password is required-->
+                <!--                      </p>-->
 
-                      <label class="mt-2" for="passwordConfirmation"
-                        >Password Confirmation</label
-                      >
-                      <input
-                        v-model="$v.passwordForm.passwordConfirmation.$model"
-                        class="mt-1"
-                        id="passwordConfirmation"
-                        type="password"
-                      />
-                      <p
-                        v-if="
-                          $v.passwordForm.passwordConfirmation.$dirty &&
-                            !$v.passwordForm.passwordConfirmation.required
-                        "
-                        class="error"
-                      >
-                        Password Confirmation is required
-                      </p>
-                      <p
-                        v-if="
-                          !$v.passwordForm.passwordConfirmation.sameAsPassword
-                        "
-                        class="error"
-                      >
-                        Passwords must be identical
-                      </p>
-                    </div>
-                    <div class="col-lg-12 text-right pl-md-0 my-0">
-                      <input
-                        class="btn btn-primary ml-2 mb-2 mt-2"
-                        type="submit"
-                        value="Update Password"
-                      />
-                    </div>
-                    <p class="text-success ml-3" v-if="passwordMessage">
-                      {{ passwordMessage }}
-                    </p>
-                    <p class="text-danger ml-3" v-if="passwordError">
-                      {{ passwordError }}
-                    </p>
-                  </div>
-                </form>
+                <!--                      <label class="mt-2" for="passwordConfirmation"-->
+                <!--                        >Password Confirmation</label-->
+                <!--                      >-->
+                <!--                      <input-->
+                <!--                        v-model="$v.passwordForm.passwordConfirmation.$model"-->
+                <!--                        class="mt-1"-->
+                <!--                        id="passwordConfirmation"-->
+                <!--                        type="password"-->
+                <!--                      />-->
+                <!--                      <p-->
+                <!--                        v-if="-->
+                <!--                          $v.passwordForm.passwordConfirmation.$dirty &&-->
+                <!--                            !$v.passwordForm.passwordConfirmation.required-->
+                <!--                        "-->
+                <!--                        class="error"-->
+                <!--                      >-->
+                <!--                        Password Confirmation is required-->
+                <!--                      </p>-->
+                <!--                      <p-->
+                <!--                        v-if="-->
+                <!--                          !$v.passwordForm.passwordConfirmation.sameAsPassword-->
+                <!--                        "-->
+                <!--                        class="error"-->
+                <!--                      >-->
+                <!--                        Passwords must be identical-->
+                <!--                      </p>-->
+                <!--                    </div>-->
+                <!--                    <div class="col-lg-12 text-right pl-md-0 my-0">-->
+                <!--                      <input-->
+                <!--                        class="btn btn-primary ml-2 mb-2 mt-2"-->
+                <!--                        type="submit"-->
+                <!--                        value="Update Password"-->
+                <!--                      />-->
+                <!--                    </div>-->
+                <!--                    <p class="text-success ml-3" v-if="passwordMessage">-->
+                <!--                      {{ passwordMessage }}-->
+                <!--                    </p>-->
+                <!--                    <p class="text-danger ml-3" v-if="passwordError">-->
+                <!--                      {{ passwordError }}-->
+                <!--                    </p>-->
+                <!--                  </div>-->
+                <!--                </form>-->
               </div>
             </div>
           </form>
@@ -262,7 +263,7 @@
 <script>
 import UserService from "../services/user.service";
 import { validationMixin } from "vuelidate";
-import { email, required, sameAs } from "vuelidate/lib/validators";
+import { required } from "vuelidate/lib/validators";
 export default {
   mixins: [validationMixin],
   data() {
@@ -283,6 +284,7 @@ export default {
       availableUsername: null,
       availableEmail: null,
       modalDate: false,
+      message: null,
       dialogAvatar: false,
       base64: null,
       passwordForm: {
@@ -295,16 +297,15 @@ export default {
     };
   },
   validations: {
-    email: { required, email },
     googleId: { required },
     restaurantName: { required },
     restaurantAvatar: { required },
-    restaurantAddress: { required },
-    passwordForm: {
-      currentPassword: { required },
-      password: { required },
-      passwordConfirmation: { required, sameAsPassword: sameAs("password") }
-    }
+    restaurantAddress: { required }
+    // passwordForm: {
+    //   currentPassword: { required },
+    //   password: { required },
+    //   passwordConfirmation: { required, sameAsPassword: sameAs("password") }
+    // }
   },
   methods: {
     logout() {
@@ -314,14 +315,15 @@ export default {
     },
     submitProfileForm() {
       if (this.$v.$invalid) {
+        console.log("invalid");
         return;
       }
 
       const profile = {
         googleId: this.googleId,
-        restaurantName: null,
-        restaurantAvatar: null,
-        restaurantAddress: null
+        restaurantName: this.restaurantName,
+        restaurantAvatar: this.restaurantAvatar,
+        restaurantAddress: this.restaurantAddress
       };
 
       this.message = null;
@@ -363,6 +365,9 @@ export default {
         .then(response => {
           this.response = response;
           this.restaurantName = response.restaurantName;
+          this.restaurantAvatar = response.restaurantAvatar;
+          this.restaurantAddress = response.restaurantAddress;
+          this.googleId = response.googleId;
         })
         .catch(() => {});
     },
