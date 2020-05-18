@@ -3,10 +3,10 @@
     <div class="q-col-gutter-md row items-start">
       <div class="col-12 container-fluid">
         <q-img src="../assets/cashtag-food.jpg">
-          <div class=" absolute-full text-subtitle2 flex flex-center">
+          <div class=" absolute-full text-subtitle2 column flex flex-center">
             <p></p>
             <div class="welcome-2019 text-center">
-              Sichere dir jetzt dein Geschenk
+              <h2>Sichere dir jetzt dein Geschenk</h2>
             </div>
             <p>
               <a
@@ -163,4 +163,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.column {
+  flex-direction: column;
+}
+</style>

@@ -44,7 +44,7 @@
           label="Register"
         >
         </q-route-tab>
-        <q-tab v-if="!isLoggedIn" @click="logout" label="Log out"> </q-tab>
+        <q-tab v-if="isLoggedIn" @click="logout" label="Log out"> </q-tab>
       </q-tabs>
     </q-header>
     <!--

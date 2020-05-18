@@ -149,10 +149,12 @@ input {
 }
 
 // declare a class which applies it
-.welcome-2019 {
+.welcome-2019 h2 {
   font-family: 'welcome_2019';
   font-size: 65px;
   line-height: 1.5em;
+  color: #fff;
+  font-weight: normal;
 }
 
 .wrapper {
@@ -499,5 +501,10 @@ table {
   }
   .hide-sp{
     display: none!important;
+  }
+}
+@media (max-width: 500px) {
+  .welcome-2019 h2 {
+    font-size: 35px;
   }
 }

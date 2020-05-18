@@ -159,9 +159,8 @@ export default {
         .catch(() => {});
     }
   },
-  beforeMount() {
+  mounted() {
     this.getRestaurants();
-    console.log(this.restaurants);
   }
 };
 </script>
