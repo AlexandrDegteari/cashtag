@@ -20,9 +20,9 @@ const GetUserInfo = () => {
     });
 };
 
-const UpdateAvatar = avatar => {
+const GetUsers = () => {
   return axios
-    .put(`${api}/users/avatar`, avatar)
+    .get(`${api}/users/`)
     .then(response => {
       if (response.data) {
         return response.data;
@@ -33,8 +33,23 @@ const UpdateAvatar = avatar => {
       return { error };
     });
 };
+
 const UpdateProfile = profile => {
   const userId = jwt_decode(localStorage.getItem("access_token")).sub;
+  return axios
+    .put(`${api}/users/` + userId, profile)
+    .then(response => {
+      if (response.data) {
+        return response.data;
+      }
+      return false;
+    })
+    .catch(error => {
+      return { error };
+    });
+};
+const UpdateUserProf = (profile, userId) => {
+  // const userId = jwt_decode(localStorage.getItem("access_token")).sub;
   return axios
     .put(`${api}/users/` + userId, profile)
     .then(response => {
@@ -54,7 +69,8 @@ const UpdatePassword = password => {
 
 export default {
   GetUserInfo,
-  UpdateAvatar,
+  GetUsers,
   UpdateProfile,
-  UpdatePassword
+  UpdatePassword,
+  UpdateUserProf
 };

@@ -379,26 +379,6 @@ export default {
           this.googleId = response.googleId;
         })
         .catch(() => {});
-    },
-    readImage(e) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.base64 = reader.result;
-      };
-      if (e.target.files.length) {
-        reader.readAsDataURL(e.target.files[0]);
-      }
-    },
-    updateAvatar() {
-      if (!this.base64) return;
-      UserService.UpdateAvatar({ imagebase64: this.base64 })
-        .then(response => {
-          this.avatar = response.restaurantAvatar;
-          this.base64 = null;
-        })
-        .catch(error => {
-          console.log(error);
-        });
     }
   },
   beforeMount() {
