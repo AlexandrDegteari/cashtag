@@ -9,7 +9,10 @@
         </q-toolbar-title>
       </q-toolbar>
 
-      <q-tabs align="right">
+      <q-tabs
+        v-if="this.$route.name !== 'review' && this.$route.name !== 'voucher'"
+        align="right"
+      >
         <q-route-tab to="/profile" label="Profile">
           <router-link
             :to="{ name: 'profile' }"
