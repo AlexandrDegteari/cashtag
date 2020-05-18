@@ -1,10 +1,10 @@
 <template>
-  <q-layout view="hHh lpR fFf" style="min-height:200px;">
+  <q-layout view="hHh lpR fFf" style="min-height:0;">
     <q-header elevated class="bg-primary text-white" height-hint="200">
       <q-toolbar>
         <q-toolbar-title>
           <router-link :to="{ path: '/' }" exact active-class="active">
-            <img class="logo" src="../assets/Cashtag.png" />
+            <img class="logo" src="../assets/Cashtag.svg" width="250px" />
           </router-link>
         </q-toolbar-title>
       </q-toolbar>
@@ -107,7 +107,9 @@
                 Register</router-link
               >
             </li>
-
+            <li>
+              <div v-if="isLoggedIn()" @click="logout"><a>Log out</a></div>
+            </li>
           </ul>
         </div>
       </div>
