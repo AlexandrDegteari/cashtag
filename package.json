@@ -1,11 +1,11 @@
 {
-  "name": "wincoins",
+  "name": "cashtag",
   "version": "0.0.1",
-  "description": "A Quasar Framework app",
-  "productName": "wincoins",
+  "description": "Restaurant Rating System",
+  "productName": "cashtag",
   "cordovaId": "org.cordova.quasar.app",
   "capacitorId": "",
-  "author": "Mihail Carabetchi <michael.karabetsky@gmail.com>",
+  "author": "Degteari Alexandr <alex.developer.md@gmail.com",
   "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.vue src",

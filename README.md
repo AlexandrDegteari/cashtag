@@ -1,4 +1,4 @@
-# wincoins (wincoins)
+# cashtag (cashtag)
 
 A Quasar Framework app
 

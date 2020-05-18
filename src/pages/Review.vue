@@ -61,6 +61,11 @@ export default {
   },
   methods: {
     makeReview() {
+      setTimeout(() => {
+        this.showVoucher();
+      }, 10000);
+    },
+    showVoucher() {
       this.reviews = true;
     },
     getRestaurantsData() {
