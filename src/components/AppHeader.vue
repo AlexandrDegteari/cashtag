@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="hHh lpR fFf" style="min-height:200px;">
+  <q-layout view="hHh lpR fFf" style="min-height:0;">
     <q-header elevated class="bg-primary text-white" height-hint="200">
       <q-toolbar>
         <q-toolbar-title>
@@ -22,7 +22,8 @@
           >
           </router-link>
         </q-route-tab>
-        <q-route-tab to="/restaurants" label="Restaurants">
+        <q-route-tab to="/restaurants">
+          <q-btn flat round dense icon="restaurant" />
           <router-link
             :to="{ name: 'restaurants' }"
             exact
@@ -30,18 +31,20 @@
           >
           </router-link>
         </q-route-tab>
-        <q-route-tab to="/login" label="Login">
+        <q-route-tab to="/register">
+          <q-btn flat round dense icon="account_circle" />
           <router-link
-            :to="{ name: 'login' }"
+            :to="{ name: 'register' }"
             v-if="!isLoggedIn()"
             exact
             active-class="active"
           >
           </router-link>
         </q-route-tab>
-        <q-route-tab to="/register" label="Register">
+        <q-route-tab to="/login">
+          <q-btn flat round dense icon="exit_to_app" />
           <router-link
-            :to="{ name: 'register' }"
+            :to="{ name: 'login' }"
             v-if="!isLoggedIn()"
             exact
             active-class="active"

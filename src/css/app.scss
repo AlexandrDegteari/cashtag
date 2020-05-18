@@ -1,3 +1,8 @@
+@font-face {
+  font-family: welcome_2019;
+  src: url(../fonts/welcome_2019.ttf);
+}
+
 .q-toolbar {
   background: white;
   min-height: 120px;
@@ -6,11 +11,9 @@
   position: relative;
 }
 .logo {
-  
   max-width: 200px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-left: 200px;
+  margin: 30px;
+  /*margin-left: 200px;*/
 }
 .q-tabs {
   background: #EFF1F2;
@@ -23,7 +26,7 @@
   text-transform: none;
 }
 .q-tabs__content{
-  padding-right: 190px;
+  /*adding-right: 190px;*/
 }
 .absolute-bottom {
   color: #42B478;
@@ -49,6 +52,17 @@ a {
   color: #1B365E;
   text-decoration: none;
 
+}
+
+p {
+  font-size: 18px;
+  font-weight: medium;
+
+}
+
+.subtitle {
+  font-size: 14px;
+  font-weight: medium;
 }
 
 main {
@@ -134,6 +148,12 @@ input {
   opacity: 1;
 }
 
+// declare a class which applies it
+.welcome-2019 {
+  font-family: 'welcome_2019';
+  font-size: 65px;
+  line-height: 1.5em;
+}
 
 .wrapper {
   display: flex;
@@ -467,10 +487,6 @@ table {
     background: none;
     width: 100%;
     margin: 10px;
-  }
-
-  h1{
-    font-size: 20px;
   }
   .heading-img {
     object-fit: none;
