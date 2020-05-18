@@ -4,7 +4,7 @@
       <q-toolbar>
         <q-toolbar-title>
           <router-link :to="{ path: '/' }" exact active-class="active">
-            <img class="logo" src="../assets/Cashtag.png" />
+            <img class="logo" src="../assets/Cashtag.svg" width="250px" />
           </router-link>
         </q-toolbar-title>
       </q-toolbar>

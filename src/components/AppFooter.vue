@@ -17,7 +17,11 @@
             class="col-md-3 d-flex justify-content-center justify-content-sm-end py-2 py-lg-0 q-pr-md"
           >
             <router-link :to="{ path: '/' }" exact active-class="active">
-              <img class="logo" src="../assets/Cashtag-Black.png" />
+              <img
+                class="logo"
+                src="../assets/cashtag-black.svg"
+                width="200px"
+              />
             </router-link>
           </div>
           <div class="col-md-4 text-center text-sm-left q-pr-md">
