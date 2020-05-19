@@ -8,7 +8,7 @@ axios.defaults.headers.common["Authorization"] = localStorage.getItem(
 
 const GetUserInfo = () => {
   return axios
-    .get(`${api}/users/current`)
+    .get(`${api}/admin/current`)
     .then(response => {
       if (response.data) {
         return response.data;
@@ -22,7 +22,7 @@ const GetUserInfo = () => {
 
 const GetUsers = () => {
   return axios
-    .get(`${api}/users/`)
+    .get(`${api}/admin/`)
     .then(response => {
       if (response.data) {
         return response.data;
@@ -37,7 +37,7 @@ const GetUsers = () => {
 const UpdateProfile = profile => {
   const userId = jwt_decode(localStorage.getItem("access_token")).sub;
   return axios
-    .put(`${api}/users/` + userId, profile)
+    .put(`${api}/admin/` + userId, profile)
     .then(response => {
       if (response.data) {
         return response.data;
@@ -51,7 +51,7 @@ const UpdateProfile = profile => {
 const UpdateUserProf = (profile, userId) => {
   // const userId = jwt_decode(localStorage.getItem("access_token")).sub;
   return axios
-    .put(`${api}/users/` + userId, profile)
+    .put(`${api}/admin/` + userId, profile)
     .then(response => {
       if (response.data) {
         return response.data;
@@ -64,8 +64,7 @@ const UpdateUserProf = (profile, userId) => {
 };
 
 const UpdatePassword = password => {
-  const userId = jwt_decode(localStorage.getItem("access_token")).sub;
-  return axios.put(`${api}/users/` + userId, password);
+  return axios.put(`${api}/admin/current/`, password);
 };
 
 export default {

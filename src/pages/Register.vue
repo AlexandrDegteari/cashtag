@@ -190,8 +190,6 @@
 import { validationMixin } from "vuelidate";
 import { email, required, sameAs } from "vuelidate/lib/validators";
 
-import RequestService from "../services/request.service";
-
 export default {
   mixins: [validationMixin],
   data() {
@@ -256,10 +254,9 @@ export default {
             this.$router.push("/login");
           }, 2500);
         })
-        .catch(() => {});
-      // .catch(error => {
-      //   this.errors = error.response.data;
-      // });
+        .catch(error => {
+          this.errors = error.response.data;
+        });
     },
     getRestaurantsData() {
       console.log("getData");
@@ -280,29 +277,6 @@ export default {
         .catch(err => {
           console.log(err);
         });
-    },
-    checkUsername() {
-      clearTimeout(this.debounceUsername);
-      this.debounceUsername = setTimeout(() => {
-        RequestService.CheckUsername(this.$v.username.$model)
-          .then(response => {
-            this.availableUsername = !!response.available;
-          })
-          .catch(() => {});
-      }, 1000);
-    },
-    checkEmail() {
-      if (this.$v.email.$invalid) {
-        return;
-      }
-      clearTimeout(this.debounceEmail);
-      this.debounceEmail = setTimeout(() => {
-        RequestService.CheckEmail({ email: this.$v.email.$model })
-          .then(response => {
-            this.availableEmail = !!response.available;
-          })
-          .catch(() => {});
-      }, 1000);
     }
   }
 };

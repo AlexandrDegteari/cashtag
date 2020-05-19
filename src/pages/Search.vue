@@ -59,7 +59,7 @@ export default {
   methods: {
     getRestaurants() {
       this.$axios
-        .get("https://protected-garden-19195.herokuapp.com/auctions")
+        .get("http://localhost:4000/auctions")
         .then(response => {
           this.restaurants = response.data;
         })
