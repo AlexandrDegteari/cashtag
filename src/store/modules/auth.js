@@ -1,8 +1,8 @@
 import Errors from "./../../modules/errors";
 import axios from "axios";
 
-// const apiUrl = "http://localhost:4000";
-const apiUrl = "https://protected-garden-19195.herokuapp.com";
+const apiUrl = "http://localhost:4000";
+// const apiUrl = "https://protected-garden-19195.herokuapp.com";
 
 const state = {
   access_token: localStorage.getItem("access_token") || "",
@@ -19,11 +19,10 @@ const getters = {
 
 const actions = {
   authRequest: ({ commit, dispatch }, payload) => {
-    // let actionUrl = apiUrl + "v1/user/login";
     let actionUrl = apiUrl + "/users/authenticate";
     let remember = payload.remember ? payload.remember : false;
     let data = {
-      username: payload.username,
+      email: payload.email,
       password: payload.password
     };
 
@@ -47,7 +46,7 @@ const actions = {
             expires: remember ? 365 : 1
           });
           axios.defaults.headers.common["Authorization"] = access_token;
-          localStorage.user = JSON.stringify(resp.data.user);
+          localStorage.user = JSON.stringify(resp.data);
 
           commit("authSuccess", access_token);
 
@@ -73,22 +72,6 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios
         .post(apiUrl + "/users/register", payload)
-        .then(response => {
-          if (response.data) {
-            resolve();
-            return response.data;
-          }
-        })
-        .catch(err => {
-          reject(err);
-        });
-    });
-  },
-  // eslint-disable-next-line no-unused-vars
-  postAmount: ({ commit, dispatch }, payload) => {
-    return new Promise((resolve, reject) => {
-      axios
-        .post(apiUrl + "/users/wallet", payload)
         .then(response => {
           if (response.data) {
             resolve();

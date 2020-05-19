@@ -19,7 +19,7 @@
         align="right"
       >
         <q-route-tab
-          v-if="isLoggedIn()"
+          v-if="isLoggedIn() && !isAdmin()"
           to="/profile"
           exact
           active-class="active"
@@ -27,6 +27,7 @@
         >
         </q-route-tab>
         <q-route-tab
+          v-if="isAdmin()"
           to="/restaurants"
           exact
           active-class="active"
@@ -41,25 +42,48 @@
           active-class="active"
         >
         </q-route-tab>
-        <q-route-tab
-          v-if="!isLoggedIn()"
-          to="/register"
+        <q-tab
+          v-if="isLoggedIn()"
+          @click="addRest = true"
           exact
           active-class="active"
-          label="Register"
+          label="Add Restaurant"
         >
-        </q-route-tab>
+        </q-tab>
         <q-tab v-if="isLoggedIn" @click="logout" label="Log out"> </q-tab>
       </q-tabs>
+      <q-dialog v-model="addRest">
+        <register />
+      </q-dialog>
     </q-header>
   </q-layout>
 </template>
 <script>
+import Register from "../pages/Register";
+import jwt_decode from "jwt-decode";
 export default {
   name: "AppHeader",
+  components: { Register },
+  data() {
+    return {
+      addRest: false
+    };
+  },
   methods: {
     isLoggedIn() {
       return this.$store.state.auth.access_token;
+    },
+    isAdmin() {
+      if (localStorage.getItem("user")) {
+        return JSON.parse(localStorage.getItem("user")).admin;
+      }
+    },
+    isAdmin1() {
+      if (!localStorage.getItem("access_token")) {
+        return;
+      }
+      const userId = jwt_decode(localStorage.getItem("access_token")).sub;
+      return userId === "5ec382270a82120cb4926c47";
     },
     logout() {
       this.$store.dispatch("authLogout").then(() => {

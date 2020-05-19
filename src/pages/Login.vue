@@ -8,7 +8,7 @@
               <h1 class="q-pt-md">Login</h1>
               <div class="input input1 q-mb-sm">
                 <input
-                  v-model="username"
+                  v-model="email"
                   id="input1"
                   type="text"
                   placeholder="E - mail"
@@ -35,12 +35,15 @@
                   </button></router-link
                 >
               </div>
-              <div class="forgot">
-                <div>
-                  <q-checkbox size="sm" :value="true" />
-                  <label>Remember me</label>
-                </div>
-                <a href="#">Forgot Username / Password</a>
+              <!--              <div class="forgot">-->
+              <!--                <div>-->
+              <!--                  <q-checkbox size="sm" :value="true" />-->
+              <!--                  <label>Remember me</label>-->
+              <!--                </div>-->
+              <!--                <a href="#">Forgot Username / Password</a>-->
+              <!--              </div>-->
+              <div class="error mt-0" v-if="error">
+                {{ error }}
               </div>
             </form>
           </div>
@@ -56,7 +59,7 @@ import store from "../store/modules/auth";
 export default {
   data() {
     return {
-      username: null,
+      email: null,
       password: null,
       error: null,
       store: store.getters
@@ -64,12 +67,13 @@ export default {
   },
   methods: {
     loginFormSubmit() {
-      if (this.username.length === 0 || this.password.length === 0) {
+      if (!this.email || !this.password) {
+        this.error = "Please fill all the fields";
         return;
       }
 
       const user = {
-        username: this.username,
+        email: this.email,
         password: this.password
       };
 
@@ -96,7 +100,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   font-size: 14px;
-  font-weight: medium;
+  font-weight: normal;
 }
 .buttons {
   display: flex;

@@ -1,188 +1,150 @@
 <template>
-  <div class="wrapper">
-    <main>
-      <div class="bg">
-        <div class="container q-pt-xl">
-          <div class="form relative-position ">
-            <form v-on:submit.prevent>
-              <h1 class="q-pt-lg">Add Restaurant</h1>
-              <div class="input input1 q-mt-md q-mb-md">
-                <input
-                  id="input"
-                  type="text"
-                  v-model.trim="$v.username.$model"
-                  placeholder="Username"
-                />
-                <label for="input"></label>
-              </div>
-              <p
-                v-if="$v.username.$dirty && !$v.username.required"
-                class="error"
-              >
-                Username is required
-              </p>
-              <p v-if="availableUsername === false" class="error">
-                Username taken, please choose another one
-              </p>
-              <div class="input input3 q-mb-md">
-                <input
-                  v-model.trim="$v.email.$model"
-                  id="input1"
-                  type="text"
-                  placeholder="E - mail"
-                />
-                <label for="input1"></label>
-              </div>
-              <p v-if="!$v.email.email" class="error">
-                E-mail is invalid
-              </p>
-              <p v-if="$v.email.$dirty && !$v.email.required" class="error">
-                E-mail is required
-              </p>
-              <p v-if="availableEmail === false" class="error">
-                Email taken, please choose another one
-              </p>
-              <div class="input input2 q-mb-md">
-                <input
-                  id="input2"
-                  type="password"
-                  v-model="$v.password.$model"
-                  placeholder="Password"
-                />
-                <label for="input2"></label>
-              </div>
-              <p
-                v-if="$v.password.$dirty && !$v.password.required"
-                class="error"
-              >
-                Password is required
-              </p>
-              <div class="input input2 q-mb-md">
-                <input
-                  id="input3"
-                  type="password"
-                  v-model="$v.passwordConfirmation.$model"
-                  placeholder="Password Confirmation"
-                />
-                <label for="input3"></label>
-              </div>
-              <p
-                v-if="
-                  $v.passwordConfirmation.$dirty &&
-                    !$v.passwordConfirmation.required
-                "
-                class="error m-0"
-              >
-                Confirm Password is required
-              </p>
-              <p v-if="!$v.passwordConfirmation.sameAsPassword" class="error">
-                Passwords must be identical
-              </p>
-              <div class="input input2 q-mb-md">
-                <input
-                  id="input4"
-                  type="text"
-                  @change="getRestaurantsData()"
-                  v-model="$v.googleId.$model"
-                  placeholder="Google Places ID"
-                />
-                <label for="input4">Google Places ID</label>
-              </div>
-              <p
-                v-if="$v.googleId.$dirty && !$v.googleId.required"
-                class="error m-0"
-              >
-                Google Id is required
-              </p>
-              <div class="input input2 q-mb-md">
-                <input
-                  id="input5"
-                  type="text"
-                  v-model="$v.restaurantName.$model"
-                  placeholder="Restaurant Name"
-                />
-                <label for="input5"></label>
-              </div>
-              <p
-                v-if="$v.restaurantName.$dirty && !$v.restaurantName.required"
-                class="error m-0"
-              >
-                Restaurant Name required
-              </p>
-              <div class="input input2 q-mb-md">
-                <input
-                  id="input8"
-                  type="text"
-                  v-model="$v.restaurantAddress.$model"
-                  placeholder="Restaurant Address"
-                />
-                <label for="input8"></label>
-              </div>
-              <p
-                v-if="
-                  $v.restaurantAddress.$dirty && !$v.restaurantAddress.required
-                "
-                class="error m-0"
-              >
-                Restaurant Address required
-              </p>
-              <div class="input input2 q-mb-md">
-                <input
-                  id="input6"
-                  type="text"
-                  v-model="$v.restaurantAvatar.$model"
-                  placeholder="Restaurant Name"
-                />
-                <label for="input6"></label>
-              </div>
-              <p
-                v-if="
-                  $v.restaurantAvatar.$dirty && !$v.restaurantAvatar.required
-                "
-                class="error m-0"
-              >
-                Restaurant Avatar required
-              </p>
-              <img :src="this.restaurantAvatar" alt="" />
-              <div class="forgot q-pb-md">
-                <div>
-                  <q-checkbox
-                    color="blue"
-                    keep-color
-                    size="sm"
-                    v-model="$v.terms.$model"
-                  />
-                  <label>Terms & Conditions</label>
-                </div>
-              </div>
-              <p v-if="$v.terms.$dirty && !$v.terms.sameAs" class="error">
-                Terms & Conditions are required
-              </p>
-              <button @click="register" class="btn text-center">
-                Create account
-              </button>
-              <small class="q-pt-md"
-                >Are you have already account? than Sign in!</small
-              >
-              <div v-if="successRegistration" class="text-success">
-                You have been registered successfully. Please check your email.
-              </div>
-              <div v-if="errors" class="mt-0">
-                <div v-for="(error, index) in errors.errors" :key="index">
-                  <p
-                    v-for="(item, index) in error"
-                    :key="index"
-                    class="text-danger mb-1"
-                  >
-                    {{ item }}
-                  </p>
-                </div>
-              </div>
-            </form>
-          </div>
+  <div style="background-color: #fff" class="form relative-position ">
+    <form v-on:submit.prevent>
+      <h1>Add Restaurant</h1>
+      <div class="input input1 q-mt-md q-mb-md">
+        <input
+          id="input"
+          type="text"
+          v-model.trim="$v.username.$model"
+          placeholder="Username"
+        />
+        <label for="input"></label>
+      </div>
+      <p v-if="$v.username.$dirty && !$v.username.required" class="error">
+        Username is required
+      </p>
+      <p v-if="availableUsername === false" class="error">
+        Username taken, please choose another one
+      </p>
+      <div class="input input3 q-mb-md">
+        <input
+          v-model.trim="$v.email.$model"
+          id="input1"
+          type="text"
+          placeholder="E - mail"
+        />
+        <label for="input1"></label>
+      </div>
+      <p v-if="!$v.email.email" class="error">
+        E-mail is invalid
+      </p>
+      <p v-if="$v.email.$dirty && !$v.email.required" class="error">
+        E-mail is required
+      </p>
+      <p v-if="availableEmail === false" class="error">
+        Email taken, please choose another one
+      </p>
+      <div class="input input2 q-mb-md">
+        <input
+          id="input2"
+          type="password"
+          v-model="$v.password.$model"
+          placeholder="Password"
+        />
+        <label for="input2"></label>
+      </div>
+      <p v-if="$v.password.$dirty && !$v.password.required" class="error">
+        Password is required
+      </p>
+      <div class="input input2 q-mb-md">
+        <input
+          id="input3"
+          type="password"
+          v-model="$v.passwordConfirmation.$model"
+          placeholder="Password Confirmation"
+        />
+        <label for="input3"></label>
+      </div>
+      <p
+        v-if="
+          $v.passwordConfirmation.$dirty && !$v.passwordConfirmation.required
+        "
+        class="error m-0"
+      >
+        Confirm Password is required
+      </p>
+      <p v-if="!$v.passwordConfirmation.sameAsPassword" class="error">
+        Passwords must be identical
+      </p>
+      <div class="input input2 q-mb-md">
+        <input
+          id="input4"
+          type="text"
+          @change="getRestaurantsData()"
+          v-model="$v.googleId.$model"
+          placeholder="Google Places ID"
+        />
+        <label for="input4"></label>
+      </div>
+      <p v-if="$v.googleId.$dirty && !$v.googleId.required" class="error m-0">
+        Google Id is required
+      </p>
+      <div class="input input2 q-mb-md">
+        <input
+          id="input5"
+          type="text"
+          v-model="$v.restaurantName.$model"
+          placeholder="Restaurant Name"
+        />
+        <label for="input5"></label>
+      </div>
+      <p
+        v-if="$v.restaurantName.$dirty && !$v.restaurantName.required"
+        class="error m-0"
+      >
+        Restaurant Name required
+      </p>
+      <div class="input input2 q-mb-md">
+        <input
+          id="input8"
+          type="text"
+          v-model="$v.restaurantAddress.$model"
+          placeholder="Restaurant Address"
+        />
+        <label for="input8"></label>
+      </div>
+      <p
+        v-if="$v.restaurantAddress.$dirty && !$v.restaurantAddress.required"
+        class="error m-0"
+      >
+        Restaurant Address required
+      </p>
+      <div class="input input2 q-mb-md">
+        <input
+          id="input6"
+          type="text"
+          v-model="$v.restaurantAvatar.$model"
+          placeholder="Restaurant Avatar"
+        />
+        <label for="input6"></label>
+      </div>
+      <p
+        v-if="$v.restaurantAvatar.$dirty && !$v.restaurantAvatar.required"
+        class="error m-0"
+      >
+        Restaurant Avatar required
+      </p>
+      <img :src="this.restaurantAvatar" alt="" />
+      <button @click="register" class="btn text-center">
+        Create account
+      </button>
+      <small class="q-pt-md">Are you have already account? than Sign in!</small>
+      <div v-if="successRegistration" class="text-success">
+        You have been registered successfully. Please check your email.
+      </div>
+      <div v-if="errors" class="mt-0">
+        <div v-for="(error, index) in errors.errors" :key="index">
+          <p
+            v-for="(item, index) in error"
+            :key="index"
+            class="text-danger mb-1"
+          >
+            {{ item }}
+          </p>
         </div>
       </div>
-    </main>
+    </form>
   </div>
 </template>
 
@@ -207,7 +169,6 @@ export default {
       password: null,
       passwordConfirmation: null,
       googleId: null,
-      terms: false,
       availableUsername: null,
       availableEmail: null,
       modalDate: false
@@ -224,8 +185,7 @@ export default {
     passwordConfirmation: {
       required,
       sameAsPassword: sameAs("password")
-    },
-    terms: { sameAs: sameAs(() => true) }
+    }
   },
   watch: {},
   methods: {

@@ -16,8 +16,8 @@
                   <th scope="col">Review Page Link</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr v-for="(rest, key) in restaurants" :key="key">
+              <tbody v-for="(rest, key) in restaurants" :key="key">
+                <tr v-if="!rest.admin">
                   <th>
                     <input
                       class="mt-1"
