@@ -86,7 +86,7 @@
                   v-model="$v.googleId.$model"
                   placeholder="Google Places ID"
                 />
-                <label for="input4"></label>
+                <label for="input4">Google Places ID</label>
               </div>
               <p
                 v-if="$v.googleId.$dirty && !$v.googleId.required"
