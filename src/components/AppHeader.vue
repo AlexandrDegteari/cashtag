@@ -35,6 +35,14 @@
         >
         </q-route-tab>
         <q-route-tab
+          v-if="isLoggedIn()"
+          to="/statistics"
+          exact
+          active-class="active"
+          label="Statistics"
+        >
+        </q-route-tab>
+        <q-route-tab
           v-if="!isLoggedIn()"
           to="/login"
           label="Login"

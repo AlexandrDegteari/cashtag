@@ -26,14 +26,14 @@
               </div>
               <div class="buttons">
                 <button class="btn">Login</button>
-                <router-link
-                  :to="{ path: '/register' }"
-                  exact
-                  active-class="active"
-                  ><button onclick="prevent()" class="btn btn-secondary">
-                    Sign Up
-                  </button></router-link
-                >
+                <!--                <router-link-->
+                <!--                  :to="{ path: '/register' }"-->
+                <!--                  exact-->
+                <!--                  active-class="active"-->
+                <!--                  ><button onclick="prevent()" class="btn btn-secondary">-->
+                <!--                    Sign Up-->
+                <!--                  </button></router-link-->
+                <!--                >-->
               </div>
               <!--              <div class="forgot">-->
               <!--                <div>-->

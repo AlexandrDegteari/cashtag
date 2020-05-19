@@ -53,9 +53,21 @@ const routes = [
         component: () => import("pages/Review.vue")
       },
       {
+        name: "statistics",
+        path: "statistics",
+        beforeEnter: ifNotAuthenticated,
+        component: () => import("pages/Statistics.vue")
+      },
+      {
         name: "voucher",
         path: "voucher/:googleId",
         component: () => import("pages/Voucher.vue")
+      },
+      {
+        name: "restaurants",
+        path: "restaurants",
+        beforeEnter: ifNotAuthenticated,
+        component: () => import("pages/Restaurants.vue")
       },
       {
         name: "restaurants",

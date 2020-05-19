@@ -69,6 +69,15 @@
       </p>
       <div class="input input2 q-mb-md">
         <input
+          id="input9"
+          type="text"
+          v-model="referral"
+          placeholder="Referral"
+        />
+        <label for="input9"></label>
+      </div>
+      <div class="input input2 q-mb-md">
+        <input
           id="input4"
           type="text"
           @change="getRestaurantsData()"
@@ -169,6 +178,7 @@ export default {
       password: null,
       passwordConfirmation: null,
       googleId: null,
+      referral: null,
       availableUsername: null,
       availableEmail: null,
       modalDate: false
@@ -201,6 +211,7 @@ export default {
         email: this.email,
         password: this.password,
         googleId: this.googleId,
+        referral: this.referral,
         restaurantName: this.restaurantName,
         restaurantAvatar: this.restaurantAvatar,
         restaurantAddress: this.restaurantAddress
