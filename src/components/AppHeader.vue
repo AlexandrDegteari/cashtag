@@ -51,7 +51,7 @@
         >
         </q-route-tab>
         <q-tab
-          v-if="isLoggedIn()"
+          v-if="isAdmin()"
           @click="addRest = true"
           exact
           active-class="active"
