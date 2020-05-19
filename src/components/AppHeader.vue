@@ -50,7 +50,7 @@
           label="Add Restaurant"
         >
         </q-tab>
-        <q-tab v-if="isLoggedIn" @click="logout" label="Log out"> </q-tab>
+        <q-tab v-if="isLoggedIn()" @click="logout" label="Log out"> </q-tab>
       </q-tabs>
       <q-dialog v-model="addRest">
         <register />

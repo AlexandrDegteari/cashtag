@@ -31,6 +31,7 @@ const routes = [
       {
         name: "profile",
         path: "profile",
+        beforeEnter: ifNotAuthenticated,
         component: () => import("pages/Profile.vue")
       },
       {
@@ -41,6 +42,7 @@ const routes = [
       {
         name: "register",
         path: "register",
+        beforeEnter: ifNotAuthenticated,
         component: () => import("pages/Register.vue")
       },
       {
@@ -58,6 +60,7 @@ const routes = [
       {
         name: "restaurants",
         path: "restaurants",
+        beforeEnter: ifNotAuthenticated,
         component: () => import("pages/Restaurants.vue")
       },
       { path: "*", component: () => import("pages/NotFound.vue") }
