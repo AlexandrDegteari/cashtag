@@ -176,17 +176,6 @@ position: relative;
   line-height: 3.4;
 }
 
-.t-head:before {
-  content: "";
-  position: absolute;
-  background: url("../assets/table-head.png") no-repeat;
-  width: 1013px;
-  height: 62px;
-  background-size: contain;
-  top: -5px;
-  left: -5px;
-
-}
 .t-head td {
   color: #093767;
   font-weight: 600;
@@ -321,15 +310,6 @@ h2,h3,h4,h5,h6,p,span{
   padding-top: 0;
 }
 
-.table-block {
-  background: url("../assets/Bcg_table.png") no-repeat left center;
-  background-size: contain;
-  min-height: 402px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 50px;
-}
 table {
   position: relative;
   width: 100%;
