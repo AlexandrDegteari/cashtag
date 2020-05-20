@@ -102,49 +102,46 @@
         Restaurant Avatar required
       </p>
       <img :src="this.restaurantAvatar" alt="" />
-      <button @click="register" class="btn text-center w-100">
+      <button @click.stop="submitProfileForm()" class="btn text-center w-100">
         Update Data
       </button>
       <div v-if="successRegistration" class="text-success">
         Data updated successful.
       </div>
-      <div class="q-pt-lg">
-        <div class="input input2 q-mb-md">
-          <input
-            id="input2"
-            type="password"
-            v-model="$v.password.$model"
-            placeholder="Change Password"
-          />
-          <label for="input2"></label>
-        </div>
-        <p v-if="$v.password.$dirty && !$v.password.required" class="error">
-          Password is required
-        </p>
-        <div class="input input2 q-mb-md">
-          <input
-            id="input3"
-            type="password"
-            v-model="$v.passwordConfirmation.$model"
-            placeholder="Password Confirmation"
-          />
-          <label for="input3"></label>
-        </div>
-        <p
-          v-if="
-            $v.passwordConfirmation.$dirty && !$v.passwordConfirmation.required
-          "
-          class="error m-0"
-        >
-          Confirm Password is required
-        </p>
-        <p v-if="!$v.passwordConfirmation.sameAsPassword" class="error">
-          Passwords must be identical
-        </p>
-      </div>
-      <button @click="submitPasswordForm" class="btn text-center w-100">
-        Update Password
-      </button>
+      <!--      <div class="q-pt-lg">-->
+      <!--        <div class="input input2 q-mb-md">-->
+      <!--          <input-->
+      <!--            id="input2"-->
+      <!--            type="password"-->
+      <!--            v-model="$v.password.$model"-->
+      <!--            placeholder="Change Password"-->
+      <!--          />-->
+      <!--          <label for="input2"></label>-->
+      <!--        </div>-->
+      <!--        <p v-if="$v.password.$dirty && !$v.password.required" class="error">-->
+      <!--          Password is required-->
+      <!--        </p>-->
+      <!--        <div class="input input2 q-mb-md">-->
+      <!--          <input-->
+      <!--            id="input3"-->
+      <!--            type="password"-->
+      <!--            v-model="$v.passwordConfirmation.$model"-->
+      <!--            placeholder="Password Confirmation"-->
+      <!--          />-->
+      <!--          <label for="input3"></label>-->
+      <!--        </div>-->
+      <!--        <p-->
+      <!--          v-if="-->
+      <!--            $v.passwordConfirmation.$dirty && !$v.passwordConfirmation.required-->
+      <!--          "-->
+      <!--          class="error m-0"-->
+      <!--        >-->
+      <!--          Confirm Password is required-->
+      <!--        </p>-->
+      <!--        <p v-if="!$v.passwordConfirmation.sameAsPassword" class="error">-->
+      <!--          Passwords must be identical-->
+      <!--        </p>-->
+      <!--      </div>-->
       <div v-if="errors" class="mt-0">
         <div v-for="(error, index) in errors.errors" :key="index">
           <p
@@ -153,6 +150,59 @@
             class="text-danger mb-1"
           >
             {{ item }}
+          </p>
+        </div>
+      </div>
+    </form>
+    <form @submit.prevent="submitPasswordForm">
+      <div class="row q-pb-md q-pt-xl">
+        <div class="q-pa-sm pl-md-0 mt-2 q-pa-sm">
+          <label class="mt-2" for="new-password">New Password</label>
+          <input
+            v-model="$v.password.$model"
+            class="mt-1"
+            id="new-password"
+            type="password"
+          />
+          <p v-if="$v.password.$dirty && !$v.password.required" class="error">
+            New Password is required
+          </p>
+        </div>
+        <div class="q-pa-sm pl-md-0 mt-2 q-pa-sm">
+          <label class="mt-2" for="passwordConfirmation"
+            >New Password Confirmation</label
+          >
+          <input
+            v-model="$v.passwordConfirmation.$model"
+            class="mt-1"
+            id="passwordConfirmation"
+            type="password"
+          />
+          <p
+            v-if="
+              $v.passwordConfirmation.$dirty &&
+                !$v.passwordConfirmation.required
+            "
+            class="error"
+          >
+            Password Confirmation is required
+          </p>
+          <p v-if="!$v.passwordConfirmation.sameAsPassword" class="error">
+            Passwords must be identical
+          </p>
+        </div>
+        <div class="col-md-6 q-pa-sm pl-md-0 mt-2 q-pa-sm">
+          <button
+            @click.stop="submitPasswordForm"
+            class="btn text-center w-100"
+          >
+            Update Password
+          </button>
+          <p class="text-success ml-3" v-if="passwordMessage">
+            {{ passwordMessage }}
+          </p>
+          <p class="text-danger ml-3" v-if="passwordError">
+            {{ passwordError }}
           </p>
         </div>
       </div>
@@ -175,18 +225,21 @@ export default {
       restaurantName: this.restaurant.restaurantName,
       restaurantAvatar: this.restaurant.restaurantAvatar,
       restaurantAddress: this.restaurant.restaurantAddress,
+      userId: this.restaurant.id,
       errors: null,
       successRegistration: false,
       username: this.restaurant.username,
       alias: null,
       email: this.restaurant.email,
-      password: null,
-      passwordConfirmation: null,
       googleId: this.restaurant.googleId,
       referral: this.restaurant.referral,
       availableUsername: null,
       availableEmail: null,
-      modalDate: false
+      modalDate: false,
+      password: null,
+      passwordConfirmation: null,
+      passwordMessage: null,
+      passwordError: null
     };
   },
   validations: {
@@ -207,21 +260,21 @@ export default {
   },
   methods: {
     submitPasswordForm() {
-      this.$v.passwordForm.$touch();
-      if (this.$v.passwordForm.$invalid) {
-        return;
-      }
+      // this.$v.passwordForm.$touch();
+      // if (this.$v.passwordForm.$invalid) {
+      //   return;
+      // }
 
       const password = {
-        current_password: this.passwordForm.currentPassword,
-        password: this.passwordForm.password,
-        password_confirmation: this.passwordForm.passwordConfirmation
+        // current_password: this.passwordForm.currentPassword,
+        password: this.password,
+        password_confirmation: this.passwordConfirmation
       };
 
       this.passwordMessage = null;
       this.passwordError = null;
 
-      UserService.UpdatePassword(password)
+      UserService.UpdateUserPass(password, this.userId)
         .then(response => {
           this.passwordMessage = response.data.message;
         })
@@ -230,34 +283,24 @@ export default {
         });
     },
 
-    register() {
-      this.$v.$touch();
-
-      if (this.$v.$invalid) {
-        return;
-      }
-
-      const user = {
-        username: this.username,
-        email: this.email,
-        password: this.password,
+    submitProfileForm() {
+      const profile = {
         googleId: this.googleId,
-        referral: this.referral,
         restaurantName: this.restaurantName,
         restaurantAvatar: this.restaurantAvatar,
-        restaurantAddress: this.restaurantAddress
+        restaurantAddress: this.restaurantAddress,
+        userId: this.userId
       };
-      this.$store
-        .dispatch("authRegister", user)
+
+      this.message = null;
+
+      UserService.UpdateUserProf(profile, this.userId)
         .then(() => {
-          this.errors = null;
-          this.successRegistration = true;
-          setTimeout(() => {
-            this.$router.push("/login");
-          }, 2500);
+          this.$emit("updatedForm");
+          this.message = "The profile has been successfully updated.";
         })
         .catch(error => {
-          this.errors = error.response.data;
+          console.log(error.error.response.data);
         });
     }
   }

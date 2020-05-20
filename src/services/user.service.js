@@ -69,10 +69,16 @@ const UpdatePassword = password => {
   return axios.put(`${api}/users/` + userId, password);
 };
 
+const UpdateUserPass = (password, userId) => {
+  // const userId = jwt_decode(localStorage.getItem("access_token")).sub;
+  return axios.put(`${api}/users/` + userId, password);
+};
+
 export default {
   GetUserInfo,
   GetUsers,
   UpdateProfile,
   UpdatePassword,
-  UpdateUserProf
+  UpdateUserProf,
+  UpdateUserPass
 };

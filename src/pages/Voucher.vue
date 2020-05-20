@@ -1,5 +1,6 @@
 <template>
   <div>
+    <img :src="this.restaurantAvatar" alt="" />
     <div class="q-col-gutter-md row items-start">
       <div class="col-12 container-fluid">
         <q-img src="../assets/cashtag-food.jpg">
@@ -64,7 +65,8 @@ export default {
   name: "Voucher",
   data() {
     return {
-      restaurantName: this.$route.params.restaurantName
+      restaurantName: this.$route.params.restaurantName,
+      restaurantAvatar: this.$route.params.restaurantAvatar
     };
   }
 };

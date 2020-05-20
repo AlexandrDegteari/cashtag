@@ -1,5 +1,6 @@
 <template>
   <div>
+    <img :src="this.restaurantAvatar" alt="" />
     <div class="q-col-gutter-md row items-start">
       <div class="col-12 container-fluid">
         <q-img src="../assets/cashtag-food.jpg">
@@ -27,7 +28,8 @@
                   name: 'voucher',
                   params: {
                     googleId: this.googleId,
-                    restaurantName: this.restaurantName
+                    restaurantName: this.restaurantName,
+                    restaurantAvatar: this.restaurantAvatar
                   }
                 }"
                 exact

@@ -50,10 +50,7 @@
                   <!--                    </div>-->
                   <!--                  </th>-->
                   <th>
-                    <a
-                      class="cursor-pointer"
-                      @click="rest.restaurantAvatar = true"
-                    >
+                    <a class="cursor-pointer" @click="rest.id = true">
                       Generate QR Code
                     </a>
                   </th>
@@ -69,20 +66,17 @@
                     >
                   </th>
                   <th>
-                    <a
-                      class="cursor-pointer"
-                      @click="rest.restaurantAddress = true"
-                    >
+                    <a class="cursor-pointer" @click="rest.createdDate = true">
                       Edit Data
                     </a>
-                    <q-dialog v-model="rest.restaurantAddress">
+                    <q-dialog v-model="rest.createdDate">
                       <edit
                         :return-value.sync="modalActive"
                         :restaurant="rest"
                       />
                     </q-dialog>
                   </th>
-                  <q-dialog v-model.trim="rest.restaurantAvatar">
+                  <q-dialog v-model.trim="rest.id">
                     <q-card>
                       <q-card-section>
                         <div class="text-h6">

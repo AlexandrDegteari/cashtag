@@ -1,5 +1,9 @@
 <template>
-  <q-layout view="hHh lpR fFf" style="min-height:0;">
+  <q-layout
+    v-if="this.$route.name !== 'review' && this.$route.name !== 'voucher'"
+    view="hHh lpR fFf"
+    style="min-height:0;"
+  >
     <q-header elevated class="bg-primary text-white" height-hint="200">
       <q-toolbar>
         <q-toolbar-title>
@@ -14,12 +18,9 @@
         </q-toolbar-title>
       </q-toolbar>
 
-      <q-tabs
-        v-if="this.$route.name !== 'review' && this.$route.name !== 'voucher'"
-        align="right"
-      >
+      <q-tabs align="right">
         <q-route-tab
-          v-if="isLoggedIn() && !isAdmin()"
+          v-if="isLoggedIn()"
           to="/profile"
           exact
           active-class="active"

@@ -6,7 +6,11 @@
           <form class="container">
             <div class="row">
               <div class="col-lg-12 col-md-12 black-block mt-3">
-                <form class="q-pt-xl" @submit.prevent="submitProfileForm">
+                <form
+                  v-if="!response.admin"
+                  class="q-pt-xl"
+                  @submit.prevent="submitProfileForm"
+                >
                   <div class="row q-pb-md">
                     <div class="col-md-6 q-pa-sm">
                       <label for="mail">E-mail</label>
