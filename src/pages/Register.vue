@@ -138,7 +138,6 @@
       <button @click="register" class="btn text-center">
         Create account
       </button>
-      <small class="q-pt-md">Are you have already account? than Sign in!</small>
       <div v-if="successRegistration" class="text-success">
         You have been registered successfully. Please check your email.
       </div>

@@ -1,5 +1,6 @@
 import Errors from "./../../modules/errors";
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 
 // const apiUrl = "http://localhost:4000";
 const apiUrl = "https://protected-garden-19195.herokuapp.com";
@@ -26,15 +27,15 @@ const actions = {
       password: payload.password
     };
 
-    // if (payload.action == 'password-reset') {
-    //     actionUrl = '/api/v1/password/reset';
-    //     data = {
-    //         'token': payload.token,
-    //         'username': payload.username,
-    //         'password': payload.password,
-    //         'password_confirmation': payload.password_confirmation
-    //     }
-    // }
+    if (payload.action === "password-reset") {
+      actionUrl = apiUrl + "/users/" + jwt_decode(payload.token).sub;
+      data = {
+        token: payload.token,
+        username: payload.username,
+        password: payload.password,
+        password_confirmation: payload.password_confirmation
+      };
+    }
 
     return new Promise((resolve, reject) => {
       commit("authRequest");

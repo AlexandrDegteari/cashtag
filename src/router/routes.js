@@ -53,6 +53,13 @@ const routes = [
         component: () => import("pages/Review.vue")
       },
       {
+        name: "forgot",
+        path: "forgot",
+        params: {},
+        props: true,
+        component: () => import("pages/Forgot.vue")
+      },
+      {
         name: "statistics",
         path: "statistics",
         beforeEnter: ifNotAuthenticated,

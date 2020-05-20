@@ -34,17 +34,26 @@
                 <!--                    Sign Up-->
                 <!--                  </button></router-link-->
                 <!--                >-->
+                <button
+                  type="button"
+                  @click="forgot = true"
+                  class="btn btn-secondary"
+                >
+                  Forgot Password
+                </button>
               </div>
               <!--              <div class="forgot">-->
               <!--                <div>-->
               <!--                  <q-checkbox size="sm" :value="true" />-->
               <!--                  <label>Remember me</label>-->
               <!--                </div>-->
-              <!--                <a href="#">Forgot Username / Password</a>-->
               <!--              </div>-->
               <div class="error mt-0" v-if="error">
                 {{ error }}
               </div>
+              <q-dialog v-model="forgot">
+                <forgot />
+              </q-dialog>
             </form>
           </div>
         </div>
@@ -55,13 +64,15 @@
 
 <script>
 import store from "../store/modules/auth";
-
+import Forgot from "../pages/Forgot";
 export default {
+  components: { Forgot },
   data() {
     return {
       email: null,
       password: null,
       error: null,
+      forgot: false,
       store: store.getters
     };
   },

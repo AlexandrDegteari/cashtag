@@ -68,7 +68,6 @@
 </template>
 <script>
 import Register from "../pages/Register";
-import jwt_decode from "jwt-decode";
 export default {
   name: "AppHeader",
   components: { Register },
@@ -85,13 +84,6 @@ export default {
       if (localStorage.getItem("user")) {
         return JSON.parse(localStorage.getItem("user")).admin;
       }
-    },
-    isAdmin1() {
-      if (!localStorage.getItem("access_token")) {
-        return;
-      }
-      const userId = jwt_decode(localStorage.getItem("access_token")).sub;
-      return userId === "5ec382270a82120cb4926c47";
     },
     logout() {
       this.$store.dispatch("authLogout").then(() => {
