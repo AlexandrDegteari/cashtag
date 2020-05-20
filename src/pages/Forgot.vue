@@ -98,7 +98,7 @@
 <script>
 import { validationMixin } from "vuelidate";
 import { email, required, sameAs } from "vuelidate/lib/validators";
-
+import UserService from "../services/user.service";
 export default {
   mixins: [validationMixin],
   data() {
@@ -110,7 +110,9 @@ export default {
       message: null,
       errors: null,
       error: null,
-      response: null
+      response: null,
+      userId: null,
+      restaurants: null
     };
   },
   validations: {
@@ -137,6 +139,14 @@ export default {
         return "Send recovery e-mail";
       }
     },
+    getUserByEmail() {
+      UserService.GetUsers()
+        .then(response => {
+          this.restaurants = response;
+          this.user = this.restaurants.find(item => item.email === this.email);
+        })
+        .catch(() => {});
+    },
     submitForm() {
       if (this.response) {
         if (this.$v.$invalid) return;
@@ -144,12 +154,15 @@ export default {
         this.errors = null;
         this.error = null;
         this.$axios
-          .put("https://protected-garden-19195.herokuapp.com/users", {
-            email: this.email,
-            code: this.code,
-            password: this.password,
-            password_confirmation: this.passwordConfirmation
-          })
+          .put(
+            "https://protected-garden-19195.herokuapp.com/users" + this.userId,
+            {
+              email: this.email,
+              code: this.code,
+              password: this.password,
+              password_confirmation: this.passwordConfirmation
+            }
+          )
           .then(response => {
             if (response.status === 200) {
               this.message = `Password was successfully changed for ${this.email}`;
@@ -168,7 +181,9 @@ export default {
           });
       } else {
         this.$axios
-          .get("https://protected-garden-19195.herokuapp.com/users" + email)
+          .post("https://api.kairos888.com/v1/user/forgot-password", {
+            email: this.email
+          })
           .then(response => {
             if (response.status === 200) {
               this.response = true;
@@ -178,7 +193,10 @@ export default {
       }
     }
   },
-  created() {}
+  created() {
+    this.getUserByEmail();
+    console.log(this.user);
+  }
 };
 </script>
 

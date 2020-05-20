@@ -9,10 +9,11 @@
               <thead>
                 <tr>
                   <th scope="col">Restaurant Name</th>
+                  <th scope="col">Restaurant Address</th>
                   <th scope="col">Google ID</th>
+                  <th scope="col">Update Data</th>
                   <th scope="col">Generate QR Code</th>
                   <th scope="col">Review Page Link</th>
-                  <th scope="col">Edit Data</th>
                 </tr>
               </thead>
               <tbody v-for="(rest, key) in restaurants" :key="key">
@@ -27,28 +28,36 @@
                   </th>
                   <th>
                     <input
+                      :value="rest.restaurantAddress"
+                      class="mt-1"
+                      id="restaurantAddress"
+                      type="text"
+                    />
+                  </th>
+                  <th>
+                    <input
+                      v-model="rest.googleId"
                       class="mt-1"
                       id="googleId"
                       type="text"
-                      v-model="rest.googleId"
                     />
                   </th>
-                  <!--                  <th>-->
-                  <!--                    <div-->
-                  <!--                      class="cursor-pointer"-->
-                  <!--                      @click="-->
-                  <!--                        submitProfileForm(-->
-                  <!--                          rest.id,-->
-                  <!--                          rest.googleId,-->
-                  <!--                          rest.restaurantName,-->
-                  <!--                          rest.restaurantAvatar,-->
-                  <!--                          rest.restaurantAddress-->
-                  <!--                        )-->
-                  <!--                      "-->
-                  <!--                    >-->
-                  <!--                      Edit Data-->
-                  <!--                    </div>-->
-                  <!--                  </th>-->
+                  <th>
+                    <div
+                      class="cursor-pointer"
+                      @click="
+                        submitProfileForm(
+                          rest.id,
+                          rest.googleId,
+                          rest.restaurantName,
+                          rest.restaurantAvatar,
+                          rest.restaurantAddress
+                        )
+                      "
+                    >
+                      Update Data
+                    </div>
+                  </th>
                   <th>
                     <a
                       class="cursor-pointer"
@@ -67,20 +76,6 @@
                       active-class="active"
                       >Review page</router-link
                     >
-                  </th>
-                  <th>
-                    <a
-                      class="cursor-pointer"
-                      @click="rest.restaurantAddress = true"
-                    >
-                      Edit Data
-                    </a>
-                    <q-dialog v-model="rest.restaurantAddress">
-                      <edit
-                        :return-value.sync="modalActive"
-                        :restaurant="rest"
-                      />
-                    </q-dialog>
                   </th>
                   <q-dialog v-model.trim="rest.restaurantAvatar">
                     <q-card>
@@ -117,12 +112,8 @@
 <script>
 import QrCodeGen from "../components/AppQrCodeGen";
 import UserService from "../services/user.service";
-import Edit from "./Edit";
 export default {
-  components: { Edit, QrCodeGen },
-  props: {
-    restaurant: Object
-  },
+  components: { QrCodeGen },
   data() {
     return {
       googleId: null,

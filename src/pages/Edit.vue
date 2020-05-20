@@ -1,13 +1,13 @@
 <template>
   <div style="background-color: #fff" class="form relative-position ">
     <form v-on:submit.prevent>
-      <h1>Add Restaurant</h1>
+      <h1>Edit Restaurant Data</h1>
       <div class="input input1 q-mt-md q-mb-md">
         <input
           id="input"
           type="text"
           v-model.trim="$v.username.$model"
-          placeholder="Username"
+          placeholder="Manager Name"
         />
         <label for="input"></label>
       </div>
@@ -37,38 +37,6 @@
       </p>
       <div class="input input2 q-mb-md">
         <input
-          id="input2"
-          type="password"
-          v-model="$v.password.$model"
-          placeholder="Password"
-        />
-        <label for="input2"></label>
-      </div>
-      <p v-if="$v.password.$dirty && !$v.password.required" class="error">
-        Password is required
-      </p>
-      <div class="input input2 q-mb-md">
-        <input
-          id="input3"
-          type="password"
-          v-model="$v.passwordConfirmation.$model"
-          placeholder="Password Confirmation"
-        />
-        <label for="input3"></label>
-      </div>
-      <p
-        v-if="
-          $v.passwordConfirmation.$dirty && !$v.passwordConfirmation.required
-        "
-        class="error m-0"
-      >
-        Confirm Password is required
-      </p>
-      <p v-if="!$v.passwordConfirmation.sameAsPassword" class="error">
-        Passwords must be identical
-      </p>
-      <div class="input input2 q-mb-md">
-        <input
           id="input9"
           type="text"
           v-model="referral"
@@ -80,7 +48,6 @@
         <input
           id="input4"
           type="text"
-          @change="getRestaurantsData()"
           v-model="$v.googleId.$model"
           placeholder="Google Places ID"
         />
@@ -135,12 +102,49 @@
         Restaurant Avatar required
       </p>
       <img :src="this.restaurantAvatar" alt="" />
-      <button @click="register" class="btn text-center">
-        Add Restaurant
+      <button @click="register" class="btn text-center w-100">
+        Update Data
       </button>
       <div v-if="successRegistration" class="text-success">
-        Restaurant created successfully.
+        Data updated successful.
       </div>
+      <div class="q-pt-lg">
+        <div class="input input2 q-mb-md">
+          <input
+            id="input2"
+            type="password"
+            v-model="$v.password.$model"
+            placeholder="Change Password"
+          />
+          <label for="input2"></label>
+        </div>
+        <p v-if="$v.password.$dirty && !$v.password.required" class="error">
+          Password is required
+        </p>
+        <div class="input input2 q-mb-md">
+          <input
+            id="input3"
+            type="password"
+            v-model="$v.passwordConfirmation.$model"
+            placeholder="Password Confirmation"
+          />
+          <label for="input3"></label>
+        </div>
+        <p
+          v-if="
+            $v.passwordConfirmation.$dirty && !$v.passwordConfirmation.required
+          "
+          class="error m-0"
+        >
+          Confirm Password is required
+        </p>
+        <p v-if="!$v.passwordConfirmation.sameAsPassword" class="error">
+          Passwords must be identical
+        </p>
+      </div>
+      <button @click="submitPasswordForm" class="btn text-center w-100">
+        Update Password
+      </button>
       <div v-if="errors" class="mt-0">
         <div v-for="(error, index) in errors.errors" :key="index">
           <p
@@ -159,25 +163,27 @@
 <script>
 import { validationMixin } from "vuelidate";
 import { email, required, sameAs } from "vuelidate/lib/validators";
+import UserService from "../services/user.service";
 
 export default {
   mixins: [validationMixin],
+  props: ["restaurant"],
   data() {
     return {
       response: null,
       restaurantsData: null,
-      restaurantName: null,
-      restaurantAvatar: null,
-      restaurantAddress: null,
+      restaurantName: this.restaurant.restaurantName,
+      restaurantAvatar: this.restaurant.restaurantAvatar,
+      restaurantAddress: this.restaurant.restaurantAddress,
       errors: null,
       successRegistration: false,
-      username: null,
+      username: this.restaurant.username,
       alias: null,
-      email: null,
+      email: this.restaurant.email,
       password: null,
       passwordConfirmation: null,
-      googleId: null,
-      referral: null,
+      googleId: this.restaurant.googleId,
+      referral: this.restaurant.referral,
       availableUsername: null,
       availableEmail: null,
       modalDate: false
@@ -196,8 +202,34 @@ export default {
       sameAsPassword: sameAs("password")
     }
   },
-  watch: {},
+  mounted() {
+    console.log(this.restaurant.googleId);
+  },
   methods: {
+    submitPasswordForm() {
+      this.$v.passwordForm.$touch();
+      if (this.$v.passwordForm.$invalid) {
+        return;
+      }
+
+      const password = {
+        current_password: this.passwordForm.currentPassword,
+        password: this.passwordForm.password,
+        password_confirmation: this.passwordForm.passwordConfirmation
+      };
+
+      this.passwordMessage = null;
+      this.passwordError = null;
+
+      UserService.UpdatePassword(password)
+        .then(response => {
+          this.passwordMessage = response.data.message;
+        })
+        .catch(error => {
+          this.passwordError = error.response.data.message;
+        });
+    },
+
     register() {
       this.$v.$touch();
 
@@ -227,26 +259,6 @@ export default {
         .catch(error => {
           this.errors = error.response.data;
         });
-    },
-    getRestaurantsData() {
-      console.log("getData");
-      const proxy = "https://cors-anywhere.herokuapp.com/";
-      const url =
-        "https://maps.googleapis.com/maps/api/place/details/json?placeid=";
-      const apiKey = "AIzaSyBNljWVEJJkYtalmgBaG_P1I5ZjviZ8j6A";
-      this.$axios
-        .get(proxy + url + this.googleId + "&key=" + apiKey)
-        .then(response => {
-          this.restaurantsData = response;
-          this.restaurantName = response.data.result.name;
-          this.restaurantAvatar = response.data.result.icon;
-          this.restaurantAddress = response.data.result.formatted_address;
-          console.log(response);
-          return response;
-        })
-        .catch(err => {
-          console.log(err);
-        });
     }
   }
 };
@@ -256,12 +268,7 @@ export default {
 h2 {
   font-size: 18px;
 }
-.forgot {
-  display: flex;
-  justify-content: flex-end;
-  min-width: 324px;
-  align-items: center;
-}
+
 .input {
   width: 323px;
   height: 49px;
@@ -282,6 +289,7 @@ form {
   background-position: center;
   padding: 20px;
 }
+
 label {
   font-size: 10px;
 }
