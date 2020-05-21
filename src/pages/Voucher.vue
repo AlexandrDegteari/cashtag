@@ -75,6 +75,7 @@ export default {
       "src",
       "https://www.widget.manychat.com/240691633480891.js"
     );
+    externalScript.setAttribute("async", "async");
     document.head.appendChild(externalScript);
   }
 };
