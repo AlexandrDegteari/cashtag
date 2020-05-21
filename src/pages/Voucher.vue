@@ -9,11 +9,6 @@
             <div class="welcome-2019 text-center">
               <h2>Vielen Dank für deine Bewertung</h2>
             </div>
-
-            <div class="subtitle text-center">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore
-            </div>
           </div>
         </q-img>
       </div>
@@ -21,36 +16,43 @@
 
     <div class="wrapper">
       <main>
-        <div class="bg">
-          <div class="container text-center q-pt-xl">
+        <div class="bg-voucher">
+          <div class="container text-center q-pt-sm q-pb-lg">
             <h1>
               {{ restaurantName }}
             </h1>
+            <h2>Name: Gratis Kaffee</h2>
+            <h2>Code: free-coffee-mai</h2>
           </div>
+        </div>
 
-          <div class="container q-pt-xl">
-            <h2 class="text-center">Lorem Ipsum</h2>
-            <div class="q-pa-xl">
-              <div class="row">
-                <q-banner>
-                  <template v-slot:avatar>
-                    <q-avatar
-                      unelevated
-                      icon="mobile_friendly"
-                      color="white"
-                      text-color="primary"
-                      size="9rem"
-                    />
-                  </template>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt
-                  </p>
-                </q-banner>
+        <div class="container q-pt-xl">
+          <h2 class="text-center">Nächster Schritt</h2>
+          <div class="q-pa-xl">
+            <div class="row q-pb-xl items-center">
+              <div class="col-4">
+                <q-img src="~assets/icons/fourth.svg" width="5rem" />
+              </div>
+              <div class="col-8">
+                <p>
+                  Zeige diesen Text einem Angestellten um dein Geschenk zu
+                  erhalten
+                </p>
               </div>
             </div>
-            <div class="q-pa-xl">
-              <div class="mcwidget-embed" data-widget-id="10861285"></div>
+          </div>
+        </div>
+
+        <div class="container q-pt-xl">
+          <div class="q-pa-sm">
+            <div class="row q-pb-sm items-center">
+              <div class="col-12">
+                <p class="subtitle">
+                  Teilnahmebedingungen: Pro Person nur ein Gutschein. Gutschein
+                  ist nur einmalig einlösbar. Gutschein ist nur in Kombination
+                  mit einer Bestellung gültig.
+                </p>
+              </div>
             </div>
           </div>
         </div>

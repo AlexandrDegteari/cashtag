@@ -52,13 +52,11 @@
 
     <div class="wrapper">
       <main>
-        <div class="bg">
-          <div class="container text-center q-pt-sm q-pb-lg">
+        <div class="bg-voucher">
+          <div class="container text-center q-pt-sm q-pb-sm">
             <h1>
               {{ restaurantName }}
             </h1>
-            <h2>Name: Gratis Kaffee</h2>
-            <h2>Code: free-coffee-mai</h2>
           </div>
         </div>
 
