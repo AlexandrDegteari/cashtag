@@ -46,6 +46,11 @@ const routes = [
         component: () => import("pages/Register.vue")
       },
       {
+        name: "contact",
+        path: "contact",
+        component: () => import("pages/SendEmail.vue")
+      },
+      {
         name: "review",
         path: "review/:googleId",
         params: {},

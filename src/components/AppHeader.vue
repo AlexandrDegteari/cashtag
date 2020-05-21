@@ -59,6 +59,13 @@
           label="Add Restaurant"
         >
         </q-tab>
+        <q-route-tab
+          to="/contact"
+          exact
+          active-class="active"
+          label="Contact Us"
+        >
+        </q-route-tab>
         <q-tab v-if="isLoggedIn()" @click="logout" label="Log out"> </q-tab>
       </q-tabs>
       <q-dialog v-model="addRest">
@@ -69,6 +76,7 @@
 </template>
 <script>
 import Register from "../pages/Register";
+
 export default {
   name: "AppHeader",
   components: { Register },

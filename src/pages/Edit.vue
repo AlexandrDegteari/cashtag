@@ -88,6 +88,72 @@
       </p>
       <div class="input input2 q-mb-md">
         <input
+          id="input10"
+          type="text"
+          v-model="$v.restaurantReviewImg.$model"
+          placeholder="Restaurant Review Image"
+        />
+        <label for="input10"></label>
+      </div>
+      <p
+        v-if="$v.restaurantReviewImg.$dirty && !$v.restaurantReviewImg.required"
+        class="error m-0"
+      >
+        Restaurant Review Image required
+      </p>
+      <div class="input input2 q-mb-md">
+        <input
+          id="input11"
+          type="text"
+          v-model="$v.restaurantVoucherImg.$model"
+          placeholder="Restaurant Voucher Image"
+        />
+        <label for="input11"></label>
+      </div>
+      <p
+        v-if="
+          $v.restaurantVoucherImg.$dirty && !$v.restaurantVoucherImg.required
+        "
+        class="error m-0"
+      >
+        Restaurant Voucher Image required
+      </p>
+      <div class="input input2 q-mb-md">
+        <input
+          id="input12"
+          type="text"
+          v-model="$v.restaurantVoucherName.$model"
+          placeholder="Restaurant Voucher Image"
+        />
+        <label for="input12"></label>
+      </div>
+      <p
+        v-if="
+          $v.restaurantVoucherName.$dirty && !$v.restaurantVoucherName.required
+        "
+        class="error m-0"
+      >
+        Restaurant Voucher Name required
+      </p>
+      <div class="input input2 q-mb-md">
+        <input
+          id="input13"
+          type="text"
+          v-model="$v.restaurantVoucherCode.$model"
+          placeholder="Restaurant Voucher Code"
+        />
+        <label for="input13"></label>
+      </div>
+      <p
+        v-if="
+          $v.restaurantVoucherCode.$dirty && !$v.restaurantVoucherCode.required
+        "
+        class="error m-0"
+      >
+        Restaurant Voucher Code required
+      </p>
+      <div class="input input2 q-mb-md">
+        <input
           id="input6"
           type="text"
           v-model="$v.restaurantAvatar.$model"
@@ -225,6 +291,10 @@ export default {
       restaurantName: this.restaurant.restaurantName,
       restaurantAvatar: this.restaurant.restaurantAvatar,
       restaurantAddress: this.restaurant.restaurantAddress,
+      restaurantReviewImg: this.restaurant.restaurantReviewImg,
+      restaurantVoucherImg: this.restaurant.restaurantVoucherImg,
+      restaurantVoucherName: this.restaurant.restaurantVoucherName,
+      restaurantVoucherCode: this.restaurant.restaurantVoucherCode,
       userId: this.restaurant.id,
       errors: null,
       successRegistration: false,
@@ -249,6 +319,10 @@ export default {
     restaurantName: { required },
     restaurantAvatar: { required },
     restaurantAddress: { required },
+    restaurantReviewImg: { required },
+    restaurantVoucherImg: { required },
+    restaurantVoucherName: { required },
+    restaurantVoucherCode: { required },
     password: { required },
     passwordConfirmation: {
       required,
@@ -266,7 +340,6 @@ export default {
       // }
 
       const password = {
-        // current_password: this.passwordForm.currentPassword,
         password: this.password,
         password_confirmation: this.passwordConfirmation
       };

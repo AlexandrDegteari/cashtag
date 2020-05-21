@@ -154,15 +154,12 @@ export default {
         this.errors = null;
         this.error = null;
         this.$axios
-          .put(
-            "https://protected-garden-19195.herokuapp.com/users" + this.userId,
-            {
-              email: this.email,
-              code: this.code,
-              password: this.password,
-              password_confirmation: this.passwordConfirmation
-            }
-          )
+          .put("https://localhost:4000" + this.userId, {
+            email: this.email,
+            code: this.code,
+            password: this.password,
+            password_confirmation: this.passwordConfirmation
+          })
           .then(response => {
             if (response.status === 200) {
               this.message = `Password was successfully changed for ${this.email}`;
