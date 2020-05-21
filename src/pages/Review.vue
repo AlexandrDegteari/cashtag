@@ -53,45 +53,47 @@
     <div class="wrapper">
       <main>
         <div class="bg">
-          <div class="container text-center q-pt-xl">
+          <div class="container text-center q-pt-sm q-pb-lg">
             <h1>
               {{ restaurantName }}
             </h1>
+            <h2>Name: Gratis Kaffee</h2>
+            <h2>Code: free-coffee-mai</h2>
           </div>
+        </div>
 
-          <div class="container q-pt-xl">
-            <h2 class="text-center">So funktioniert es:</h2>
-            <div class="q-pa-xl">
-              <div class="row q-pb-xl items-center">
-                <div class="col-4">
-                  <q-img src="~assets/icons/first.svg" width="5rem" />
-                </div>
-                <div class="col-8">
-                  <p>1. Scanne den QR-Code</p>
-                </div>
+        <div class="container q-pt-xl">
+          <h2 class="text-center">So funktioniert es:</h2>
+          <div class="q-pa-xl">
+            <div class="row q-pb-xl items-center">
+              <div class="col-4">
+                <q-img src="~assets/icons/first.svg" width="5rem" />
               </div>
-
-              <div class="row q-pb-xl items-center">
-                <div class="col-4">
-                  <q-img src="~assets/icons/second.svg" width="5rem" />
-                </div>
-                <div class="col-8">
-                  <p>
-                    2: Bewerte unser Restaurant online und erhalte den Gutschein
-                  </p>
-                </div>
+              <div class="col-8">
+                <p>1. Scanne den QR-Code</p>
               </div>
+            </div>
 
-              <div class="row q-pb-xl items-center">
-                <div class="col-4">
-                  <q-img src="~assets/icons/third.svg" width="5rem" />
-                </div>
-                <div class="col-8">
-                  <p>
-                    3: Komme nach der Bewertung zurück auf diese Seite und zeige
-                    den Gutschein vor
-                  </p>
-                </div>
+            <div class="row q-pb-xl items-center">
+              <div class="col-4">
+                <q-img src="~assets/icons/second.svg" width="5rem" />
+              </div>
+              <div class="col-8">
+                <p>
+                  2: Bewerte unser Restaurant online und erhalte den Gutschein
+                </p>
+              </div>
+            </div>
+
+            <div class="row q-pb-xl items-center">
+              <div class="col-4">
+                <q-img src="~assets/icons/third.svg" width="5rem" />
+              </div>
+              <div class="col-8">
+                <p>
+                  3: Komme nach der Bewertung zurück auf diese Seite und zeige
+                  den Gutschein vor
+                </p>
               </div>
             </div>
           </div>

@@ -83,6 +83,16 @@ footer {
   line-height: 1.5;
 }
 
+.bg {
+  background-color: $primary;
+}
+
+.bg h1, .bg h2 {
+  color: white;
+  line-height: 2rem;
+}
+
+
 label {
   color: #1B365E;
   font-size: 16px;
