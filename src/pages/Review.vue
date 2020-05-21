@@ -116,7 +116,7 @@ export default {
     makeReview() {
       setTimeout(() => {
         this.showVoucher();
-      }, 10000);
+      }, 3000);
     },
     showVoucher() {
       this.reviews = true;
