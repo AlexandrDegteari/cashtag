@@ -13,42 +13,18 @@
                   <th scope="col">Generate QR Code</th>
                   <th scope="col">Review Page Link</th>
                   <th scope="col">Edit Data</th>
+                  <th scope="col">Delete Restaurant</th>
                 </tr>
               </thead>
               <tbody v-for="(rest, key) in restaurants" :key="key">
                 <tr v-if="!rest.admin">
                   <th>
-                    <input
-                      class="mt-1"
-                      id="username"
-                      type="text"
-                      v-model="rest.restaurantName"
-                    />
+                    {{ rest.restaurantName }}
                   </th>
+
                   <th>
-                    <input
-                      class="mt-1"
-                      id="googleId"
-                      type="text"
-                      v-model="rest.googleId"
-                    />
+                    {{ rest.googleId }}
                   </th>
-                  <!--                  <th>-->
-                  <!--                    <div-->
-                  <!--                      class="cursor-pointer"-->
-                  <!--                      @click="-->
-                  <!--                        submitProfileForm(-->
-                  <!--                          rest.id,-->
-                  <!--                          rest.googleId,-->
-                  <!--                          rest.restaurantName,-->
-                  <!--                          rest.restaurantAvatar,-->
-                  <!--                          rest.restaurantAddress-->
-                  <!--                        )-->
-                  <!--                      "-->
-                  <!--                    >-->
-                  <!--                      Edit Data-->
-                  <!--                    </div>-->
-                  <!--                  </th>-->
                   <th>
                     <a class="cursor-pointer" @click="rest.id = true">
                       Generate QR Code
@@ -98,6 +74,33 @@
                       </q-card-actions>
                     </q-card>
                   </q-dialog>
+                  <th>
+                    <div
+                      @click="rest.restaurantAvatar = true"
+                      class="text-red cursor-pointer"
+                    >
+                      Delete
+                    </div>
+                    <q-dialog v-model.trim="rest.restaurantAvatar">
+                      <q-card>
+                        <q-card-section>
+                          <div class="text-h6">
+                            Are you sure that you want to delete
+                            {{ rest.restaurantName }}?
+                          </div>
+                        </q-card-section>
+                        <q-card-actions align="right">
+                          <q-btn
+                            @click="deleteRestaurant(rest.id)"
+                            flat
+                            label="Delete restaurant"
+                            color="danger"
+                            v-close-popup
+                          />
+                        </q-card-actions>
+                      </q-card>
+                    </q-dialog>
+                  </th>
                 </tr>
               </tbody>
             </table>
@@ -127,7 +130,9 @@ export default {
       // restaurantAvatar: this.rest.restaurantAvatar,
       // restaurantAddress: this.rest.restaurantAddress,
       message: null,
-      modalActive: false
+      modalActive: false,
+      deleteModal: false,
+      deleteSuccess: null
     };
   },
   methods: {
@@ -158,6 +163,13 @@ export default {
           this.restaurantAvatar = response.restaurantAvatar;
           this.restaurantAddress = response.restaurantAddress;
           this.googleId = response.googleId;
+        })
+        .catch(() => {});
+    },
+    deleteRestaurant(userId) {
+      UserService.DeleteUser(userId)
+        .then(response => {
+          this.deleteSuccess = response;
         })
         .catch(() => {});
     }

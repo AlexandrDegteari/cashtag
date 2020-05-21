@@ -131,25 +131,7 @@
                 </form>
                 <form @submit.prevent="submitPasswordForm">
                   <div class="row q-pb-md q-pt-xl">
-                    <div class="col-md-6 q-pa-sm pl-md-0 mt-2 q-pa-sm">
-                      <label for="oldPassword">Old Password</label>
-                      <input
-                        v-model="$v.passwordForm.currentPassword.$model"
-                        class="mt-1"
-                        id="oldPassword"
-                        type="password"
-                      />
-                      <p
-                        v-if="
-                          $v.passwordForm.currentPassword.$dirty &&
-                            !$v.passwordForm.currentPassword.required
-                        "
-                        class="error"
-                      >
-                        Old Password is required
-                      </p>
-                    </div>
-                    <div class="col-md-6 q-pa-sm pl-md-0 mt-2 q-pa-sm">
+                    <div class="col-12 col-md-6 q-pa-sm pl-md-0 mt-2 q-pa-sm">
                       <label class="mt-2" for="new-password"
                         >New Password</label
                       >
@@ -169,7 +151,7 @@
                         New Password is required
                       </p>
                     </div>
-                    <div class="col-md-6 q-pa-sm pl-md-0 mt-2 q-pa-sm">
+                    <div class="col-12 col-md-6 q-pa-sm pl-md-0 mt-2 q-pa-sm">
                       <label class="mt-2" for="passwordConfirmation"
                         >New Password Confirmation</label
                       >
@@ -197,7 +179,7 @@
                         Passwords must be identical
                       </p>
                     </div>
-                    <div class="col-md-6 q-pa-sm pl-md-0 mt-2 q-pa-sm">
+                    <div class="col-md-12 q-pa-sm pl-md-0 mt-2 q-pa-sm">
                       <input
                         class="btn btn-primary mt-3"
                         type="submit"
@@ -250,7 +232,6 @@ export default {
       dialogAvatar: false,
       base64: null,
       passwordForm: {
-        currentPassword: null,
         password: null,
         passwordConfirmation: null
       },
@@ -264,7 +245,6 @@ export default {
     restaurantAvatar: { required },
     restaurantAddress: { required },
     passwordForm: {
-      currentPassword: { required },
       password: { required },
       passwordConfirmation: { required, sameAsPassword: sameAs("password") }
     }
@@ -305,7 +285,6 @@ export default {
       }
 
       const password = {
-        current_password: this.passwordForm.currentPassword,
         password: this.passwordForm.password,
         password_confirmation: this.passwordForm.passwordConfirmation
       };

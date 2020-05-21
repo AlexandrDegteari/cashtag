@@ -74,11 +74,16 @@ const UpdateUserPass = (password, userId) => {
   return axios.put(`${api}/users/` + userId, password);
 };
 
+const DeleteUser = userId => {
+  return axios.delete(`${api}/users/` + userId);
+};
+
 export default {
   GetUserInfo,
   GetUsers,
   UpdateProfile,
   UpdatePassword,
   UpdateUserProf,
-  UpdateUserPass
+  UpdateUserPass,
+  DeleteUser
 };

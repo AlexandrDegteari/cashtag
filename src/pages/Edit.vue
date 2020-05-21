@@ -156,7 +156,7 @@
     </form>
     <form @submit.prevent="submitPasswordForm">
       <div class="row q-pb-md q-pt-xl">
-        <div class="q-pa-sm pl-md-0 mt-2 q-pa-sm">
+        <div class="col-md-12 q-pa-sm pl-md-0 mt-2 q-pa-sm">
           <label class="mt-2" for="new-password">New Password</label>
           <input
             v-model="$v.password.$model"
@@ -168,7 +168,7 @@
             New Password is required
           </p>
         </div>
-        <div class="q-pa-sm pl-md-0 mt-2 q-pa-sm">
+        <div class="col-md-12 q-pa-sm pl-md-0 mt-2 q-pa-sm">
           <label class="mt-2" for="passwordConfirmation"
             >New Password Confirmation</label
           >
@@ -191,7 +191,7 @@
             Passwords must be identical
           </p>
         </div>
-        <div class="col-md-6 q-pa-sm pl-md-0 mt-2 q-pa-sm">
+        <div class="col-md-12 q-pa-sm pl-md-0 mt-2 q-pa-sm">
           <button
             @click.stop="submitPasswordForm"
             class="btn text-center w-100"
@@ -313,8 +313,8 @@ h2 {
 }
 
 .input {
-  width: 323px;
-  height: 49px;
+  width: 100%;
+  /*height: 49px;*/
   display: flex;
   align-items: center;
   justify-content: center;
@@ -330,7 +330,7 @@ form {
   align-items: center;
   justify-content: center;
   background-position: center;
-  padding: 20px;
+  padding: 0 40px;
 }
 
 label {
