@@ -57,10 +57,18 @@
               </div>
               <div class="row q-pb-xl">
                 <div class="col-8">
-                  <p>Seitenbesuche:</p>
+                  <p>Alle Reviews:</p>
                 </div>
                 <div class="col-4">
-                  <p>INSERT PAGEVIEWS HERE</p>
+                  <p>{{ restaurantRatingTotal }}</p>
+                </div>
+              </div>
+              <div class="row q-pb-xl">
+                <div class="col-8">
+                  <p>Cashtag Reviews:</p>
+                </div>
+                <div class="col-4">
+                  <p>{{ restaurantReviewCounter }}</p>
                 </div>
               </div>
               <div class="row q-pb-xl">
@@ -68,7 +76,7 @@
                   <p>Gutscheine eingelöst:</p>
                 </div>
                 <div class="col-4">
-                  <p>INSERT CLAIMED VOUCHERS HERE</p>
+                  <p>{{ restaurantVoucherCounter }}</p>
                 </div>
               </div>
             </div>
@@ -89,7 +97,9 @@ export default {
       restaurantRating: this.restaurantRating,
       googleId: this.googleId,
       restaurantReviews: this.restaurantReviews,
-      restaurantReviewCounter: this.restaurantReviewCounter
+      restaurantReviewCounter: this.restaurantReviewCounter,
+      restaurantVoucherCounter: this.restaurantVoucherCounter,
+      restaurantRatingTotal: this.restaurantRatingTotal
     };
   },
   methods: {
@@ -102,6 +112,7 @@ export default {
           this.restaurantAvatar = response.restaurantAvatar;
           this.restaurantAddress = response.restaurantAddress;
           this.restaurantReviewCounter = response.restaurantReviewCounter;
+          this.restaurantVoucherCounter = response.restaurantVoucherCounter;
           this.googleId = response.googleId;
           this.getRestaurantsData();
         })
@@ -117,6 +128,7 @@ export default {
         .then(response => {
           this.restaurantRating = response.data.result.rating;
           this.restaurantReviews = response.data.result.reviews;
+          this.restaurantRatingTotal = response.data.result.user_ratings_total;
           console.log(response);
           return response;
         })

@@ -3,7 +3,13 @@
     <img :src="this.restaurantAvatar" alt="" />
     <div class="q-col-gutter-md row items-start">
       <div class="col-12 container-fluid">
-        <q-img src="../assets/cashtag-food.jpg">
+        <q-img
+          :src="
+            this.restaurantImage
+              ? this.restaurantReviewImg
+              : 'https://img.jakpost.net/c/2017/04/17/2017_04_17_25228_1492395137._large.jpg'
+          "
+        >
           <div class=" absolute-full text-subtitle2 column flex flex-center">
             <p></p>
             <div class="welcome-2019 text-center">
@@ -21,8 +27,20 @@
             <h1>
               {{ restaurantName }}
             </h1>
-            <h2>Name: Gratis Kaffee</h2>
-            <h2>Code: free-coffee-mai</h2>
+            <h2>
+              Name:
+              {{
+                restaurantVoucherName ? restaurantVoucherName : "Gratis Kaffe"
+              }}
+            </h2>
+            <h2>
+              Code:
+              {{
+                restaurantVoucherCode
+                  ? restaurantVoucherCode
+                  : "free-coffee-mai"
+              }}
+            </h2>
           </div>
         </div>
         <!--        <div class="mcwidget-embed" data-widget-id="10861285"></div>-->
@@ -65,19 +83,13 @@ export default {
   name: "Voucher",
   data() {
     return {
+      userId: this.$route.params.userId,
       restaurantName: this.$route.params.restaurantName,
-      restaurantAvatar: this.$route.params.restaurantAvatar
+      restaurantImage: this.$route.params.restaurantImage,
+      restaurantVoucherName: this.$route.params.restaurantVoucherName,
+      restaurantVoucherCode: this.$route.params.restaurantVoucherCode
     };
   }
-  // mounted() {
-  //   let externalScript = document.createElement("script");
-  //   externalScript.setAttribute(
-  //     "src",
-  //     "https://www.widget.manychat.com/240691633480891.js"
-  //   );
-  //   externalScript.setAttribute("async", "async");
-  //   document.head.appendChild(externalScript);
-  // }
 };
 </script>
 

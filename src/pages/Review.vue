@@ -5,9 +5,9 @@
       <div class="col-12 container-fluid">
         <q-img
           :src="
-            this.restaurantReviewImg
-              ? this.restaurantReviewImg
-              : 'img/cashtag-food.jpg'
+            this.restaurantImage
+              ? this.restaurantImage
+              : 'https://img.jakpost.net/c/2017/04/17/2017_04_17_25228_1492395137._large.jpg'
           "
         >
           <div class=" absolute-full text-subtitle2 column flex flex-center">
@@ -35,14 +35,15 @@
                   params: {
                     googleId: this.googleId,
                     restaurantName: this.restaurantName,
-                    restaurantAvatar: this.restaurantAvatar
+                    restaurantAvatar: this.restaurantAvatar,
+                    restaurantReviewCounter: this.restaurantReviewCounter
                   }
                 }"
                 exact
                 tag="li"
                 active-class="active"
               >
-                <button class="btn">
+                <button class="btn" @click="voucherCounter">
                   Geschenk abholen
                 </button></router-link
               >
@@ -118,13 +119,15 @@ export default {
       restaurantAvatar: this.restaurantAvatar,
       reviews: false,
       googleId: this.googleId,
-      restaurantReviewImg: this.restaurantReviewImg,
+      restaurantImage: this.restaurantImage,
       restaurantReviewCounter: this.restaurantReviewCounter,
+      restaurantVoucherCounter: this.restaurantVoucherCounter,
       userId: this.$route.params.userId
     };
   },
   methods: {
     makeReview() {
+      this.getRestaurantById(this.userId);
       this.counter();
       setTimeout(() => {
         this.showVoucher();
@@ -133,6 +136,25 @@ export default {
     showVoucher() {
       this.reviews = true;
     },
+    guestLogin() {
+      const user = {
+        email: "guest@mail.com",
+        password: "123456"
+      };
+
+      this.$store
+        .dispatch("authRequest", user)
+        .then(() => {
+          if (this.error) {
+            this.error = null;
+          }
+        })
+        .catch(error => {
+          this.error = error.response.data.message;
+          this.password = null;
+        });
+    },
+
     counter() {
       const profile = {
         googleId: this.googleId,
@@ -153,6 +175,27 @@ export default {
           console.log(error.error.response.data);
         });
     },
+    voucherCounter() {
+      const profile = {
+        googleId: this.googleId,
+        restaurantName: this.restaurantName,
+        restaurantAvatar: this.restaurantAvatar,
+        restaurantAddress: this.restaurantAddress,
+        restaurantVoucherCounter: this.restaurantVoucherCounter
+          ? this.restaurantVoucherCounter + 1
+          : 1
+      };
+
+      UserService.UpdateUserProf(profile, this.userId)
+        .then(() => {
+          this.$emit("updatedForm");
+          console.log("The counter has been successfully updated.");
+        })
+        .catch(error => {
+          console.log(error.error.response.data);
+        });
+    },
+
     getRestaurantById(userId) {
       UserService.GetUserById(userId)
         .then(response => {
@@ -160,14 +203,19 @@ export default {
           this.restaurantAvatar = response.restaurantAvatar;
           this.restaurantAddress = response.restaurantAddress;
           this.googleId = response.googleId;
-          this.restaurantReviewImg = response.restaurantReviewImg;
+          this.restaurantImage = response.restaurantImage;
           this.restaurantReviewCounter = response.restaurantReviewCounter;
+          this.restaurantVoucherCounter = response.restaurantVoucherCounter;
         })
         .catch(() => {});
     }
   },
   beforeMount() {
     this.getRestaurantById(this.userId);
+    console.log(localStorage.getItem("user"));
+    if (!localStorage.getItem("user")) {
+      this.guestLogin();
+    }
   }
 };
 </script>

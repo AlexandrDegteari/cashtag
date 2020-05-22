@@ -12,6 +12,7 @@
                   <th scope="col">Restaurant Name</th>
                   <th scope="col">Google ID</th>
                   <th scope="col">Reviews</th>
+                  <th scope="col">Vouchers</th>
                 </tr>
               </thead>
               <tbody v-for="(rest, key) in restaurants" :key="key">
@@ -24,6 +25,9 @@
                   </th>
                   <th>
                     {{ rest.restaurantReviewCounter }}
+                  </th>
+                  <th>
+                    {{ rest.restaurantVoucherCounter }}
                   </th>
                 </tr>
               </tbody>

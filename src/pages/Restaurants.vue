@@ -25,7 +25,10 @@
                     {{ rest.googleId }}
                   </th>
                   <th>
-                    <a class="cursor-pointer" @click="rest.id = true">
+                    <a
+                      class="cursor-pointer"
+                      @click="rest.restaurantAvatar = true"
+                    >
                       Generate QR Code
                     </a>
                   </th>
@@ -54,7 +57,7 @@
                       />
                     </q-dialog>
                   </th>
-                  <q-dialog v-model.trim="rest.id">
+                  <q-dialog v-model.trim="rest.restaurantAvatar">
                     <q-card>
                       <q-card-section>
                         <div class="text-h6">
@@ -65,7 +68,7 @@
                         <QrCodeGen
                           :value="
                             'http://cashtag.michaelringlein.com/#/review/' +
-                              rest.googleId
+                              rest.id
                           "
                         >
                         </QrCodeGen>
@@ -78,12 +81,12 @@
                   </q-dialog>
                   <th>
                     <div
-                      @click="rest.restaurantAvatar = true"
+                      @click="rest.id = true"
                       class="text-red cursor-pointer"
                     >
                       Delete
                     </div>
-                    <q-dialog v-model.trim="rest.restaurantAvatar">
+                    <q-dialog v-model.trim="rest.id">
                       <q-card>
                         <q-card-section>
                           <div class="text-h6">

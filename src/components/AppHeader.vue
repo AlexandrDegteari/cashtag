@@ -1,6 +1,10 @@
 <template>
   <q-layout
-    v-if="this.$route.name !== 'review' && this.$route.name !== 'voucher'"
+    v-if="
+      this.$route.name !== 'review' &&
+        this.$route.name !== 'voucher' &&
+        !isGuest()
+    "
     view="hHh lpR fFf"
     style="min-height:0;"
   >
@@ -100,6 +104,11 @@ export default {
     isAdmin() {
       if (localStorage.getItem("user")) {
         return JSON.parse(localStorage.getItem("user")).admin;
+      }
+    },
+    isGuest() {
+      if (localStorage.getItem("user")) {
+        return JSON.parse(localStorage.getItem("user")).guest;
       }
     },
     logout() {
