@@ -24,7 +24,7 @@
               />
             </router-link>
           </div>
-          <div class="col-md-4 text-center text-sm-left q-pr-md">
+          <div class="col-md-9 text-center text-sm-left q-pr-md">
             <ul class="d-flex justify-end m-0 wrap footer-menu">
               <li class="list-inline-item mr-0_1">
                 <a href="#" target="_blank">
@@ -42,6 +42,10 @@
             </ul>
             <span class="copy d-block text-right"
               >2020 © Cashtag - All Rights Reserved.</span
+            >
+            <span class="copy d-block text-right">
+              Bei technischen Rückfragen schreiben schreiben Sie uns einfach
+              eine E-Mail an info@cashtag.com</span
             >
           </div>
         </div>
