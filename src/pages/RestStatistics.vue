@@ -11,7 +11,7 @@
           <div class="row q-pb-xl">
             <div class="col-sm-6">
               <h2>Letzte 5 Bewertungen</h2>
-              <div v-if="restaurantReviews" class="q-pt-xl q-pb-xl q-pr-xl">
+              <div v-if="restaurantReviews" class="q-pt-md q-pb-xl q-pr-xl">
                 <q-card
                   v-for="(review, key) in restaurantReviews"
                   :key="key"
@@ -47,7 +47,7 @@
             </div>
             <div class="col-sm-6">
               <h2>Statistik</h2>
-              <div class="row">
+              <div class="row q-pb-xl q-pt-md">
                 <div class="col-8">
                   <p>Durchschnittliche Bewertung:</p>
                 </div>
@@ -55,7 +55,7 @@
                   <p>{{ restaurantRating }}</p>
                 </div>
               </div>
-              <div class="row">
+              <div class="row q-pb-xl">
                 <div class="col-8">
                   <p>Seitenbesuche:</p>
                 </div>
@@ -63,7 +63,7 @@
                   <p>INSERT PAGEVIEWS HERE</p>
                 </div>
               </div>
-              <div class="row">
+              <div class="row q-pb-xl">
                 <div class="col-8">
                   <p>Gutscheine eingelöst:</p>
                 </div>
