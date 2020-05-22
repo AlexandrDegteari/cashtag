@@ -1,12 +1,12 @@
 <template>
   <div>
-    <img :src="this.restaurantAvatar" alt="" />
+    <img :src="restaurantAvatar" alt="" />
     <div class="q-col-gutter-md row items-start">
       <div class="col-12 container-fluid">
         <q-img
           :src="
-            this.restaurantImage
-              ? this.restaurantImage
+            restaurantImage
+              ? restaurantImage
               : 'https://img.jakpost.net/c/2017/04/17/2017_04_17_25228_1492395137._large.jpg'
           "
         >
@@ -87,7 +87,8 @@ export default {
       restaurantName: this.$route.params.restaurantName,
       restaurantImage: this.$route.params.restaurantImage,
       restaurantVoucherName: this.$route.params.restaurantVoucherName,
-      restaurantVoucherCode: this.$route.params.restaurantVoucherCode
+      restaurantVoucherCode: this.$route.params.restaurantVoucherCode,
+      restaurantAvatar: this.$route.params.restaurantAvatar
     };
   }
 };

@@ -36,6 +36,7 @@
                     googleId: this.googleId,
                     restaurantName: this.restaurantName,
                     restaurantAvatar: this.restaurantAvatar,
+                    restaurantImage: this.restaurantImage,
                     restaurantReviewCounter: this.restaurantReviewCounter,
                     restaurantVoucherName: this.restaurantVoucherName,
                     restaurantVoucherCode: this.restaurantVoucherCode
