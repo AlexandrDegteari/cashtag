@@ -230,9 +230,9 @@ export default {
       availableUsername: null,
       availableEmail: null,
       modalDate: false,
-      restaurantImage: this.restaurant.restaurantImage,
-      restaurantVoucherName: this.restaurant.restaurantVoucherName,
-      restaurantVoucherCode: this.restaurant.restaurantVoucherCode
+      restaurantImage: null,
+      restaurantVoucherName: null,
+      restaurantVoucherCode: null
     };
   },
   validations: {
@@ -313,12 +313,6 @@ export default {
 <style scoped>
 h2 {
   font-size: 18px;
-}
-.forgot {
-  display: flex;
-  justify-content: flex-end;
-  min-width: 324px;
-  align-items: center;
 }
 .input {
   width: 323px;
