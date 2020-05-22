@@ -117,16 +117,15 @@ export default {
       restaurantName: this.restaurantName,
       restaurantAvatar: this.restaurantAvatar,
       reviews: false,
-      googleId: this.$route.params.googleId,
-      restaurantReviewImg: this.$route.params.restaurantReviewImg,
-      restaurantReviewCounter: this.$route.params.restaurantReviewImg,
+      googleId: this.googleId,
+      restaurantReviewImg: this.restaurantReviewImg,
+      restaurantReviewCounter: this.restaurantReviewCounter,
       userId: this.$route.params.userId
     };
   },
   methods: {
     makeReview() {
       this.counter();
-      console.log(this.restaurantReviewCounter);
       setTimeout(() => {
         this.showVoucher();
       }, 3000);
@@ -136,10 +135,13 @@ export default {
     },
     counter() {
       const profile = {
-        restaurantData: this.restaurantData,
+        googleId: this.googleId,
         restaurantName: this.restaurantName,
         restaurantAvatar: this.restaurantAvatar,
-        restaurantReviewCounter: this.restaurantReviewCounter + 1
+        restaurantAddress: this.restaurantAddress,
+        restaurantReviewCounter: this.restaurantReviewCounter
+          ? this.restaurantReviewCounter + 1
+          : 1
       };
 
       UserService.UpdateUserProf(profile, this.userId)
@@ -151,28 +153,21 @@ export default {
           console.log(error.error.response.data);
         });
     },
-    getRestaurantsData() {
-      console.log("getData");
-      const proxy = "https://cors-anywhere.herokuapp.com/";
-      const url =
-        "https://maps.googleapis.com/maps/api/place/details/json?placeid=";
-      const apiKey = "AIzaSyBNljWVEJJkYtalmgBaG_P1I5ZjviZ8j6A";
-      this.$axios
-        .get(proxy + url + this.googleId + "&key=" + apiKey)
+    getRestaurantById(userId) {
+      UserService.GetUserById(userId)
         .then(response => {
-          this.restaurantData = response;
-          this.restaurantName = response.data.result.name;
-          this.restaurantAvatar = response.data.result.icon;
-          console.log(response);
-          return response;
+          this.restaurantName = response.restaurantName;
+          this.restaurantAvatar = response.restaurantAvatar;
+          this.restaurantAddress = response.restaurantAddress;
+          this.googleId = response.googleId;
+          this.restaurantReviewImg = response.restaurantReviewImg;
+          this.restaurantReviewCounter = response.restaurantReviewCounter;
         })
-        .catch(err => {
-          console.log(err);
-        });
+        .catch(() => {});
     }
   },
   beforeMount() {
-    this.getRestaurantsData();
+    this.getRestaurantById(this.userId);
   }
 };
 </script>

@@ -3,8 +3,11 @@
     <h2>{{ restaurantName }} statistics</h2>
     <h2>{{ googleId }}</h2>
     <p>Restaurant rating: {{ restaurantRating }}</p>
+    <p v-if="restaurantReviewCounter">
+      Restaurant Cashtag Reviews: {{ restaurantReviewCounter }}
+    </p>
     <p v-if="restaurantReviews">
-      Restaurant reviews counter: {{ restaurantReviews.length }}
+      Restaurant All Reviews: {{ restaurantReviews.length }}
     </p>
     <p>Restaurant last reviews : {{ restaurantReviews }}</p>
   </div>
@@ -19,7 +22,8 @@ export default {
       restaurantName: this.restaurantName,
       restaurantRating: this.restaurantRating,
       googleId: this.googleId,
-      restaurantReviews: this.restaurantReviews
+      restaurantReviews: this.restaurantReviews,
+      restaurantReviewCounter: this.restaurantReviewCounter
     };
   },
   methods: {
@@ -31,14 +35,13 @@ export default {
           this.restaurantName = response.restaurantName;
           this.restaurantAvatar = response.restaurantAvatar;
           this.restaurantAddress = response.restaurantAddress;
+          this.restaurantReviewCounter = response.restaurantReviewCounter;
           this.googleId = response.googleId;
           this.getRestaurantsData();
         })
         .catch(() => {});
     },
     getRestaurantsData() {
-      console.log("getData");
-      console.log(this.googleId);
       const proxy = "https://cors-anywhere.herokuapp.com/";
       const url =
         "https://maps.googleapis.com/maps/api/place/details/json?placeid=";

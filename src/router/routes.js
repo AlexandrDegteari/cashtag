@@ -52,7 +52,7 @@ const routes = [
       },
       {
         name: "review",
-        path: "review/:googleId",
+        path: "review/:userId",
         params: {},
         props: true,
         component: () => import("pages/Review.vue")
@@ -72,7 +72,7 @@ const routes = [
       },
       {
         name: "voucher",
-        path: "voucher/:googleId",
+        path: "voucher/:userId",
         component: () => import("pages/Voucher.vue")
       },
       {

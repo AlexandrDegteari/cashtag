@@ -25,7 +25,7 @@
             <h2>Code: free-coffee-mai</h2>
           </div>
         </div>
-        <div class="mcwidget-embed" data-widget-id="10861285"></div>
+        <!--        <div class="mcwidget-embed" data-widget-id="10861285"></div>-->
         <div class="container q-pt-xl">
           <h2 class="text-center">Nächster Schritt</h2>
           <div class="q-pa-xl">
@@ -68,16 +68,16 @@ export default {
       restaurantName: this.$route.params.restaurantName,
       restaurantAvatar: this.$route.params.restaurantAvatar
     };
-  },
-  mounted() {
-    let externalScript = document.createElement("script");
-    externalScript.setAttribute(
-      "src",
-      "https://www.widget.manychat.com/240691633480891.js"
-    );
-    externalScript.setAttribute("async", "async");
-    document.head.appendChild(externalScript);
   }
+  // mounted() {
+  //   let externalScript = document.createElement("script");
+  //   externalScript.setAttribute(
+  //     "src",
+  //     "https://www.widget.manychat.com/240691633480891.js"
+  //   );
+  //   externalScript.setAttribute("async", "async");
+  //   document.head.appendChild(externalScript);
+  // }
 };
 </script>
 

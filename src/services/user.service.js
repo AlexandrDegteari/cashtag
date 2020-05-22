@@ -35,6 +35,20 @@ const GetUsers = () => {
     });
 };
 
+const GetUserById = userId => {
+  return axios
+    .get(`${api}/users/` + userId)
+    .then(response => {
+      if (response.data) {
+        return response.data;
+      }
+      return false;
+    })
+    .catch(error => {
+      return { error };
+    });
+};
+
 const UpdateProfile = profile => {
   const userId = jwt_decode(localStorage.getItem("access_token")).sub;
   return axios
@@ -85,5 +99,6 @@ export default {
   UpdatePassword,
   UpdateUserProf,
   UpdateUserPass,
+  GetUserById,
   DeleteUser
 };
