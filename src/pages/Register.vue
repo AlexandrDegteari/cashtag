@@ -78,6 +78,55 @@
       </div>
       <div class="input input2 q-mb-md">
         <input
+          id="input10"
+          type="text"
+          v-model="$v.restaurantImage.$model"
+          placeholder="Restaurant Image"
+        />
+        <label for="input10"></label>
+      </div>
+      <p
+        v-if="$v.restaurantImage.$dirty && !$v.restaurantImage.required"
+        class="error m-0"
+      >
+        Restaurant Review Image required
+      </p>
+      <div class="input input2 q-mb-md">
+        <input
+          id="input12"
+          type="text"
+          v-model="$v.restaurantVoucherName.$model"
+          placeholder="Restaurant Voucher Name"
+        />
+        <label for="input12"></label>
+      </div>
+      <p
+        v-if="
+          $v.restaurantVoucherName.$dirty && !$v.restaurantVoucherName.required
+        "
+        class="error m-0"
+      >
+        Restaurant Voucher Name required
+      </p>
+      <div class="input input2 q-mb-md">
+        <input
+          id="input13"
+          type="text"
+          v-model="$v.restaurantVoucherCode.$model"
+          placeholder="Restaurant Voucher Code"
+        />
+        <label for="input13"></label>
+      </div>
+      <p
+        v-if="
+          $v.restaurantVoucherCode.$dirty && !$v.restaurantVoucherCode.required
+        "
+        class="error m-0"
+      >
+        Restaurant Voucher Code required
+      </p>
+      <div class="input input2 q-mb-md">
+        <input
           id="input4"
           type="text"
           @change="getRestaurantsData()"
@@ -180,7 +229,10 @@ export default {
       referral: null,
       availableUsername: null,
       availableEmail: null,
-      modalDate: false
+      modalDate: false,
+      restaurantImage: this.restaurant.restaurantImage,
+      restaurantVoucherName: this.restaurant.restaurantVoucherName,
+      restaurantVoucherCode: this.restaurant.restaurantVoucherCode
     };
   },
   validations: {
@@ -190,6 +242,9 @@ export default {
     restaurantName: { required },
     restaurantAvatar: { required },
     restaurantAddress: { required },
+    restaurantImage: { required },
+    restaurantVoucherName: { required },
+    restaurantVoucherCode: { required },
     password: { required },
     passwordConfirmation: {
       required,
@@ -213,7 +268,10 @@ export default {
         referral: this.referral,
         restaurantName: this.restaurantName,
         restaurantAvatar: this.restaurantAvatar,
-        restaurantAddress: this.restaurantAddress
+        restaurantAddress: this.restaurantAddress,
+        restaurantVoucherName: this.restaurantVoucherName,
+        restaurantVoucherCode: this.restaurantVoucherCode,
+        restaurantImage: this.restaurantImage
       };
       this.$store
         .dispatch("authRegister", user)
