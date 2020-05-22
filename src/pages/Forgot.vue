@@ -155,8 +155,6 @@ export default {
         this.error = null;
         this.$axios
           .put("https://localhost:4000" + this.userId, {
-            email: this.email,
-            code: this.code,
             password: this.password,
             password_confirmation: this.passwordConfirmation
           })

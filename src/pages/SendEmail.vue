@@ -22,8 +22,8 @@ export default {
     sendEmail: e => {
       emailjs
         .sendForm(
-          "j54JohPiQD2C1UX9JFCywA",
-          "Default",
+          "gmail",
+          "template_xYlNIgCm",
           e.target,
           "user_7qCEB0QtIVK0wg4IBEKZh"
         )
