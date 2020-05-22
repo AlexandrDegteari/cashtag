@@ -36,7 +36,9 @@
                     googleId: this.googleId,
                     restaurantName: this.restaurantName,
                     restaurantAvatar: this.restaurantAvatar,
-                    restaurantReviewCounter: this.restaurantReviewCounter
+                    restaurantReviewCounter: this.restaurantReviewCounter,
+                    restaurantVoucherName: this.restaurantVoucherName,
+                    restaurantVoucherCode: this.restaurantVoucherCode
                   }
                 }"
                 exact
@@ -206,6 +208,8 @@ export default {
           this.restaurantImage = response.restaurantImage;
           this.restaurantReviewCounter = response.restaurantReviewCounter;
           this.restaurantVoucherCounter = response.restaurantVoucherCounter;
+          this.restaurantVoucherName = response.restaurantVoucherName;
+          this.restaurantVoucherCode = response.restaurantVoucherCode;
         })
         .catch(() => {});
     }

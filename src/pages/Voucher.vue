@@ -6,7 +6,7 @@
         <q-img
           :src="
             this.restaurantImage
-              ? this.restaurantReviewImg
+              ? this.restaurantImage
               : 'https://img.jakpost.net/c/2017/04/17/2017_04_17_25228_1492395137._large.jpg'
           "
         >
