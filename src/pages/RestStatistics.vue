@@ -1,15 +1,81 @@
 <template>
-  <div>
-    <h2>{{ restaurantName }} statistics</h2>
-    <h2>{{ googleId }}</h2>
-    <p>Restaurant rating: {{ restaurantRating }}</p>
-    <p v-if="restaurantReviewCounter">
-      Restaurant Cashtag Reviews: {{ restaurantReviewCounter }}
-    </p>
-    <p v-if="restaurantReviews">
-      Restaurant All Reviews: {{ restaurantReviews.length }}
-    </p>
-    <p>Restaurant last reviews : {{ restaurantReviews }}</p>
+  <div class="wrapper">
+    <main>
+      <div class="container q-pt-xl">
+        <h1 class="text-center">{{ restaurantName }}</h1>
+        <p class="text-center">
+          Google ID: <code>{{ googleId }}</code>
+        </p>
+
+        <div class="q-pa-xl">
+          <div class="row q-pb-xl">
+            <div class="col-sm-6">
+              <h2>Letzte 5 Bewertungen</h2>
+              <div v-if="restaurantReviews" class="q-pt-md q-pb-xl q-pr-xl">
+                <q-card
+                  v-for="(review, key) in restaurantReviews"
+                  :key="key"
+                  class="my-card"
+                >
+                  <q-card-section>
+                    <div class="row no-wrap items-center">
+                      <div class="col text-h6 ellipsis">
+                        {{ review.author_name }}
+                      </div>
+                    </div>
+
+                    <q-rating
+                      v-model="stars"
+                      :max="review.rating"
+                      color="yellow"
+                      size="2em"
+                      readonly
+                    />
+                    ({{ review.rating }})
+                  </q-card-section>
+
+                  <q-card-section class="q-pt-none">
+                    <div class="text-subtitle1">
+                      {{ review.text }}
+                    </div>
+                    <div class="text-caption text-grey">
+                      {{ review.relative_time_description }}
+                    </div>
+                  </q-card-section>
+                </q-card>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <h2>Statistik</h2>
+              <div class="row q-pb-xl q-pt-md">
+                <div class="col-8">
+                  <p>Durchschnittliche Bewertung:</p>
+                </div>
+                <div class="col-4">
+                  <p>{{ restaurantRating }}</p>
+                </div>
+              </div>
+              <div class="row q-pb-xl">
+                <div class="col-8">
+                  <p>Seitenbesuche:</p>
+                </div>
+                <div class="col-4">
+                  <p>INSERT PAGEVIEWS HERE</p>
+                </div>
+              </div>
+              <div class="row q-pb-xl">
+                <div class="col-8">
+                  <p>Gutscheine eingelöst:</p>
+                </div>
+                <div class="col-4">
+                  <p>INSERT CLAIMED VOUCHERS HERE</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
   </div>
 </template>
 
