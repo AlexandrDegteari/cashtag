@@ -3,7 +3,13 @@
     <img :src="this.restaurantAvatar" alt="" />
     <div class="q-col-gutter-md row items-start">
       <div class="col-12 container-fluid">
-        <q-img src="../assets/cashtag-food.jpg">
+        <q-img
+          :src="
+            this.restaurantReviewImg
+              ? this.restaurantReviewImg
+              : 'img/cashtag-food.jpg'
+          "
+        >
           <div class=" absolute-full text-subtitle2 column flex flex-center">
             <p></p>
             <div class="welcome-2019 text-center">
@@ -102,6 +108,8 @@
 </template>
 
 <script>
+import UserService from "../services/user.service";
+
 export default {
   data() {
     return {
@@ -109,17 +117,39 @@ export default {
       restaurantName: this.restaurantName,
       restaurantAvatar: this.restaurantAvatar,
       reviews: false,
-      googleId: this.$route.params.googleId
+      googleId: this.$route.params.googleId,
+      restaurantReviewImg: this.$route.params.restaurantReviewImg,
+      restaurantReviewCounter: this.$route.params.restaurantReviewImg,
+      userId: this.$route.params.userId
     };
   },
   methods: {
     makeReview() {
+      this.counter();
+      console.log(this.restaurantReviewCounter);
       setTimeout(() => {
         this.showVoucher();
       }, 3000);
     },
     showVoucher() {
       this.reviews = true;
+    },
+    counter() {
+      const profile = {
+        restaurantData: this.restaurantData,
+        restaurantName: this.restaurantName,
+        restaurantAvatar: this.restaurantAvatar,
+        restaurantReviewCounter: this.restaurantReviewCounter + 1
+      };
+
+      UserService.UpdateUserProf(profile, this.userId)
+        .then(() => {
+          this.$emit("updatedForm");
+          console.log("The counter has been successfully updated.");
+        })
+        .catch(error => {
+          console.log(error.error.response.data);
+        });
     },
     getRestaurantsData() {
       console.log("getData");

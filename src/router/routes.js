@@ -76,10 +76,10 @@ const routes = [
         component: () => import("pages/Voucher.vue")
       },
       {
-        name: "restaurants",
-        path: "restaurants",
+        name: "reststatistics",
+        path: "reststatistics",
         beforeEnter: ifNotAuthenticated,
-        component: () => import("pages/Restaurants.vue")
+        component: () => import("pages/RestStatistics.vue")
       },
       {
         name: "restaurants",

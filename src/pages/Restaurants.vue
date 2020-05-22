@@ -21,7 +21,6 @@
                   <th>
                     {{ rest.restaurantName }}
                   </th>
-
                   <th>
                     {{ rest.googleId }}
                   </th>
@@ -34,7 +33,10 @@
                     <router-link
                       :to="{
                         name: 'review',
-                        params: { googleId: rest.googleId }
+                        params: {
+                          googleId: rest.googleId,
+                          userId: rest.id
+                        }
                       }"
                       exact
                       active-class="active"
