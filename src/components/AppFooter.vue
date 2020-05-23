@@ -40,12 +40,12 @@
                 <a href="#" target="_blank"> Terms &amp; Conditions</a>
               </li>
             </ul>
+
+            <span class="copy d-block text-right">
+              info@cashtag.com | <a href="#">Kontakt</a></span
+            >
             <span class="copy d-block text-right"
               >2020 © Cashtag - All Rights Reserved.</span
-            >
-            <span class="copy d-block text-right">
-              Bei technischen Rückfragen schreiben schreiben Sie uns einfach
-              eine E-Mail an info@cashtag.com</span
             >
           </div>
         </div>

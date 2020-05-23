@@ -81,16 +81,20 @@ footer {
   line-height: 1.5;
 }
 
-.googleID {
-  background-color: gray;
-}
+.restaurant-header {
+  background-color: #eff1f2;
 
+}
+.restaurant-logo {
+  max-width: 150px;
+
+}
 .bg-voucher {
-  background-color: $primary;
+  background-color: #EFF1F2
 }
 
 .bg-voucher h1, .bg-voucher h2 {
-  color: white;
+  color: black;
   line-height: 2rem;
 }
 

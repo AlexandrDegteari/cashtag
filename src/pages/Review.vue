@@ -1,6 +1,10 @@
 <template>
   <div>
-    <img :src="this.restaurantAvatar" alt="" />
+    <div class="column items-center q-pa-md restaurant-header">
+      <div class="col">
+        <img :src="this.restaurantAvatar" alt="" class="restaurant-logo" />
+      </div>
+    </div>
     <div class="q-col-gutter-md row items-start">
       <div class="col-12 container-fluid">
         <q-img
