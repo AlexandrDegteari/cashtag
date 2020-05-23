@@ -56,8 +56,6 @@
                           type="text"
                           v-model="$v.restaurantName.$model"
                           outlined
-                          disabled
-                          readonly
                           label="Restaurant Name"
                           stack-label
                         >
