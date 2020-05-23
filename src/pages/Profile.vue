@@ -20,6 +20,7 @@
                         type="text"
                         :value="response.email"
                         outlined
+                        disabled
                         label="E-Mail"
                         stack-label
                       >
@@ -53,6 +54,7 @@
                           type="text"
                           v-model="$v.restaurantName.$model"
                           outlined
+                          disabled
                           label="Restaurant Name"
                           stack-label
                         >
@@ -78,6 +80,7 @@
                           type="text"
                           v-model="$v.restaurantAddress.$model"
                           outlined
+                          disabled
                           label="Restaurant Adresse"
                           stack-label
                         >
@@ -103,6 +106,7 @@
                         type="text"
                         v-model="$v.googleId.$model"
                         outlined
+                        disabled
                         label="Google Places ID"
                         stack-label
                       >
@@ -125,6 +129,7 @@
                           type="text"
                           v-model="$v.restaurantAvatar.$model"
                           outlined
+                          disabled
                           label="Restaurant Avatar"
                           stack-label
                         >
@@ -295,9 +300,9 @@ export default {
       });
     },
     submitProfileForm() {
-      if (this.$v.$invalid) {
-        return;
-      }
+      // if (this.$v.$invalid) {
+      //   return;
+      // }
 
       const profile = {
         googleId: this.googleId,

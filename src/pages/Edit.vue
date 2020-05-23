@@ -131,12 +131,12 @@
           type="text"
           v-model="$v.restaurantImage.$model"
           outlined
-          label="Restaurant Avatar"
+          label="Restaurant Hintergrund Bild"
           stack-label
-          placeholder=""
+          placeholder="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Hofbrauhaus.JPG/1024px-Hofbrauhaus.JPG"
         >
           <template v-slot:prepend>
-            <q-icon name="place" />
+            <q-icon name="insert_photo" />
           </template>
         </q-input>
       </div>
@@ -152,9 +152,9 @@
           type="text"
           v-model="$v.restaurantAvatar.$model"
           outlined
-          label="Hintergrund Bild"
+          label="Restaurant Logo"
           stack-label
-          placeholder=""
+          placeholder="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Hofbrauhaus.JPG/1024px-Hofbrauhaus.JPG"
         >
           <template v-slot:prepend>
             <q-icon name="insert_photo" />
