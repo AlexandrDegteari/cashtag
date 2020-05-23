@@ -320,7 +320,7 @@ export default {
       UserService.UpdateProfile(profile)
         .then(() => {
           this.$emit("updatedForm");
-          this.message = "The profile has been successfully updated.";
+          this.message = "Das Profil wurde erfolgreich aktualisiert";
         })
         .catch(error => {
           console.log(error.error.response.data);
@@ -341,11 +341,11 @@ export default {
       this.passwordError = null;
 
       UserService.UpdatePassword(password)
-        .then(response => {
-          this.passwordMessage = response.data.message;
+        .then(() => {
+          this.passwordMessage = "Das Passwort wurde erfolgreich aktualisiert";
         })
-        .catch(error => {
-          this.passwordError = error.response.data.message;
+        .catch(() => {
+          this.passwordError = "Error";
         });
     },
     getUser() {
