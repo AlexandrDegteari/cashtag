@@ -21,6 +21,7 @@
                         :value="response.email"
                         outlined
                         disabled
+                        readonly
                         label="E-Mail"
                         stack-label
                       >
@@ -36,6 +37,7 @@
                         id="username"
                         type="text"
                         disabled
+                        readonly
                         outlined
                         label="Manager Name"
                         stack-label
@@ -55,6 +57,7 @@
                           v-model="$v.restaurantName.$model"
                           outlined
                           disabled
+                          readonly
                           label="Restaurant Name"
                           stack-label
                         >
@@ -81,6 +84,7 @@
                           v-model="$v.restaurantAddress.$model"
                           outlined
                           disabled
+                          readonly
                           label="Restaurant Adresse"
                           stack-label
                         >
@@ -107,6 +111,7 @@
                         v-model="$v.googleId.$model"
                         outlined
                         disabled
+                        readonly
                         label="Google Places ID"
                         stack-label
                       >
@@ -130,6 +135,7 @@
                           v-model="$v.restaurantAvatar.$model"
                           outlined
                           disabled
+                          readonly
                           label="Restaurant Avatar"
                           stack-label
                         >
