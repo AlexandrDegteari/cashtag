@@ -24,10 +24,7 @@
                   {{ rest.googleId }}
                 </th>
                 <th>
-                  <a
-                    class="cursor-pointer"
-                    @click="rest.restaurantAvatar = true"
-                  >
+                  <a class="cursor-pointer" @click="openQrDialog(rest.id)">
                     Generate QR Code
                   </a>
                 </th>
@@ -46,14 +43,17 @@
                   >
                 </th>
                 <th>
-                  <a class="cursor-pointer" @click="rest.createdDate = true">
+                  <a class="cursor-pointer" @click="openEditDialog(rest.id)">
                     Edit Data
                   </a>
-                  <q-dialog v-model="rest.createdDate">
-                    <edit :return-value.sync="modalActive" :restaurant="rest" />
+                  <q-dialog
+                    v-if="rest.id === currentID"
+                    v-model="editDialogActive"
+                  >
+                    <edit :restaurant="rest" />
                   </q-dialog>
                 </th>
-                <q-dialog v-model.trim="rest.restaurantAvatar">
+                <q-dialog v-if="rest.id === currentID" v-model="qrDialogActive">
                   <q-card>
                     <q-card-section>
                       <div class="text-h6">
@@ -77,12 +77,15 @@
                 </q-dialog>
                 <th>
                   <div
-                    @click="rest.restaurantAddress = true"
+                    @click="openDeleteDialog(rest.id)"
                     class="text-red cursor-pointer"
                   >
                     Delete
                   </div>
-                  <q-dialog v-model.trim="rest.restaurantAddress">
+                  <q-dialog
+                    v-if="rest.id === currentID"
+                    v-model="deleteDialogActive"
+                  >
                     <q-card>
                       <q-card-section>
                         <div class="text-h6">
@@ -132,10 +135,26 @@ export default {
       message: null,
       modalActive: false,
       deleteModal: false,
-      deleteSuccess: null
+      deleteSuccess: null,
+      qrDialogActive: false,
+      editDialogActive: false,
+      deleteDialogActive: false,
+      currentID: null
     };
   },
   methods: {
+    openQrDialog(id) {
+      this.currentID = id;
+      this.qrDialogActive = true;
+    },
+    openEditDialog(id) {
+      this.currentID = id;
+      this.editDialogActive = true;
+    },
+    openDeleteDialog(id) {
+      this.currentID = id;
+      this.deleteDialogActive = true;
+    },
     getRestaurants() {
       UserService.GetUsers()
         .then(response => {

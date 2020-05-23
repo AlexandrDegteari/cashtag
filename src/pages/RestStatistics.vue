@@ -104,7 +104,6 @@ export default {
   },
   methods: {
     getUser() {
-      console.log("getUser");
       UserService.GetUserInfo()
         .then(response => {
           this.response = response;
@@ -129,7 +128,6 @@ export default {
           this.restaurantRating = response.data.result.rating;
           this.restaurantReviews = response.data.result.reviews;
           this.restaurantRatingTotal = response.data.result.user_ratings_total;
-          console.log(response);
           return response;
         })
         .catch(err => {

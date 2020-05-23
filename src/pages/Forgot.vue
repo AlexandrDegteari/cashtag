@@ -190,7 +190,6 @@ export default {
   },
   created() {
     this.getUserByEmail();
-    console.log(this.user);
   }
 };
 </script>

@@ -373,9 +373,6 @@ export default {
       sameAsPassword: sameAs("password")
     }
   },
-  mounted() {
-    console.log(this.restaurant.googleId);
-  },
   methods: {
     submitPasswordForm() {
       this.$v.passwordForm.$touch();

@@ -172,7 +172,6 @@ export default {
       UserService.UpdateUserProf(profile, this.userId)
         .then(() => {
           this.$emit("updatedForm");
-          console.log("The counter has been successfully updated.");
         })
         .catch(error => {
           console.log(error.error.response.data);
@@ -192,7 +191,6 @@ export default {
       UserService.UpdateUserProf(profile, this.userId)
         .then(() => {
           this.$emit("updatedForm");
-          console.log("The counter has been successfully updated.");
         })
         .catch(error => {
           console.log(error.error.response.data);

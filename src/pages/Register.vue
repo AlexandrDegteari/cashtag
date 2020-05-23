@@ -366,7 +366,6 @@ export default {
         });
     },
     getRestaurantsData() {
-      console.log("getData");
       const proxy = "https://cors-anywhere.herokuapp.com/";
       const url =
         "https://maps.googleapis.com/maps/api/place/details/json?placeid=";
@@ -378,7 +377,6 @@ export default {
           this.restaurantName = response.data.result.name;
           this.restaurantAvatar = response.data.result.icon;
           this.restaurantAddress = response.data.result.formatted_address;
-          console.log(response);
           return response;
         })
         .catch(err => {
@@ -407,7 +405,7 @@ h2 {
 form {
   /*
   width: 600px;
-  
+
   display: flex;
   flex-direction: column;
   align-items: center;
