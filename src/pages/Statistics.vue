@@ -16,7 +16,7 @@
                 </tr>
               </thead>
               <tbody v-for="(rest, key) in restaurants" :key="key">
-                <tr v-if="!rest.admin">
+                <tr v-if="!rest.admin && !rest.guest">
                   <th>
                     {{ rest.restaurantName }}
                   </th>

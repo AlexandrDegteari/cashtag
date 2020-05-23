@@ -306,9 +306,6 @@
             {{ passwordError }}
           </p>
         </div>
-        <div v-if="this.passwordMessage" class="text-success">
-          {{ passwordMessage }}
-        </div>
         <q-btn
           flat
           class="full-width"
@@ -375,10 +372,10 @@ export default {
   },
   methods: {
     submitPasswordForm() {
-      this.$v.passwordForm.$touch();
-      if (this.$v.passwordForm.$invalid) {
-        return;
-      }
+      // this.$v.passwordForm.$touch();
+      // if (this.$v.passwordForm.$invalid) {
+      //   return;
+      // }
 
       const password = {
         password: this.password,
@@ -389,9 +386,8 @@ export default {
       this.passwordError = null;
 
       UserService.UpdateUserPass(password, this.userId)
-        .then(response => {
-          this.passwordMessage = "The profile has been successfully updated.";
-          return response;
+        .then(() => {
+          this.passwordMessage = "Das Passwort wurde erfolgreich aktualisiert";
         })
         .catch(error => {
           this.passwordError = error.response.data.message;
@@ -417,7 +413,7 @@ export default {
       UserService.UpdateUserProf(profile, this.userId)
         .then(() => {
           this.$emit("updatedForm");
-          this.message = "The profile has been successfully updated.";
+          this.message = "Das Profil wurde erfolgreich aktualisiert";
         })
         .catch(error => {
           console.log(error.error.response.data);
