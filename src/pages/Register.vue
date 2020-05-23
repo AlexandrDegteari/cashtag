@@ -120,7 +120,7 @@
           outlined
           label="Google Places ID *"
           stack-label
-          placeholder="Passwort9754094"
+          placeholder="ChIJ29wi64B1nkcRR5UyRpxvUm4"
         >
           <template v-slot:prepend>
             <q-icon name="place" />
@@ -202,7 +202,7 @@
           outlined
           label="Hintergrund Bild *"
           stack-label
-          placeholder="www.beispiel.com"
+          placeholder="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Hofbrauhaus.JPG/1024px-Hofbrauhaus.JPG"
         >
           <template v-slot:prepend>
             <q-icon name="insert_photo" />
