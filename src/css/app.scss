@@ -25,9 +25,7 @@
   font-weight: bold;
   text-transform: none;
 }
-.q-tabs__content{
-  /*adding-right: 190px;*/
-}
+
 .absolute-bottom {
   color: #42B478;
 }
@@ -96,6 +94,10 @@ footer {
   line-height: 2rem;
 }
 
+.q-field {
+  font-size: 18px;
+}
+
 
 label {
   color: #1B365E;
@@ -127,7 +129,7 @@ input {
 }
 
 .form{
-  max-width: 500px;
+  min-width: 100%;
   margin: 0 auto;
   border: 1px solid #fff;
   border-radius: 10px;

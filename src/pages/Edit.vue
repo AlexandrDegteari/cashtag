@@ -1,114 +1,186 @@
 <template>
   <div style="background-color: #fff" class="form relative-position ">
-    <form v-on:submit.prevent>
-      <h1>Edit Restaurant Data</h1>
-      <div class="input input1 q-mt-md q-mb-md">
-        <input
+    <form v-on:submit.prevent class="q-pa-md">
+      <div class="column items-end">
+        <q-btn v-close-popup round dense color="secondary" icon="close" />
+      </div>
+      <h1 class="text-center">Restaurant bearbeiten</h1>
+      <div class="input input1 q-mt-md q-mt-md">
+        <q-input
           id="input"
           type="text"
           v-model.trim="$v.username.$model"
-          placeholder="Manager Name"
-        />
-        <label for="input"></label>
+          outlined
+          label="Manager Name *"
+          stack-label
+          placeholder="Max Mustermann"
+        >
+          <template v-slot:prepend>
+            <q-icon name="person" />
+          </template>
+        </q-input>
       </div>
       <p v-if="$v.username.$dirty && !$v.username.required" class="error">
-        Username is required
+        Benutzername wird benötigt
       </p>
       <p v-if="availableUsername === false" class="error">
-        Username taken, please choose another one
+        Benutzername bereits vergeben, bitte wählen Sie einen anderen
       </p>
-      <div class="input input3 q-mb-md">
-        <input
+      <div class="input input3 q-mt-md">
+        <q-input
           v-model.trim="$v.email.$model"
           id="input1"
           type="text"
-          placeholder="E - mail"
-        />
-        <label for="input1"></label>
+          outlined
+          label="E-Mail *"
+          stack-label
+          placeholder="jemand@beispiel.com"
+        >
+          <template v-slot:prepend>
+            <q-icon name="mail" />
+          </template>
+        </q-input>
       </div>
       <p v-if="!$v.email.email" class="error">
-        E-mail is invalid
+        E-mail ist nicht gültig
       </p>
       <p v-if="$v.email.$dirty && !$v.email.required" class="error">
-        E-mail is required
+        E-mail wird benötigt
       </p>
       <p v-if="availableEmail === false" class="error">
-        Email taken, please choose another one
+        Email bereits vergeben, bitte wählen Sie eine andere
       </p>
-      <div class="input input2 q-mb-md">
-        <input
+      <div class="input input2 q-mt-md">
+        <q-input
           id="input9"
           type="text"
           v-model="referral"
-          placeholder="Referral"
-        />
-        <label for="input9"></label>
+          outlined
+          label="Referal *"
+          stack-label
+          placeholder="Referal-32"
+        >
+          <template v-slot:prepend>
+            <q-icon name="people" />
+          </template>
+        </q-input>
       </div>
-      <div class="input input2 q-mb-md">
-        <input
+      <div class="input input2 q-mt-md">
+        <q-input
           id="input4"
           type="text"
           v-model="$v.googleId.$model"
-          placeholder="Google Places ID"
-        />
-        <label for="input4"></label>
+          outlined
+          label="Google Places ID *"
+          stack-label
+          placeholder="Passwort9754094"
+        >
+          <template v-slot:prepend>
+            <q-icon name="place" />
+          </template>
+        </q-input>
       </div>
       <p v-if="$v.googleId.$dirty && !$v.googleId.required" class="error m-0">
-        Google Id is required
+        Google ID wird benötigt
       </p>
-      <div class="input input2 q-mb-md">
-        <input
+      <div class="input input2 q-mt-md">
+        <q-input
           id="input5"
           type="text"
           v-model="$v.restaurantName.$model"
-          placeholder="Restaurant Name"
-        />
-        <label for="input5"></label>
+          outlined
+          label="Restaurant Name"
+          stack-label
+          placeholder=""
+        >
+          <template v-slot:prepend>
+            <q-icon name="place" />
+          </template>
+        </q-input>
       </div>
       <p
         v-if="$v.restaurantName.$dirty && !$v.restaurantName.required"
         class="error m-0"
       >
-        Restaurant Name required
+        Restaurant Name wird benötigt
       </p>
-      <div class="input input2 q-mb-md">
-        <input
+      <div class="input input2 q-mt-md">
+        <q-input
           id="input8"
           type="text"
           v-model="$v.restaurantAddress.$model"
-          placeholder="Restaurant Address"
-        />
-        <label for="input8"></label>
+          outlined
+          label="Restaurant Adresse"
+          stack-label
+          placeholder=""
+        >
+          <template v-slot:prepend>
+            <q-icon name="place" />
+          </template>
+        </q-input>
       </div>
       <p
         v-if="$v.restaurantAddress.$dirty && !$v.restaurantAddress.required"
         class="error m-0"
       >
-        Restaurant Address required
+        Restaurant Addresse wird benötigt
       </p>
-      <div class="input input2 q-mb-md">
-        <input
+      <div class="input input2 q-mt-md">
+        <q-input
           id="input10"
           type="text"
           v-model="$v.restaurantImage.$model"
-          placeholder="Restaurant Image"
-        />
-        <label for="input10"></label>
+          outlined
+          label="Restaurant Avatar"
+          stack-label
+          placeholder=""
+        >
+          <template v-slot:prepend>
+            <q-icon name="place" />
+          </template>
+        </q-input>
       </div>
       <p
         v-if="$v.restaurantImage.$dirty && !$v.restaurantImage.required"
         class="error m-0"
       >
-        Restaurant Review Image required
+        Restaurant Bild wird benötigt
       </p>
-      <div class="input input2 q-mb-md">
-        <input
+      <div class="input input2 q-mt-md">
+        <q-input
+          id="input6"
+          type="text"
+          v-model="$v.restaurantAvatar.$model"
+          outlined
+          label="Hintergrund Bild"
+          stack-label
+          placeholder=""
+        >
+          <template v-slot:prepend>
+            <q-icon name="insert_photo" />
+          </template>
+        </q-input>
+      </div>
+      <p
+        v-if="$v.restaurantAvatar.$dirty && !$v.restaurantAvatar.required"
+        class="error m-0"
+      >
+        Restaurant Bild wird benötigt
+      </p>
+      <div class="input input2 q-mt-md">
+        <q-input
           id="input12"
           type="text"
           v-model="$v.restaurantVoucherName.$model"
-          placeholder="Restaurant Voucher Name"
-        />
-        <label for="input12"></label>
+          outlined
+          label="Gutschein Name *"
+          stack-label
+          placeholder="Kaffee Promo"
+        >
+          <template v-slot:prepend>
+            <q-icon name="code" />
+          </template>
+        </q-input>
       </div>
       <p
         v-if="
@@ -116,16 +188,22 @@
         "
         class="error m-0"
       >
-        Restaurant Voucher Name required
+        Restaurant Gutschein Name wird benötigt
       </p>
-      <div class="input input2 q-mb-md">
-        <input
+      <div class="input input2 q-mt-md">
+        <q-input
           id="input13"
           type="text"
           v-model="$v.restaurantVoucherCode.$model"
-          placeholder="Restaurant Voucher Code"
-        />
-        <label for="input13"></label>
+          outlined
+          label="Gutschein Code *"
+          stack-label
+          placeholder="kaffee-promo"
+        >
+          <template v-slot:prepend>
+            <q-icon name="code" />
+          </template>
+        </q-input>
       </div>
       <p
         v-if="
@@ -133,26 +211,15 @@
         "
         class="error m-0"
       >
-        Restaurant Voucher Code required
+        Restaurant Gutschein Code wird benötigt
       </p>
-      <div class="input input2 q-mb-md">
-        <input
-          id="input6"
-          type="text"
-          v-model="$v.restaurantAvatar.$model"
-          placeholder="Restaurant Avatar"
-        />
-        <label for="input6"></label>
-      </div>
-      <p
-        v-if="$v.restaurantAvatar.$dirty && !$v.restaurantAvatar.required"
-        class="error m-0"
-      >
-        Restaurant Avatar required
-      </p>
+
       <img :src="this.restaurantAvatar" alt="" />
-      <button @click.stop="submitProfileForm()" class="btn text-center w-100">
-        Update Data
+      <button
+        @click.stop="submitProfileForm()"
+        class="btn text-center full-width"
+      >
+        Daten aktualisieren
       </button>
       <div v-if="this.message" class="text-success">
         {{ message }}
@@ -168,31 +235,50 @@
           </p>
         </div>
       </div>
+      <q-btn
+        flat
+        class="full-width"
+        label="Abbrechen"
+        color="secondary"
+        v-close-popup
+      />
     </form>
-    <form @submit.prevent="submitPasswordForm">
+    <form @submit.prevent="submitPasswordForm" class="q-pa-md">
       <div class="row q-pb-md q-pt-xl">
         <div class="col-md-12 q-pa-sm pl-md-0 mt-2 q-pa-sm">
-          <label class="mt-2" for="new-password">New Password</label>
-          <input
+          <q-input
             v-model="$v.password.$model"
             class="mt-1"
             id="new-password"
             type="password"
-          />
+            outlined
+            label="Neues Passwort"
+            stack-label
+            placeholder="Passwort9754094"
+          >
+            <template v-slot:prepend>
+              <q-icon name="lock" />
+            </template>
+          </q-input>
           <p v-if="$v.password.$dirty && !$v.password.required" class="error">
-            New Password is required
+            Neues Passwort wird benötigt
           </p>
         </div>
         <div class="col-md-12 q-pa-sm pl-md-0 mt-2 q-pa-sm">
-          <label class="mt-2" for="passwordConfirmation"
-            >New Password Confirmation</label
-          >
-          <input
+          <q-input
             v-model="$v.passwordConfirmation.$model"
             class="mt-1"
             id="passwordConfirmation"
             type="password"
-          />
+            outlined
+            label="Neues Passwort bestätigen"
+            stack-label
+            placeholder="Passwort9754094"
+          >
+            <template v-slot:prepend>
+              <q-icon name="lock" />
+            </template>
+          </q-input>
           <p
             v-if="
               $v.passwordConfirmation.$dirty &&
@@ -200,18 +286,18 @@
             "
             class="error"
           >
-            Password Confirmation is required
+            Passwort bestätigen ist erforderlich
           </p>
           <p v-if="!$v.passwordConfirmation.sameAsPassword" class="error">
-            Passwords must be identical
+            Passwörter müssen übereinstimmen
           </p>
         </div>
-        <div class="col-md-12 q-pa-sm pl-md-0 mt-2 q-pa-sm">
+        <div class="col-md-12 q-pa-sm">
           <button
             @click.stop="submitPasswordForm"
-            class="btn text-center w-100"
+            class="btn text-center full-width"
           >
-            Update Password
+            Passwort aktualisieren
           </button>
           <p class="text-success ml-3" v-if="passwordMessage">
             {{ passwordMessage }}
@@ -223,6 +309,13 @@
         <div v-if="this.passwordMessage" class="text-success">
           {{ passwordMessage }}
         </div>
+        <q-btn
+          flat
+          class="full-width"
+          label="Abbrechen"
+          color="secondary"
+          v-close-popup
+        />
       </div>
     </form>
   </div>
@@ -336,32 +429,25 @@ export default {
 </script>
 
 <style scoped>
-h2 {
-  font-size: 18px;
-}
-
 .input {
   width: 100%;
-  /*height: 49px;*/
+  /*height: 49px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 22px;
-}
-::placeholder {
-  color: #fff;
+  */
 }
 
 form {
+  /*
+  width: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-position: center;
-  padding: 0 40px;
-}
-
-label {
-  font-size: 10px;
+  padding: 20px;
+  */
 }
 </style>

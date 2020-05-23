@@ -24,24 +24,24 @@
                 />
                 <label for="input2"></label>
               </div>
-              <div class="buttons">
-                <button class="btn">Login</button>
-                <!--                <router-link-->
-                <!--                  :to="{ path: '/register' }"-->
-                <!--                  exact-->
-                <!--                  active-class="active"-->
-                <!--                  ><button onclick="prevent()" class="btn btn-secondary">-->
-                <!--                    Sign Up-->
-                <!--                  </button></router-link-->
-                <!--                >-->
-                <button
-                  type="button"
-                  @click="forgot = true"
-                  class="btn btn-secondary"
-                >
-                  Forgot Password
-                </button>
-              </div>
+
+              <button class="btn full-width">Login</button>
+              <!--                <router-link-->
+              <!--                  :to="{ path: '/register' }"-->
+              <!--                  exact-->
+              <!--                  active-class="active"-->
+              <!--                  ><button onclick="prevent()" class="btn btn-secondary">-->
+              <!--                    Sign Up-->
+              <!--                  </button></router-link-->
+              <!--                >-->
+              <button
+                type="button"
+                @click="forgot = true"
+                class="btn btn-secondary full-width"
+              >
+                Passwort vergessen
+              </button>
+
               <!--              <div class="forgot">-->
               <!--                <div>-->
               <!--                  <q-checkbox size="sm" :value="true" />-->
