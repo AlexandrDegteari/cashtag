@@ -28,7 +28,7 @@
           to="/profile"
           exact
           active-class="active"
-          label="Profile"
+          label="Profil"
         >
         </q-route-tab>
         <q-route-tab
@@ -44,7 +44,7 @@
           to="/reststatistics"
           exact
           active-class="active"
-          label="Statistics"
+          label="Statistik"
         >
         </q-route-tab>
         <q-route-tab
@@ -52,7 +52,7 @@
           to="/statistics"
           exact
           active-class="active"
-          label="Statistics"
+          label="Statistik"
         >
         </q-route-tab>
         <q-route-tab
@@ -68,7 +68,7 @@
           @click="addRest = true"
           exact
           active-class="active"
-          label="Add Restaurant"
+          label="Restaurant hinzufügen"
         >
         </q-tab>
         <!--        <q-route-tab-->
