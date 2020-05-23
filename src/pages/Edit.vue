@@ -407,7 +407,9 @@ export default {
         restaurantVoucherName: this.restaurantVoucherName,
         restaurantVoucherCode: this.restaurantVoucherCode,
         restaurantImage: this.restaurantImage,
-        userId: this.userId
+        userId: this.userId,
+        username: this.username,
+        referral: this.referral
       };
 
       this.message = null;
