@@ -169,7 +169,7 @@
                         id="new-password"
                         type="password"
                         outlined
-                        label="Passwort"
+                        label="Neues Passwort"
                         stack-label
                       >
                         <template v-slot:prepend>
@@ -193,7 +193,7 @@
                         id="passwordConfirmation"
                         type="password"
                         outlined
-                        label="Passwort"
+                        label="Neues Passwort bestätigen"
                         stack-label
                       >
                         <template v-slot:prepend>

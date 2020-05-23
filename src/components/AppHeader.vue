@@ -80,7 +80,7 @@
         <!--        </q-route-tab>-->
         <q-tab v-if="isLoggedIn()" @click="logout" label="Log out"> </q-tab>
       </q-tabs>
-      <q-dialog v-model="addRest">
+      <q-dialog persistent v-model="addRest">
         <register />
       </q-dialog>
     </q-header>

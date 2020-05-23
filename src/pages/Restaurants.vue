@@ -49,6 +49,7 @@
                   <q-dialog
                     v-if="rest.id === currentID"
                     v-model="editDialogActive"
+                    persistent
                   >
                     <edit :restaurant="rest" />
                   </q-dialog>
