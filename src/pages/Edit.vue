@@ -154,8 +154,8 @@
       <button @click.stop="submitProfileForm()" class="btn text-center w-100">
         Update Data
       </button>
-      <div v-if="successRegistration" class="text-success">
-        Data updated successful.
+      <div v-if="this.message" class="text-success">
+        {{ message }}
       </div>
       <div v-if="errors" class="mt-0">
         <div v-for="(error, index) in errors.errors" :key="index">
@@ -220,6 +220,9 @@
             {{ passwordError }}
           </p>
         </div>
+        <div v-if="this.passwordMessage" class="text-success">
+          {{ passwordMessage }}
+        </div>
       </div>
     </form>
   </div>
@@ -254,6 +257,7 @@ export default {
       availableUsername: null,
       availableEmail: null,
       modalDate: false,
+      message: null,
       password: null,
       passwordConfirmation: null,
       passwordMessage: null,
@@ -281,10 +285,10 @@ export default {
   },
   methods: {
     submitPasswordForm() {
-      // this.$v.passwordForm.$touch();
-      // if (this.$v.passwordForm.$invalid) {
-      //   return;
-      // }
+      this.$v.passwordForm.$touch();
+      if (this.$v.passwordForm.$invalid) {
+        return;
+      }
 
       const password = {
         password: this.password,
@@ -296,7 +300,8 @@ export default {
 
       UserService.UpdateUserPass(password, this.userId)
         .then(response => {
-          this.passwordMessage = response.data.message;
+          this.passwordMessage = "The profile has been successfully updated.";
+          return response;
         })
         .catch(error => {
           this.passwordError = error.response.data.message;

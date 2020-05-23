@@ -190,16 +190,8 @@
       <div v-if="successRegistration" class="text-success">
         Restaurant created successfully.
       </div>
-      <div v-if="errors" class="mt-0">
-        <div v-for="(error, index) in errors.errors" :key="index">
-          <p
-            v-for="(item, index) in error"
-            :key="index"
-            class="text-danger mb-1"
-          >
-            {{ item }}
-          </p>
-        </div>
+      <div v-if="errors" class="mt-0 text-red">
+        {{ errors.message }}
       </div>
     </form>
   </div>

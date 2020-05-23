@@ -52,7 +52,7 @@
                 {{ error }}
               </div>
               <q-dialog v-model="forgot">
-                <forgot />
+                <send-email />
               </q-dialog>
             </form>
           </div>
@@ -64,9 +64,9 @@
 
 <script>
 import store from "../store/modules/auth";
-import Forgot from "../pages/Forgot";
+import SendEmail from "./SendEmail";
 export default {
-  components: { Forgot },
+  components: { SendEmail },
   data() {
     return {
       email: null,
@@ -106,13 +106,6 @@ export default {
 </script>
 
 <style scoped>
-.forgot {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 14px;
-  font-weight: normal;
-}
 .buttons {
   display: flex;
   justify-content: space-between;
