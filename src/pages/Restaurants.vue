@@ -2,8 +2,9 @@
   <div class="wrapper">
     <main>
       <div class="bg">
-        <h1 v-if="!restaurants" class="text-center">Bitte warten...</h1>
-        <div v-if="restaurants" class=" q-pt-xl q-pb-xl q-pa-xl">
+        <h1 class="text-center">Restaurants</h1>
+        <h2 v-if="!restaurants" class="text-center">Bitte warten...</h2>
+        <div v-if="restaurants" class=" q-pa-xl">
           <table class="table table-striped">
             <thead>
               <tr>
@@ -58,6 +59,15 @@
                 <q-dialog v-if="rest.id === currentID" v-model="qrDialogActive">
                   <q-card>
                     <q-card-section>
+                      <div class="column items-end">
+                        <q-btn
+                          v-close-popup
+                          round
+                          dense
+                          color="secondary"
+                          icon="close"
+                        />
+                      </div>
                       <div class="text-h6">
                         {{ rest.restaurantName }}
                       </div>

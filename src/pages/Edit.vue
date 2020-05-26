@@ -104,7 +104,7 @@
       >
         Restaurant Name wird benötigt
       </p>
-      <div class="input input2 q-mt-md">
+      <div class="input input2 q-mt-md q-mb-md">
         <q-input
           id="input8"
           type="text"
@@ -125,7 +125,35 @@
       >
         Restaurant Addresse wird benötigt
       </p>
-      <div class="input input2 q-mt-md">
+
+      <div class="column items-center q-mt-xl">
+        <img :src="this.restaurantAvatar" alt="" width="100px" />
+      </div>
+      <div class="input input2 q-mt-md q-mb-md">
+        <q-input
+          id="input6"
+          type="text"
+          v-model="$v.restaurantAvatar.$model"
+          outlined
+          label="Restaurant Logo"
+          stack-label
+          placeholder="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Hofbrauhaus.JPG/1024px-Hofbrauhaus.JPG"
+        >
+          <template v-slot:prepend>
+            <q-icon name="insert_photo" />
+          </template>
+        </q-input>
+      </div>
+      <p
+        v-if="$v.restaurantAvatar.$dirty && !$v.restaurantAvatar.required"
+        class="error m-0"
+      >
+        Restaurant Logo wird benötigt
+      </p>
+      <div class="column items-center q-mt-xl">
+        <img :src="this.restaurantImage" alt="" width="250px" />
+      </div>
+      <div class="input input2 q-mt-md q-mb-lg">
         <q-input
           id="input10"
           type="text"
@@ -146,28 +174,7 @@
       >
         Restaurant Bild wird benötigt
       </p>
-      <div class="input input2 q-mt-md">
-        <q-input
-          id="input6"
-          type="text"
-          v-model="$v.restaurantAvatar.$model"
-          outlined
-          label="Restaurant Logo"
-          stack-label
-          placeholder="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Hofbrauhaus.JPG/1024px-Hofbrauhaus.JPG"
-        >
-          <template v-slot:prepend>
-            <q-icon name="insert_photo" />
-          </template>
-        </q-input>
-      </div>
-      <p
-        v-if="$v.restaurantAvatar.$dirty && !$v.restaurantAvatar.required"
-        class="error m-0"
-      >
-        Restaurant Bild wird benötigt
-      </p>
-      <div class="input input2 q-mt-md">
+      <div class="input input2 q-mt-xl">
         <q-input
           id="input12"
           type="text"
@@ -213,8 +220,6 @@
       >
         Restaurant Gutschein Code wird benötigt
       </p>
-
-      <img :src="this.restaurantAvatar" alt="" />
       <button
         @click.stop="submitProfileForm()"
         class="btn text-center full-width"

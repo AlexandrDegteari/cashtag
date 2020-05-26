@@ -3,16 +3,16 @@
     <main>
       <div class="bg">
         <div>
-          <h2>Admin Statistics</h2>
-          <p v-if="!restaurants">No restaurants registered</p>
-          <div v-if="restaurants" class=" q-pt-xl q-pb-xl q-pa-xl">
+          <h1 class="text-center">Statistik</h1>
+          <h2 v-if="!restaurants">Bitte warten...</h2>
+          <div v-if="restaurants" class=" q-pa-xl">
             <table class="table table-striped">
               <thead>
                 <tr>
                   <th scope="col">Restaurant Name</th>
                   <th scope="col">Google ID</th>
                   <th scope="col">Reviews</th>
-                  <th scope="col">Vouchers</th>
+                  <th scope="col">Gutscheine</th>
                 </tr>
               </thead>
               <tbody v-for="(rest, key) in restaurants" :key="key">
