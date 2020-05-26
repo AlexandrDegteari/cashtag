@@ -2,17 +2,17 @@
   <div class="wrapper">
     <main>
       <div class="bg">
-        <p v-if="!restaurants">No restaurants registered</p>
+        <h1 v-if="!restaurants" class="text-center">Bitte warten...</h1>
         <div v-if="restaurants" class=" q-pt-xl q-pb-xl q-pa-xl">
           <table class="table table-striped">
             <thead>
               <tr>
                 <th scope="col">Restaurant Name</th>
                 <th scope="col">Google ID</th>
-                <th scope="col">Generate QR Code</th>
-                <th scope="col">Review Page Link</th>
-                <th scope="col">Edit Data</th>
-                <th scope="col">Delete Restaurant</th>
+                <th scope="col">QR Code</th>
+                <th scope="col">Review Seite</th>
+                <th scope="col">Editieren</th>
+                <th scope="col">Löschen</th>
               </tr>
             </thead>
             <tbody v-for="rest in restaurants" :key="rest.id">
@@ -25,7 +25,7 @@
                 </th>
                 <th>
                   <a class="cursor-pointer" @click="openQrDialog(rest.id)">
-                    Generate QR Code
+                    <q-btn flat label="QR-Code anzeigen" color="primary" />
                   </a>
                 </th>
                 <th>
@@ -39,12 +39,13 @@
                     }"
                     exact
                     active-class="active"
-                    >Review page</router-link
                   >
+                    <q-btn flat label="Seite Anzeigen" color="primary" />
+                  </router-link>
                 </th>
                 <th>
                   <a class="cursor-pointer" @click="openEditDialog(rest.id)">
-                    Edit Data
+                    <q-btn flat label="Editieren" color="secondary" />
                   </a>
                   <q-dialog
                     v-if="rest.id === currentID"
@@ -81,7 +82,7 @@
                     @click="openDeleteDialog(rest.id)"
                     class="text-red cursor-pointer"
                   >
-                    Delete
+                    <q-btn flat label="Löschen" color="danger" />
                   </div>
                   <q-dialog
                     v-if="rest.id === currentID"
@@ -89,17 +90,32 @@
                   >
                     <q-card>
                       <q-card-section>
+                        <div class="column items-end">
+                          <q-btn
+                            v-close-popup
+                            round
+                            dense
+                            color="secondary"
+                            icon="close"
+                          />
+                        </div>
                         <div class="text-h6">
-                          Are you sure that you want to delete
-                          {{ rest.restaurantName }}?
+                          Sind Sie sich sicher dass Sie
+                          {{ rest.restaurantName }} löschen möchten?
                         </div>
                       </q-card-section>
                       <q-card-actions align="right">
                         <q-btn
+                          flat
+                          label="Abbrechen"
+                          color="secondary"
+                          v-close-popup
+                        />
+                        <q-btn
                           @click="deleteRestaurant(rest.id)"
                           flat
-                          label="Delete restaurant"
-                          color="danger"
+                          label="Restaurant löschen"
+                          color="red"
                           v-close-popup
                         />
                       </q-card-actions>
