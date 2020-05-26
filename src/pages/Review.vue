@@ -2,7 +2,15 @@
   <div>
     <div class="column items-center q-pa-md restaurant-header">
       <div class="col">
-        <img :src="this.restaurantAvatar" alt="" class="restaurant-logo" />
+        <img
+          :src="
+            this.restaurantAvatar
+              ? restaurantAvatar
+              : '..src/assets/Cashtag-Black-png'
+          "
+          alt=""
+          class="restaurant-logo"
+        />
       </div>
     </div>
     <div class="q-col-gutter-md row items-start">
