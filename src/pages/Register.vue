@@ -172,18 +172,23 @@
       >
         Restaurant Addresse wird benötigt
       </p>
+
+      <div class="column items-center q-mt-xl">
+        <img :src="this.restaurantAvatar" alt="" width="100px" />
+      </div>
+
       <div class="input input2 q-mt-md">
         <q-input
           id="input6"
           type="text"
           v-model="$v.restaurantAvatar.$model"
           outlined
-          label="Restaurant Avatar"
+          label="Restaurant Logo *"
           stack-label
-          placeholder=""
+          placeholder="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Hofbrauhaus.JPG/1024px-Hofbrauhaus.JPG"
         >
           <template v-slot:prepend>
-            <q-icon name="place" />
+            <q-icon name="insert_photo" />
           </template>
         </q-input>
       </div>
@@ -194,13 +199,16 @@
         Restaurant Bild wird benötigt
       </p>
 
-      <div class="input input2 q-mt-md">
+      <div class="column items-center q-mt-xl">
+        <img :src="this.restaurantImage" alt="" width="250px" />
+      </div>
+      <div class="input input2 q-mt-md q-mb-lg">
         <q-input
           id="input10"
           type="text"
           v-model="$v.restaurantImage.$model"
           outlined
-          label="Hintergrund Bild *"
+          label="Restaurant Bild *"
           stack-label
           placeholder="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Hofbrauhaus.JPG/1024px-Hofbrauhaus.JPG"
         >
@@ -216,7 +224,7 @@
         Restaurant Bild wird benötigt
       </p>
 
-      <div class="input input2 q-mt-md">
+      <div class="input input2 q-mt-xl">
         <q-input
           id="input12"
           type="text"
@@ -263,7 +271,6 @@
         Restaurant Gutschein Code wird benötigt
       </p>
 
-      <img :src="this.restaurantAvatar" alt="" />
       <button @click="register" class="btn text-center full-width">
         Restaurant hinzufügen
       </button>
@@ -375,7 +382,6 @@ export default {
         .then(response => {
           this.restaurantsData = response;
           this.restaurantName = response.data.result.name;
-          this.restaurantAvatar = response.data.result.icon;
           this.restaurantAddress = response.data.result.formatted_address;
           return response;
         })

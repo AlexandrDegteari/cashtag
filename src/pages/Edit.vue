@@ -135,7 +135,7 @@
           type="text"
           v-model="$v.restaurantAvatar.$model"
           outlined
-          label="Restaurant Logo"
+          label="Restaurant Logo *"
           stack-label
           placeholder="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Hofbrauhaus.JPG/1024px-Hofbrauhaus.JPG"
         >
@@ -159,7 +159,7 @@
           type="text"
           v-model="$v.restaurantImage.$model"
           outlined
-          label="Restaurant Hintergrund Bild"
+          label="Restaurant Bild *"
           stack-label
           placeholder="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Hofbrauhaus.JPG/1024px-Hofbrauhaus.JPG"
         >
