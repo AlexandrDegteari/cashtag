@@ -101,7 +101,7 @@
           type="text"
           v-model="referral"
           outlined
-          label="Referal *"
+          label="Referal"
           stack-label
           placeholder="Referal-32"
         >
