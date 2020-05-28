@@ -2,26 +2,12 @@
   <div>
     <div class="column items-center q-pa-md restaurant-header">
       <div class="col">
-        <img
-          :src="
-            restaurantAvatar
-              ? restaurantAvatar
-              : '..src/assets/Cashtag-Black-png'
-          "
-          alt=""
-          class="restaurant-logo"
-        />
+        <img :src="restaurantAvatar" alt="" class="restaurant-logo" />
       </div>
     </div>
     <div class="q-col-gutter-md row items-start">
       <div class="col-12 container-fluid">
-        <q-img
-          :src="
-            restaurantImage
-              ? restaurantImage
-              : 'https://img.jakpost.net/c/2017/04/17/2017_04_17_25228_1492395137._large.jpg'
-          "
-        >
+        <q-img :src="restaurantImage">
           <div class=" absolute-full text-subtitle2 column flex flex-center">
             <p></p>
             <div class="welcome-2019 text-center">

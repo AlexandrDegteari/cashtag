@@ -42,8 +42,8 @@
             </ul>
 
             <span class="copy d-block text-right">
-              Für Fragen und Feedback: info@cashtag.com </span
-            >
+              Für Fragen und Feedback: info@cashtag.com
+            </span>
             <span class="copy d-block text-right"
               >2020 © Cashtag - All Rights Reserved.</span
             >
