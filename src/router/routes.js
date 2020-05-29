@@ -85,7 +85,7 @@ const routes = [
         name: "restaurants",
         path: "restaurants",
         beforeEnter: ifNotAuthenticated,
-        component: () => import("pages/Restaurants.vue")
+        component: () => import("pages/Restaurants2.vue")
       },
       { path: "*", component: () => import("pages/NotFound.vue") }
     ]
