@@ -30,121 +30,121 @@
                   </template>
                 </q-input>
               </template>
-              <!--              <template v-slot:body-cell-actions="props">-->
-              <!--                <q-td :props="props">-->
-              <!--                  <router-link-->
-              <!--                    :to="{-->
-              <!--                      name: 'review',-->
-              <!--                      params: {-->
-              <!--                        googleId: props.googleId,-->
-              <!--                        userId: props.id-->
-              <!--                      }-->
-              <!--                    }"-->
-              <!--                    exact-->
-              <!--                    active-class="active"-->
-              <!--                  >-->
-              <!--                    <q-btn flat dense round color="grey" icon="link" />-->
-              <!--                  </router-link>-->
-              <!--                  <q-btn-->
-              <!--                    dense-->
-              <!--                    round-->
-              <!--                    flat-->
-              <!--                    color="grey"-->
-              <!--                    @click="openQrDialog(props.id)"-->
-              <!--                    icon="code"-->
-              <!--                  ></q-btn>-->
-              <!--                  <q-btn-->
-              <!--                    dense-->
-              <!--                    round-->
-              <!--                    flat-->
-              <!--                    color="grey"-->
-              <!--                    @click="openEditDialog(props.id)"-->
-              <!--                    icon="edit"-->
-              <!--                  ></q-btn>-->
-              <!--                  <q-btn-->
-              <!--                    dense-->
-              <!--                    round-->
-              <!--                    flat-->
-              <!--                    color="grey"-->
-              <!--                    @click="openDeleteDialog(props.id)"-->
-              <!--                    icon="delete"-->
-              <!--                  ></q-btn>-->
-              <!--                </q-td>-->
-              <!--              </template>-->
-              <!--              <q-dialog v-if="rest.id === currentID" v-model="qrDialogActive">-->
-              <!--                <q-card>-->
-              <!--                  <q-card-section>-->
-              <!--                    <div class="column items-end">-->
-              <!--                      <q-btn-->
-              <!--                        v-close-popup-->
-              <!--                        round-->
-              <!--                        dense-->
-              <!--                        color="secondary"-->
-              <!--                        icon="close"-->
-              <!--                      />-->
-              <!--                    </div>-->
-              <!--                    <div class="text-h6">-->
-              <!--                      {{ rest.restaurantName }}-->
-              <!--                    </div>-->
-              <!--                  </q-card-section>-->
-              <!--                  <q-card-section class="q-pt-none">-->
-              <!--                    <QrCodeGen-->
-              <!--                      :value="-->
-              <!--                        'http://cashtag.michaelringlein.com/#/review/' + rest.id-->
-              <!--                      "-->
-              <!--                    >-->
-              <!--                    </QrCodeGen>-->
-              <!--                  </q-card-section>-->
-
-              <!--                  <q-card-actions align="right">-->
-              <!--                    <q-btn flat label="OK" color="primary" v-close-popup />-->
-              <!--                  </q-card-actions>-->
-              <!--                </q-card>-->
-              <!--              </q-dialog>-->
-              <!--              <q-dialog-->
-              <!--                v-if="rest.id === currentID"-->
-              <!--                v-model="editDialogActive"-->
-              <!--                persistent-->
-              <!--              >-->
-              <!--                <edit :restaurant="rest" />-->
-              <!--              </q-dialog>-->
-              <!--              <q-dialog-->
-              <!--                v-if="rest.id === currentID"-->
-              <!--                v-model="deleteDialogActive"-->
-              <!--              >-->
-              <!--                <q-card>-->
-              <!--                  <q-card-section>-->
-              <!--                    <div class="column items-end">-->
-              <!--                      <q-btn-->
-              <!--                        v-close-popup-->
-              <!--                        round-->
-              <!--                        dense-->
-              <!--                        color="secondary"-->
-              <!--                        icon="close"-->
-              <!--                      />-->
-              <!--                    </div>-->
-              <!--                    <div class="text-h6">-->
-              <!--                      Sind Sie sich sicher dass Sie-->
-              <!--                      {{ rest.restaurantName }} löschen möchten?-->
-              <!--                    </div>-->
-              <!--                  </q-card-section>-->
-              <!--                  <q-card-actions align="right">-->
-              <!--                    <q-btn-->
-              <!--                      flat-->
-              <!--                      label="Abbrechen"-->
-              <!--                      color="secondary"-->
-              <!--                      v-close-popup-->
-              <!--                    />-->
-              <!--                    <q-btn-->
-              <!--                      @click="deleteRestaurant(rest.id)"-->
-              <!--                      flat-->
-              <!--                      label="Restaurant löschen"-->
-              <!--                      color="red"-->
-              <!--                      v-close-popup-->
-              <!--                    />-->
-              <!--                  </q-card-actions>-->
-              <!--                </q-card>-->
-              <!--              </q-dialog>-->
+              <template v-slot:body-cell-actions="props">
+                <q-td :props="props">
+                  <router-link
+                    :to="{
+                      name: 'review',
+                      params: {
+                        googleId: this.props.row.googleId,
+                        userId: this.props.row.id
+                      }
+                    }"
+                    exact
+                    active-class="active"
+                  >
+                    <q-btn flat dense round color="grey" icon="link" />
+                  </router-link>
+                  <q-btn
+                    dense
+                    round
+                    flat
+                    color="grey"
+                    @click="openQrDialog(this.props.row.id)"
+                    icon="code"
+                  ></q-btn>
+                  <q-btn
+                    dense
+                    round
+                    flat
+                    color="grey"
+                    @click="openEditDialog(this.props.row.id)"
+                    icon="edit"
+                  ></q-btn>
+                  <q-btn
+                    dense
+                    round
+                    flat
+                    color="grey"
+                    @click="openDeleteDialog(this.props.row.id)"
+                    icon="delete"
+                  ></q-btn>
+                </q-td>
+              </template>
+              <q-dialog v-if="this.props.row.id === currentID" v-model="qrDialogActive">
+                <q-card>
+                  <q-card-section>
+                    <div class="column items-end">
+                      <q-btn
+                        v-close-popup
+                        round
+                        dense
+                        color="secondary"
+                        icon="close"
+                      />
+                    </div>
+                    <div class="text-h6">
+                      {{ this.props.row.restaurantName }}
+                    </div>
+                  </q-card-section>
+                  <q-card-section class="q-pt-none">
+                    <QrCodeGen
+                      :value="
+                        'http://cashtag.michaelringlein.com/#/review/' + this.props.row.id
+                      "
+                    >
+                    </QrCodeGen>
+                  </q-card-section>
+                  <!---->
+                  <q-card-actions align="right">
+                    <q-btn flat label="OK" color="primary" v-close-popup />
+                  </q-card-actions>
+                </q-card>
+              </q-dialog>
+              <q-dialog
+                v-if="rest.id === currentID"
+                v-model="editDialogActive"
+                persistent
+              >
+                <edit :restaurant="rest" />
+              </q-dialog>
+              <q-dialog
+                v-if="rest.id === currentID"
+                v-model="deleteDialogActive"
+              >
+                <q-card>
+                  <q-card-section>
+                    <div class="column items-end">
+                      <q-btn
+                        v-close-popup
+                        round
+                        dense
+                        color="secondary"
+                        icon="close"
+                      />
+                    </div>
+                    <div class="text-h6">
+                      Sind Sie sich sicher dass Sie
+                      {{ rest.restaurantName }} löschen möchten?
+                    </div>
+                  </q-card-section>
+                  <q-card-actions align="right">
+                    <q-btn
+                      flat
+                      label="Abbrechen"
+                      color="secondary"
+                      v-close-popup
+                    />
+                    <q-btn
+                      @click="deleteRestaurant(rest.id)"
+                      flat
+                      label="Restaurant löschen"
+                      color="red"
+                      v-close-popup
+                    />
+                  </q-card-actions>
+                </q-card>
+              </q-dialog>
             </q-table>
           </div>
         </div>

@@ -124,7 +124,7 @@ export default {
       restaurantReviewCounter: this.restaurantReviewCounter,
       restaurantVoucherCounter: this.restaurantVoucherCounter,
       userId: this.$route.params.userId,
-      email: "guest@mail.com",
+      email: "test@mail.com",
       password: "123456"
     };
   },
@@ -148,11 +148,13 @@ export default {
       this.$store
         .dispatch("authRequest", user)
         .then(() => {
+          console.log("good", user);
           if (this.error) {
             this.error = null;
           }
         })
         .catch(error => {
+          console.log("bad", user);
           this.error = error.response.data.message;
           this.password = null;
         });
