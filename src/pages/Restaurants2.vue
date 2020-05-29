@@ -11,7 +11,6 @@
               :data="data"
               :columns="columns"
               row-key="id"
-              :pagination.sync="pagination"
               :loading="loading"
               :filter="filter"
               @request="onRequest"
@@ -210,13 +209,6 @@ export default {
           sort: (a, b) => parseInt(a, 10) - parseInt(b, 10),
           sortable: true
         },
-        // {
-        //   name: "iron",
-        //   label: "Iron (%)",
-        //   field: "iron",
-        //   sortable: true,
-        //   sort: (a, b) => parseInt(a, 10) - parseInt(b, 10)
-        // },
         { name: "actions", label: "Actions", field: "", align: "center" }
       ],
       data: []
@@ -242,11 +234,10 @@ export default {
         })
         .catch(() => {});
     },
-    onRequest(props) {
-      const { page, rowsPerPage, sortBy, descending } = props.pagination;
-      const filter = props.filter;
-      console.log(props);
-
+    onRequest() {
+      // eslint-disable-next-line no-unused-vars
+      // const { page, rowsPerPage, sortBy, descending } = props.pagination;
+      // const filter = props.filter;
       this.loading = true;
       UserService.GetUsers()
         .then(response => {
@@ -254,76 +245,76 @@ export default {
         })
         .catch(() => {});
       // emulate server
-      setTimeout(() => {
-        // update rowsCount with appropriate value
-        this.pagination.rowsNumber = this.getRowsNumberCount(filter);
-
-        // get all rows if "All" (0) is selected
-        const fetchCount =
-          rowsPerPage === 0 ? this.pagination.rowsNumber : rowsPerPage;
-
-        // calculate starting row of data
-        const startRow = (page - 1) * rowsPerPage;
-
-        // fetch data from "server"
-        const returnedData = this.fetchFromServer(
-          startRow,
-          fetchCount,
-          filter,
-          sortBy,
-          descending
-        );
-
-        // clear out existing data and add new
-        this.data.splice(0, this.data.length, ...returnedData);
-
-        // don't forget to update local pagination object
-        this.pagination.page = page;
-        this.pagination.rowsPerPage = rowsPerPage;
-        this.pagination.sortBy = sortBy;
-        this.pagination.descending = descending;
-
-        // ...and turn of loading indicator
-        this.loading = false;
-      }, 1500);
-    },
+      // setTimeout(() => {
+      //   // update rowsCount with appropriate value
+      //   this.pagination.rowsNumber = this.getRowsNumberCount(filter);
+      //
+      //   // get all rows if "All" (0) is selected
+      //   const fetchCount =
+      //     rowsPerPage === 0 ? this.pagination.rowsNumber : rowsPerPage;
+      //
+      //   // calculate starting row of data
+      //   const startRow = (page - 1) * rowsPerPage;
+      //
+      //   // fetch data from "server"
+      //   const returnedData = this.fetchFromServer(
+      //     startRow,
+      //     fetchCount,
+      //     filter,
+      //     sortBy,
+      //     descending
+      //   );
+      //
+      //   // clear out existing data and add new
+      //   this.data.splice(0, this.data.length, ...returnedData);
+      //
+      //   // don't forget to update local pagination object
+      //   this.pagination.page = page;
+      //   this.pagination.rowsPerPage = rowsPerPage;
+      //   this.pagination.sortBy = sortBy;
+      //   this.pagination.descending = descending;
+      //
+      //   // ...and turn of loading indicator
+      this.loading = false;
+      // }, 1500);
+    }
 
     // emulate ajax call
     // SELECT * FROM ... WHERE...LIMIT...
-    fetchFromServer(startRow, count, filter, sortBy, descending) {
-      const data = filter
-        ? this.data.filter(row => row(filter))
-        : this.data.slice();
-
-      // handle sortBy
-      if (sortBy) {
-        const sortFn =
-          sortBy === "desc"
-            ? descending
-              ? (a, b) => (a.name > b.name ? -1 : a.name < b.name ? 1 : 0)
-              : (a, b) => (a.name > b.name ? 1 : a.name < b.name ? -1 : 0)
-            : descending
-            ? (a, b) => parseFloat(b[sortBy]) - parseFloat(a[sortBy])
-            : (a, b) => parseFloat(a[sortBy]) - parseFloat(b[sortBy]);
-        data.sort(sortFn);
-      }
-
-      return data.slice(startRow, startRow + count);
-    },
+    // fetchFromServer(startRow, count, filter, sortBy, descending) {
+    //   const data = filter
+    //     ? this.data.filter(row => row(filter))
+    //     : this.data.slice();
+    //
+    //   // handle sortBy
+    //   if (sortBy) {
+    //     const sortFn =
+    //       sortBy === "desc"
+    //         ? descending
+    //           ? (a, b) => (a.name > b.name ? -1 : a.name < b.name ? 1 : 0)
+    //           : (a, b) => (a.name > b.name ? 1 : a.name < b.name ? -1 : 0)
+    //         : descending
+    //         ? (a, b) => parseFloat(b[sortBy]) - parseFloat(a[sortBy])
+    //         : (a, b) => parseFloat(a[sortBy]) - parseFloat(b[sortBy]);
+    //     data.sort(sortFn);
+    //   }
+    //
+    //   return data.slice(startRow, startRow + count);
+    // },
 
     // emulate 'SELECT count(*) FROM ...WHERE...'
-    getRowsNumberCount(filter) {
-      if (!filter) {
-        return this.data.length;
-      }
-      let count = 0;
-      this.data.forEach(treat => {
-        if (treat.name.includes(filter)) {
-          ++count;
-        }
-      });
-      return count;
-    }
+    // getRowsNumberCount(filter) {
+    //   if (!filter) {
+    //     return this.data.length;
+    //   }
+    //   let count = 0;
+    //   this.data.forEach(treat => {
+    //     if (treat.name.includes(filter)) {
+    //       ++count;
+    //     }
+    //   });
+    //   return count;
+    // }
   },
   mounted() {
     this.onRequest({
