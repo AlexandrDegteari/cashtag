@@ -124,7 +124,7 @@ export default {
       restaurantReviewCounter: this.restaurantReviewCounter,
       restaurantVoucherCounter: this.restaurantVoucherCounter,
       userId: this.$route.params.userId,
-      email: "test@mail.com",
+      email: "guest1@mail.com",
       password: "123456"
     };
   },
