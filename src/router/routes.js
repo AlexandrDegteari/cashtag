@@ -52,7 +52,7 @@ const routes = [
       },
       {
         name: "review",
-        path: "review/:googleId/:userId",
+        path: "review/:userId",
         params: {},
         props: true,
         component: () => import("pages/Review.vue")

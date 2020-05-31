@@ -90,7 +90,7 @@
                       <q-card-section class="q-pt-none">
                         <QrCodeGen
                           :value="
-                            `http://cashtag.michaelringlein.com/#/review/${props.row.googleId}/${props.row.id}`
+                            `http://cashtag.michaelringlein.com/#/review/${props.row.googleId}`
                           "
                         >
                         </QrCodeGen>
