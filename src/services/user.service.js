@@ -37,7 +37,7 @@ const GetUsers = () => {
 
 const GetUserById = userId => {
   return axios
-    .get(`${api}/users/` + userId)
+    .get(`${api}/users/get/` + userId)
     .then(response => {
       if (response.data) {
         return response.data;
@@ -52,7 +52,7 @@ const GetUserById = userId => {
 const UpdateProfile = profile => {
   const userId = jwt_decode(localStorage.getItem("access_token")).sub;
   return axios
-    .put(`${api}/users/` + userId, profile)
+    .put(`${api}/users/put` + userId, profile)
     .then(response => {
       if (response.data) {
         return response.data;
