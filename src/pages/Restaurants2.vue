@@ -90,8 +90,7 @@
                       <q-card-section class="q-pt-none">
                         <QrCodeGen
                           :value="
-                            'http://cashtag.michaelringlein.com/#/review/' +
-                              props.row.id
+                            `http://cashtag.michaelringlein.com/#/review/${props.row.googleId}/${props.row.id}`
                           "
                         >
                         </QrCodeGen>
@@ -304,16 +303,16 @@ export default {
 
     // emulate 'SELECT count(*) FROM ...WHERE...'
     // getRowsNumberCount(filter) {
-    //   if (!filter) {
-    //     return this.data.length;
-    //   }
-    //   let count = 0;
-    //   this.data.forEach(treat => {
-    //     if (treat.name.includes(filter)) {
-    //       ++count;
-    //     }
-    //   });
-    //   return count;
+    //       if (!filter) {
+    //         return this.data.length;
+    //       }
+    //       let count = 0;
+    //       this.data.forEach(treat => {
+    //         if (treat.name.includes(filter)) {
+    //           ++count;
+    //         }
+    // });
+    // return count;
     // }
   },
   mounted() {
