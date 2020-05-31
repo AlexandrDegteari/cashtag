@@ -52,7 +52,7 @@ const GetUserById = userId => {
 const UpdateProfile = profile => {
   const userId = jwt_decode(localStorage.getItem("access_token")).sub;
   return axios
-    .put(`${api}/users/put` + userId, profile)
+    .put(`${api}/users/put/` + userId, profile)
     .then(response => {
       if (response.data) {
         return response.data;
@@ -66,7 +66,7 @@ const UpdateProfile = profile => {
 const UpdateUserProf = (profile, userId) => {
   // const userId = jwt_decode(localStorage.getItem("access_token")).sub;
   return axios
-    .put(`${api}/users/put` + userId, profile)
+    .put(`${api}/users/put/` + userId, profile)
     .then(response => {
       if (response.data) {
         return response.data;
