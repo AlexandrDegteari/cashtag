@@ -105,7 +105,7 @@
                     v-model="editDialogActive"
                     persistent
                   >
-                    <edit :restaurant="data" />
+                    <edit :restaurant="props.row" />
                   </q-dialog>
                   <q-dialog
                     v-if="props.row.id === currentID"

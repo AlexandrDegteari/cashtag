@@ -126,16 +126,11 @@ export default {
       restaurantReviewCounter: this.restaurantReviewCounter,
       restaurantVoucherCounter: this.restaurantVoucherCounter,
       userId: this.$route.params.userId,
-      email: "guest1@mail.com",
-      password: "123456",
       login: localStorage.getItem("user")
     };
   },
   methods: {
     makeReview() {
-      // if (!this.login) {
-      //   this.guestLogin();
-      // }
       this.getRestaurantById(this.userId);
       this.counter();
       setTimeout(() => {
@@ -145,30 +140,7 @@ export default {
     showVoucher() {
       this.reviews = true;
     },
-    guestLogin() {
-      const user = {
-        email: this.email,
-        password: this.password
-      };
-
-      this.$store
-        .dispatch("authRequest", user)
-        .then(() => {
-          console.log("good", user);
-          if (this.error) {
-            this.error = null;
-          }
-        })
-        .catch(error => {
-          console.log("bad", user);
-          this.error = error.response.data.message;
-          this.password = null;
-        });
-    },
     counter() {
-      if (!this.login) {
-        this.guestLogin();
-      }
       const profile = {
         googleId: this.googleId,
         restaurantName: this.restaurantName,
@@ -188,9 +160,6 @@ export default {
         });
     },
     voucherCounter() {
-      if (!this.login) {
-        this.guestLogin();
-      }
       const profile = {
         googleId: this.googleId,
         restaurantName: this.restaurantName,
@@ -211,9 +180,6 @@ export default {
     },
 
     getRestaurantById(userId) {
-      // if (!this.login) {
-      //   this.guestLogin();
-      // }
       UserService.GetUserById(userId)
         .then(response => {
           this.restaurantName = response.restaurantName;
@@ -229,16 +195,7 @@ export default {
     }
   },
   beforeMount() {
-    // if (!this.login) {
-    //   this.guestLogin();
-    // }
     this.getRestaurantById(this.userId);
-    // console.log(localStorage.getItem("user"));
-  },
-  mounted() {
-    // if (!this.login) {
-    //   this.guestLogin();
-    // }
   }
 };
 </script>
