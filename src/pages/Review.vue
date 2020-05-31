@@ -121,7 +121,7 @@ export default {
       restaurantName: this.restaurantName,
       restaurantAvatar: this.restaurantAvatar,
       reviews: false,
-      googleId: this.$route.params.userId,
+      googleId: this.$route.params.googleId,
       restaurantImage: this.restaurantImage,
       restaurantReviewCounter: this.restaurantReviewCounter,
       restaurantVoucherCounter: this.restaurantVoucherCounter,
@@ -161,7 +161,7 @@ export default {
     },
     voucherCounter() {
       const profile = {
-        googleId: this.googleId,
+        // googleId: this.googleId,
         restaurantName: this.restaurantName,
         restaurantAvatar: this.restaurantAvatar,
         restaurantAddress: this.restaurantAddress,
