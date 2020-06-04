@@ -3,7 +3,7 @@
     <main>
       <div class="bg">
         <div class="container q-pt-xl">
-          <h1 class="text-center">Welcome to Cashtag Home Page</h1>
+          <h1 class="text-center">Willkommen bei cashtag</h1>
         </div>
       </div>
     </main>
