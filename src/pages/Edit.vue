@@ -220,6 +220,27 @@
       >
         Restaurant Gutschein Code wird benötigt
       </p>
+      <div class="input input2 q-mt-md">
+        <q-input
+          id="input16"
+          type="text"
+          v-model="$v.restaurantVoucherCode.$model"
+          outlined
+          label="Gutschein Code *"
+          stack-label
+          placeholder="kaffee-promo"
+        >
+          <template v-slot:prepend>
+            <q-icon name="code" />
+          </template>
+        </q-input>
+      </div>
+      <p
+        v-if="$v.restaurantChat.$dirty && !$v.restaurantChat.required"
+        class="error m-0"
+      >
+        Restaurant Gutschein Code wird benötigt
+      </p>
       <button
         @click.stop="submitProfileForm()"
         class="btn text-center full-width"
