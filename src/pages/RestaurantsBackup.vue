@@ -87,7 +87,7 @@
                       <q-card-section class="q-pt-none">
                         <QrCodeGen
                           :value="
-                            'http://cashtag.michaelringlein.com/#/review/' +
+                            'https://app.mycashtag.de/#/review/' +
                               rest.googleId
                           "
                         >
