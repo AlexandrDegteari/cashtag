@@ -74,6 +74,9 @@
         </div>
       </main>
     </div>
+    <div class="chat">
+      <div class="mcwidget-embed" data-widget-id="3524447"></div>
+    </div>
   </div>
 </template>
 <script>
@@ -86,10 +89,21 @@ export default {
       restaurantImage: this.$route.params.restaurantImage,
       restaurantVoucherName: this.$route.params.restaurantVoucherName,
       restaurantVoucherCode: this.$route.params.restaurantVoucherCode,
-      restaurantAvatar: this.$route.params.restaurantAvatar
+      restaurantAvatar: this.$route.params.restaurantAvatar,
+      restaurantChat: this.$route.params.restaurantChat
     };
+  },
+  mounted() {
+    const plugin = document.createElement("script");
+    // const restChat = "2069710813264446";
+    // const restChat = "102493634809741";
+    plugin.setAttribute(
+      "src",
+      `//widget.manychat.com/${this.restaurantChat}.js`
+    );
+    plugin.async = true;
+    document.head.appendChild(plugin);
   }
 };
 </script>
-
 <style scoped></style>

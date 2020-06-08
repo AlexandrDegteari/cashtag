@@ -38,7 +38,8 @@
                       restaurantImage: this.restaurantImage,
                       restaurantReviewCounter: this.restaurantReviewCounter,
                       restaurantVoucherName: this.restaurantVoucherName,
-                      restaurantVoucherCode: this.restaurantVoucherCode
+                      restaurantVoucherCode: this.restaurantVoucherCode,
+                      restaurantChat: this.restaurantChat
                     }
                   }"
                   exact
@@ -120,6 +121,7 @@ export default {
       restaurantData: this.restaurantData,
       restaurantName: this.restaurantName,
       restaurantAvatar: this.restaurantAvatar,
+      restaurantChat: this.restaurantChat,
       reviews: false,
       googleId: this.$route.params.googleId,
       restaurantImage: this.restaurantImage,
@@ -190,6 +192,7 @@ export default {
           this.restaurantVoucherCounter = response.restaurantVoucherCounter;
           this.restaurantVoucherName = response.restaurantVoucherName;
           this.restaurantVoucherCode = response.restaurantVoucherCode;
+          this.restaurantChat = response.restaurantChat;
         })
         .catch(() => {});
     }
