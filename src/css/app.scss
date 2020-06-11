@@ -524,12 +524,19 @@ table {
   }
   .btn-review {
     font-size: 15px;
-    padding: 8px 20px;
+    padding: 6px 16px;
     margin: 5px;
   }
   .subtitle {
     font-size: 12px;
     font-weight: medium;
     max-width: 300px;
+  }
+}
+
+@media (max-width: 400px) {
+  .welcome-2019 h2 {
+    font-size: 24px;
+    line-height: 1.1;
   }
 }
