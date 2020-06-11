@@ -23,7 +23,7 @@
                       this.googleId
                   "
                 >
-                  <button class="btn" @click="makeReview">
+                  <button class="btn btn-review" @click="makeReview">
                     Jetzt bewerten
                   </button></a
                 >
@@ -46,7 +46,7 @@
                   tag="li"
                   active-class="active"
                 >
-                  <button class="btn" @click="voucherCounter">
+                  <button class="btn btn-review" @click="voucherCounter">
                     Geschenk abholen
                   </button></router-link
                 >
