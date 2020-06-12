@@ -224,11 +224,11 @@
         <q-input
           id="input16"
           type="text"
-          v-model="$v.restaurantVoucherCode.$model"
+          v-model="$v.restaurantChat.$model"
           outlined
-          label="Gutschein Code *"
+          label="Chat Code *"
           stack-label
-          placeholder="kaffee-promo"
+          placeholder="7653756797"
         >
           <template v-slot:prepend>
             <q-icon name="code" />
@@ -239,7 +239,7 @@
         v-if="$v.restaurantChat.$dirty && !$v.restaurantChat.required"
         class="error m-0"
       >
-        Restaurant Gutschein Code wird benötigt
+        Restaurant Chat Code wird benötigt
       </p>
       <button
         @click.stop="submitProfileForm()"
@@ -362,6 +362,7 @@ export default {
       restaurantImage: this.restaurant.restaurantImage,
       restaurantVoucherName: this.restaurant.restaurantVoucherName,
       restaurantVoucherCode: this.restaurant.restaurantVoucherCode,
+      restaurantChat: this.restaurant.restaurantChat,
       userId: this.restaurant.id,
       errors: null,
       successRegistration: false,
@@ -390,6 +391,7 @@ export default {
     restaurantImage: { required },
     restaurantVoucherName: { required },
     restaurantVoucherCode: { required },
+    restaurantChat: { required },
     password: { required },
     passwordConfirmation: {
       required,
@@ -429,6 +431,7 @@ export default {
         restaurantVoucherName: this.restaurantVoucherName,
         restaurantVoucherCode: this.restaurantVoucherCode,
         restaurantImage: this.restaurantImage,
+        restaurantChat: this.restaurantChat,
         userId: this.userId,
         username: this.username,
         referral: this.referral

@@ -276,9 +276,9 @@
           type="text"
           v-model="$v.restaurantChat.$model"
           outlined
-          label="Gutschein Code *"
+          label="Chat Code *"
           stack-label
-          placeholder="kaffee-promo"
+          placeholder="7653756797"
         >
           <template v-slot:prepend>
             <q-icon name="code" />
@@ -289,7 +289,7 @@
         v-if="$v.restaurantChat.$dirty && !$v.restaurantChat.required"
         class="error m-0"
       >
-        Restaurant Chat wird benötigt
+        Restaurant Chat Code wird benötigt
       </p>
 
       <button @click="register" class="btn text-center full-width">
