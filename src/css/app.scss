@@ -169,7 +169,7 @@ input {
 // declare a class which applies it
 .welcome-2019 h2 {
   font-family: 'welcome_2019';
-  font-size: 65px;
+  font-size: 60px;
   line-height: 1.5em;
   color: #fff;
   font-weight: normal;
@@ -500,9 +500,43 @@ table {
   .hide-sp{
     display: none!important;
   }
+  .welcome-2019 h2 {
+    font-size: 38px;
+  }
+  .btn-review {
+    padding: 10px 40px;
+    margin: 30px;
+  }
+  .subtitle {
+    max-width: 350px;
+  }
 }
 @media (max-width: 500px) {
+  .q-img__content > div {
+    padding: 5px;
+  }
+  .welcome-2019 {
+    padding: 5px;
+  }
   .welcome-2019 h2 {
-    font-size: 35px;
+    font-size: 30px;
+    line-height: 1.1;
+  }
+  .btn-review {
+    font-size: 15px;
+    padding: 6px 16px;
+    margin: 5px;
+  }
+  .subtitle {
+    font-size: 12px;
+    font-weight: medium;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 400px) {
+  .welcome-2019 h2 {
+    font-size: 24px;
+    line-height: 1.1;
   }
 }

@@ -400,7 +400,7 @@ export default {
       const proxy = "https://cors-anywhere.herokuapp.com/";
       const url =
         "https://maps.googleapis.com/maps/api/place/details/json?placeid=";
-      const apiKey = "AIzaSyBNljWVEJJkYtalmgBaG_P1I5ZjviZ8j6A";
+      const apiKey = "AIzaSyBGJ1vfPTiOF4K67Z4WC1hRj_MY-YACCd4";
       this.$axios
         .get(proxy + url + this.googleId + "&key=" + apiKey)
         .then(response => {
