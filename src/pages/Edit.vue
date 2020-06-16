@@ -224,7 +224,7 @@
         <q-input
           id="input16"
           type="text"
-          v-model="$v.restaurantChat.$model"
+          v-model="restaurantChat"
           outlined
           label="Chat Code *"
           stack-label
@@ -235,12 +235,6 @@
           </template>
         </q-input>
       </div>
-      <p
-        v-if="$v.restaurantChat.$dirty && !$v.restaurantChat.required"
-        class="error m-0"
-      >
-        Restaurant Chat Code wird benötigt
-      </p>
       <button
         @click.stop="submitProfileForm()"
         class="btn text-center full-width"
@@ -391,7 +385,6 @@ export default {
     restaurantImage: { required },
     restaurantVoucherName: { required },
     restaurantVoucherCode: { required },
-    restaurantChat: { required },
     password: { required },
     passwordConfirmation: {
       required,
