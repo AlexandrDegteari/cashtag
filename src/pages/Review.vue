@@ -52,8 +52,11 @@
                 >
               </p>
               <div class="subtitle text-center">
-                Kehre nach deiner Bewertung wieder auf diese Seite zurück um
-                dein Geschenk abzuholen
+                <b>
+                  1. Beim Bewerten öffnet sich ein neuer Tab.<br />
+                  2. Nach der Bewertung neu geöffneten Tab schließen und wieder
+                  diesen hier öffnen.
+                </b>
               </div>
             </div>
           </q-img>

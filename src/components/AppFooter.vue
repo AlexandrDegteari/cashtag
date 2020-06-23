@@ -27,20 +27,16 @@
           <div class="col-md-9 text-center text-sm-left q-pr-md">
             <ul class="d-flex justify-end m-0 wrap footer-menu">
               <li class="list-inline-item mr-0_1">
-                <a href="#" target="_blank">
-                  Privacy Policy
-                </a>
-                <span>|</span>
+                <a href="https://mycashtag.de/impressum/" target="_blank">
+                  Impressum</a
+                ><span>|</span>
               </li>
               <li class="list-inline-item mr-0_1">
-                <a href="#" target="_blank"> Cookie Policy</a>
-                <span>|</span>
-              </li>
-              <li class="list-inline-item mr-0_1">
-                <a href="#" target="_blank"> Terms &amp; Conditions</a>
+                <a href="https://mycashtag.de/datenschutz/" target="_blank"
+                  >Datenschutz</a
+                >
               </li>
             </ul>
-
             <span class="copy d-block text-right">
               Für Fragen und Feedback: info@cashtag.com
             </span>
