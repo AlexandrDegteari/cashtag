@@ -91,7 +91,7 @@
                 </div>
                 <div class="col-8">
                   <p>
-                    2: Bewerte unser Restaurant online und erhalte den Gutschein
+                    2: Bewerte unser Geschäft online und erhalte den Gutschein
                   </p>
                 </div>
               </div>
