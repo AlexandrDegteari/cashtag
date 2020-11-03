@@ -176,7 +176,7 @@ export default {
           });
       } else {
         this.$axios
-          .post("https://api.kairos888.com/v1/user/forgot-password", {
+          .post("", {
             email: this.email
           })
           .then(response => {

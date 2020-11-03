@@ -2,8 +2,9 @@ import Errors from "./../../modules/errors";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 
+const apiUrl = "https://api.mycashtag.de/api";
 // const apiUrl = "http://localhost:4000";
-const apiUrl = "https://protected-garden-19195.herokuapp.com";
+//const apiUrl = "https://protected-garden-19195.herokuapp.com";
 
 const state = {
   access_token: localStorage.getItem("access_token") || "",

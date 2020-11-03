@@ -1,7 +1,8 @@
 import Vue from "vue";
 import axios from "axios";
 
-const api = "https://protected-garden-19195.herokuapp.com";
+const api = "https://api.mycashtag.de/api";
+//const api = "https://protected-garden-19195.herokuapp.com";
 // const api = "http://localhost:4000";
 axios.defaults.headers.common["Authorization"] = localStorage.getItem(
   "access_token"
