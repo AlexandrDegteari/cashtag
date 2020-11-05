@@ -1,7 +1,7 @@
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 
-const api = "https://api.mycashtag.de/api";
+const api = "https://api.mycashtag.de";
 // const api = "https://protected-garden-19195.herokuapp.com";
 // const api = "http://localhost:4000";
 axios.defaults.headers.common["Authorization"] = localStorage.getItem(
