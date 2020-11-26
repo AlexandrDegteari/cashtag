@@ -14,7 +14,7 @@
               <div class="welcome-2019 text-center">
                 <h2>Sichere dir jetzt dein Geschenk</h2>
               </div>
-              <p>
+              <div>
                 <a
                   v-if="!reviews"
                   target="_blank"
@@ -25,32 +25,9 @@
                 >
                   <button class="btn btn-review" @click="makeReview">
                     Jetzt bewerten
-                  </button></a
-                >
-                <router-link
-                  v-if="reviews"
-                  :to="{
-                    name: 'voucher',
-                    params: {
-                      googleId: this.googleId,
-                      restaurantName: this.restaurantName,
-                      restaurantAvatar: this.restaurantAvatar,
-                      restaurantImage: this.restaurantImage,
-                      restaurantReviewCounter: this.restaurantReviewCounter,
-                      restaurantVoucherName: this.restaurantVoucherName,
-                      restaurantVoucherCode: this.restaurantVoucherCode,
-                      restaurantChat: this.restaurantChat
-                    }
-                  }"
-                  exact
-                  tag="li"
-                  active-class="active"
-                >
-                  <button class="btn btn-review" @click="voucherCounter">
-                    Geschenk abholen
-                  </button></router-link
-                >
-              </p>
+                  </button>
+                </a>
+              </div>
               <div class="subtitle text-center">
                 <b>
                   1. Beim Bewerten öffnet sich ein neuer Tab.<br />
@@ -58,11 +35,16 @@
                   diesen hier öffnen.
                 </b>
               </div>
+              <div class="q-mt-xl column flex-center" v-if="!reviews">
+                <p>Dont have google account? Become a premium user!</p>
+                <button class="btn btn-review" @click="sms = true">
+                  Become Premium
+                </button>
+              </div>
             </div>
           </q-img>
         </div>
       </div>
-
       <div class="wrapper">
         <main>
           <div class="bg-voucher">
@@ -109,6 +91,9 @@
               </div>
             </div>
           </div>
+          <q-dialog persistent v-model="sms">
+            <ContactForm :reviews="reviews" />
+          </q-dialog>
         </main>
       </div>
     </div>
@@ -117,21 +102,23 @@
 
 <script>
 import UserService from "../services/user.service";
+import ContactForm from "./ContactForm";
 
 export default {
+  components: { ContactForm },
   data() {
     return {
       restaurantData: this.restaurantData,
       restaurantName: this.restaurantName,
       restaurantAvatar: this.restaurantAvatar,
-      restaurantChat: this.restaurantChat,
       reviews: false,
       googleId: this.$route.params.googleId,
       restaurantImage: this.restaurantImage,
       restaurantReviewCounter: this.restaurantReviewCounter,
       restaurantVoucherCounter: this.restaurantVoucherCounter,
       userId: this.$route.params.userId,
-      login: localStorage.getItem("user")
+      login: localStorage.getItem("user"),
+      sms: false
     };
   },
   methods: {
@@ -144,13 +131,10 @@ export default {
     },
     showVoucher() {
       this.reviews = true;
+      this.sms = true;
     },
     counter() {
       const profile = {
-        googleId: this.googleId,
-        restaurantName: this.restaurantName,
-        restaurantAvatar: this.restaurantAvatar,
-        restaurantAddress: this.restaurantAddress,
         restaurantReviewCounter: this.restaurantReviewCounter
           ? this.restaurantReviewCounter + 1
           : 1
@@ -164,26 +148,6 @@ export default {
           console.log(error.error.response.data);
         });
     },
-    voucherCounter() {
-      const profile = {
-        // googleId: this.googleId,
-        restaurantName: this.restaurantName,
-        restaurantAvatar: this.restaurantAvatar,
-        restaurantAddress: this.restaurantAddress,
-        restaurantVoucherCounter: this.restaurantVoucherCounter
-          ? this.restaurantVoucherCounter + 1
-          : 1
-      };
-
-      UserService.UpdateUserProf(profile, this.userId)
-        .then(() => {
-          this.$emit("updatedForm");
-        })
-        .catch(error => {
-          console.log(error.error.response.data);
-        });
-    },
-
     getRestaurantById(userId) {
       UserService.GetUserById(userId)
         .then(response => {
@@ -195,7 +159,6 @@ export default {
           this.restaurantVoucherCounter = response.restaurantVoucherCounter;
           this.restaurantVoucherName = response.restaurantVoucherName;
           this.restaurantVoucherCode = response.restaurantVoucherCode;
-          this.restaurantChat = response.restaurantChat;
         })
         .catch(() => {});
     }

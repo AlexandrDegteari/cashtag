@@ -56,6 +56,19 @@
         >
         </q-route-tab>
         <q-route-tab
+          v-if="isLoggedIn() && !isAdmin()"
+          :to="{
+            name: 'guest-table',
+            params: {
+              userId: this.getUserId()
+            }
+          }"
+          exact
+          active-class="active"
+          label="Guest Table"
+        >
+        </q-route-tab>
+        <q-route-tab
           v-if="!isLoggedIn()"
           to="/login"
           label="Login"
@@ -71,13 +84,6 @@
           label="Restaurant hinzufügen"
         >
         </q-tab>
-        <!--        <q-route-tab-->
-        <!--          to="/contact"-->
-        <!--          exact-->
-        <!--          active-class="active"-->
-        <!--          label="Contact Us"-->
-        <!--        >-->
-        <!--        </q-route-tab>-->
         <q-tab v-if="isLoggedIn()" @click="logout" label="Log out"> </q-tab>
       </q-tabs>
       <q-dialog persistent v-model="addRest">
@@ -94,7 +100,8 @@ export default {
   components: { Register },
   data() {
     return {
-      addRest: false
+      addRest: false,
+      userId: this.getUserId()
     };
   },
   methods: {
@@ -104,6 +111,11 @@ export default {
     isAdmin() {
       if (localStorage.getItem("user")) {
         return JSON.parse(localStorage.getItem("user")).admin;
+      }
+    },
+    getUserId() {
+      if (localStorage.getItem("user")) {
+        return JSON.parse(localStorage.getItem("user"))._id;
       }
     },
     isGuest() {

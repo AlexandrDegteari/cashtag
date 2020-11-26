@@ -2,12 +2,21 @@
   <div class="wrapper">
     <main>
       <div class="bg">
-        <h1 class="text-center">Restaurants</h1>
+        <div class="d-flex justify-between align-center q-px-xl">
+          <h1 class="text-center">Guest Table</h1>
+          <q-btn
+            class="sendAll q-my-xl"
+            color="primary"
+            @click="smsAllDialogActive = true"
+            icon="message"
+            label="Send Promo to All"
+          ></q-btn>
+        </div>
         <h2 v-if="!data" class="text-center">Bitte warten...</h2>
         <div v-if="data" class=" q-pa-xl">
           <div class="q-pa-md">
             <q-table
-              title="Restaurants"
+              title="Guests"
               :data="data"
               :columns="columns"
               row-key="id"
@@ -31,100 +40,33 @@
               </template>
               <template v-slot:body-cell-actions="props">
                 <q-td :props="props">
-                  <router-link
-                    :to="{
-                      name: 'review',
-                      params: {
-                        googleId: props.row.googleId,
-                        userId: props.row.id
-                      }
-                    }"
-                    exact
-                    active-class="active"
+                  <q-btn
+                    dense
+                    round
+                    flat
+                    color="grey"
+                    @click="openSmsDialog(props.row.phone)"
+                    icon="message"
+                  ></q-btn>
+                  <q-dialog
+                    v-if="props.row.phone === currentID"
+                    v-model="smsDialogActive"
                   >
-                    <q-btn flat dense round color="grey" icon="link" />
-                  </router-link>
-                  <q-btn
-                    :to="{
-                      name: 'guest-table',
-                      params: {
-                        userId: props.row.id
-                      }
-                    }"
-                    exact
-                    active-class="active"
-                    dense
-                    round
-                    flat
-                    color="grey"
-                    icon="people"
-                  ></q-btn>
+                    <ContactForm :sms="true" :numbers="props.row.phone" />
+                  </q-dialog>
+                  <q-dialog v-model="smsAllDialogActive">
+                    <ContactForm :sms="true" :numbers="numbers" />
+                  </q-dialog>
                   <q-btn
                     dense
                     round
                     flat
                     color="grey"
-                    @click="openQrDialog(props.row.id)"
-                    icon="code"
-                  ></q-btn>
-
-                  <q-btn
-                    dense
-                    round
-                    flat
-                    color="grey"
-                    @click="openEditDialog(props.row.id)"
-                    icon="edit"
-                  ></q-btn>
-                  <q-btn
-                    dense
-                    round
-                    flat
-                    color="grey"
-                    @click="openDeleteDialog(props.row.id)"
+                    @click="openDeleteDialog(props.row.phone)"
                     icon="delete"
                   ></q-btn>
                   <q-dialog
-                    v-if="props.row.id === currentID"
-                    v-model="qrDialogActive"
-                  >
-                    <q-card>
-                      <q-card-section>
-                        <div class="column items-end">
-                          <q-btn
-                            v-close-popup
-                            round
-                            dense
-                            color="secondary"
-                            icon="close"
-                          />
-                        </div>
-                        <div class="text-h6">
-                          {{ props.row.restaurantName }}
-                        </div>
-                      </q-card-section>
-                      <q-card-section class="q-pt-none">
-                        <QrCodeGen
-                          :value="
-                            `https://app.mycashtag.de/#/review/${props.row.googleId}/${props.row.id}`
-                          "
-                        >
-                        </QrCodeGen>
-                      </q-card-section>
-                      <q-card-actions align="right">
-                        <q-btn flat label="OK" color="primary" v-close-popup />
-                      </q-card-actions>
-                    </q-card>
-                  </q-dialog>
-                  <q-dialog
-                    v-if="props.row.id === currentID"
-                    v-model="editDialogActive"
-                    persistent
-                  >
-                    <edit :restaurant="props.row" />
-                  </q-dialog>
-                  <q-dialog
-                    v-if="props.row.id === currentID"
+                    v-if="props.row.phone === currentID"
                     v-model="deleteDialogActive"
                   >
                     <q-card>
@@ -139,8 +81,8 @@
                           />
                         </div>
                         <div class="text-h6">
-                          Sind Sie sich sicher dass Sie
-                          {{ props.row.restaurantName }} löschen möchten?
+                          Are you sure delete
+                          {{ props.row.phone }} contact??
                         </div>
                       </q-card-section>
                       <q-card-actions align="right">
@@ -151,9 +93,9 @@
                           v-close-popup
                         />
                         <q-btn
-                          @click="deleteRestaurant(props.row.id)"
+                          @click="deleteContact(props.row.phone)"
                           flat
-                          label="Restaurant löschen"
+                          label="Delete Contact"
                           color="red"
                           v-close-popup
                         />
@@ -171,25 +113,27 @@
 </template>
 
 <script>
-import QrCodeGen from "../components/AppQrCodeGen";
 import UserService from "../services/user.service";
-import Edit from "./Edit";
+import ContactForm from "./ContactForm";
+
 export default {
-  components: { Edit, QrCodeGen },
+  components: { ContactForm },
   data() {
     return {
+      restaurantGuests: null,
+      userId: this.$route.params.userId,
       googleId: null,
-      userId: null,
       restaurants: null,
       restaurantsData: null,
       message: null,
       modalActive: false,
       deleteModal: false,
       deleteSuccess: null,
-      qrDialogActive: false,
-      editDialogActive: false,
       deleteDialogActive: false,
+      smsDialogActive: false,
+      smsAllDialogActive: false,
       currentID: null,
+      numbers: [],
       filter: "",
       loading: false,
       pagination: {
@@ -201,19 +145,19 @@ export default {
       },
       columns: [
         {
-          name: "restaurantName",
+          name: "name",
           required: true,
-          label: "Restaurant Name",
+          label: "Name",
           align: "left",
-          field: row => row.restaurantName,
+          field: row => row.name,
           format: val => `${val}`,
           sortable: true
         },
         {
-          name: "googleId",
+          name: "phone",
           align: "center",
-          label: "GoogleID",
-          field: row => row.googleId,
+          label: "Phone",
+          field: row => row.phone,
           sort: (a, b) => parseInt(a, 10) - parseInt(b, 10),
           sortable: true
         },
@@ -223,22 +167,13 @@ export default {
     };
   },
   methods: {
-    isAdmin() {
-      if (localStorage.getItem("user")) {
-        return JSON.parse(localStorage.getItem("user")).admin;
-      }
-    },
-    openQrDialog(id) {
-      this.currentID = id;
-      this.qrDialogActive = true;
-    },
-    openEditDialog(id) {
-      this.currentID = id;
-      this.editDialogActive = true;
-    },
     openDeleteDialog(id) {
       this.currentID = id;
       this.deleteDialogActive = true;
+    },
+    openSmsDialog(id) {
+      this.currentID = id;
+      this.smsDialogActive = true;
     },
     deleteRestaurant(userId) {
       UserService.DeleteUser(userId)
@@ -247,11 +182,37 @@ export default {
         })
         .catch(() => {});
     },
+    async deleteContact(phone) {
+      await UserService.GetUserById(this.userId)
+        .then(response => {
+          this.restaurantGuests = response.restaurantGuests;
+        })
+        .catch(() => {});
+      this.restaurantGuests = this.restaurantGuests.filter(
+        el => el.phone !== phone
+      );
+      console.log(this.restaurantGuests);
+      const profile = {
+        restaurantGuests: this.restaurantGuests
+      };
+
+      UserService.UpdateUserProf(profile, this.userId)
+        .then(() => {
+          // console.log("Guest Saved");
+        })
+        .catch(error => {
+          console.log(error.error.response.data);
+        });
+    },
     onRequest() {
       UserService.GetUsers()
         .then(response => {
           this.data = response;
-          this.data = this.data.filter(user => !user.admin);
+          this.data = this.data.filter(user => user._id === this.userId);
+          this.data = this.data[0].restaurantGuests;
+          for (let contact of this.data) {
+            this.numbers.push(contact.phone);
+          }
         })
         .catch(() => {});
     }
@@ -270,6 +231,10 @@ h2 {
   margin-bottom: 0.5rem;
 }
 
+.sendAll {
+  height: min-content;
+}
+
 .text-bg p {
   margin: 0 auto;
   max-width: 734px;
@@ -279,6 +244,7 @@ h2 {
 thead th {
   font-weight: bold;
 }
+
 th {
   font-weight: normal;
   border: 1px solid;

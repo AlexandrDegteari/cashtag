@@ -270,21 +270,6 @@
       >
         Restaurant Gutschein Code wird benötigt
       </p>
-      <div class="input input2 q-mt-md">
-        <q-input
-          id="input16"
-          type="text"
-          v-model="restaurantChat"
-          outlined
-          label="Chat Code *"
-          stack-label
-          placeholder="7653756797"
-        >
-          <template v-slot:prepend>
-            <q-icon name="code" />
-          </template>
-        </q-input>
-      </div>
       <button @click="register" class="btn text-center full-width">
         Restaurant hinzufügen
       </button>
@@ -332,8 +317,7 @@ export default {
       modalDate: false,
       restaurantImage: null,
       restaurantVoucherName: null,
-      restaurantVoucherCode: null,
-      restaurantChat: null
+      restaurantVoucherCode: null
     };
   },
   validations: {
@@ -372,8 +356,7 @@ export default {
         restaurantAddress: this.restaurantAddress,
         restaurantVoucherName: this.restaurantVoucherName,
         restaurantVoucherCode: this.restaurantVoucherCode,
-        restaurantImage: this.restaurantImage,
-        restaurantChat: this.restaurantChat
+        restaurantImage: this.restaurantImage
       };
       this.$store
         .dispatch("authRegister", user)

@@ -11,14 +11,19 @@
           <div class=" absolute-full text-subtitle2 column flex flex-center">
             <p></p>
             <div class="welcome-2019 text-center">
-              <h2>Vielen Dank für deine Bewertung</h2>
+              <h2>
+                {{
+                  !premium
+                    ? "Vielen Dank für deine Bewertung"
+                    : `Herzlich willkommen als Premium User von ${restaurantName}. Wir halten dich über Aktionen und Angebote auf dem laufenden. Bis bald!`
+                }}
+              </h2>
             </div>
           </div>
         </q-img>
       </div>
     </div>
-
-    <div class="wrapper">
+    <div v-if="!premium" class="wrapper">
       <main>
         <div class="bg-voucher">
           <div class="container text-center q-pt-sm q-pb-lg">
@@ -41,7 +46,6 @@
             </h2>
           </div>
         </div>
-        <!--        <div class="mcwidget-embed" data-widget-id="10861285"></div>-->
         <div class="container q-pt-xl">
           <h2 class="text-center">Nächster Schritt</h2>
           <div class="q-pa-xl">
@@ -74,35 +78,42 @@
         </div>
       </main>
     </div>
-    <div class="chat">
-      <div class="mcwidget-embed" data-widget-id="3524447"></div>
-    </div>
   </div>
 </template>
 <script>
+import UserService from "../services/user.service";
+
 export default {
   name: "Voucher",
   data() {
     return {
       userId: this.$route.params.userId,
-      restaurantName: this.$route.params.restaurantName,
-      restaurantImage: this.$route.params.restaurantImage,
-      restaurantVoucherName: this.$route.params.restaurantVoucherName,
-      restaurantVoucherCode: this.$route.params.restaurantVoucherCode,
-      restaurantAvatar: this.$route.params.restaurantAvatar,
-      restaurantChat: this.$route.params.restaurantChat
+      premium: this.$route.params.premium,
+      restaurantName: null,
+      restaurantAvatar: null,
+      restaurantImage: null,
+      restaurantVoucherName: null,
+      restaurantVoucherCode: null
     };
   },
-  mounted() {
-    const plugin = document.createElement("script");
-    // const restChat = "2069710813264446";
-    // const restChat = "102493634809741";
-    plugin.setAttribute(
-      "src",
-      `//widget.manychat.com/${this.restaurantChat}.js`
-    );
-    plugin.async = true;
-    document.head.appendChild(plugin);
+  methods: {
+    getRestaurantById(userId) {
+      UserService.GetUserById(userId)
+        .then(response => {
+          this.restaurantName = response.restaurantName;
+          this.restaurantAvatar = response.restaurantAvatar;
+          this.restaurantAddress = response.restaurantAddress;
+          this.restaurantImage = response.restaurantImage;
+          this.restaurantReviewCounter = response.restaurantReviewCounter;
+          this.restaurantVoucherCounter = response.restaurantVoucherCounter;
+          this.restaurantVoucherName = response.restaurantVoucherName;
+          this.restaurantVoucherCode = response.restaurantVoucherCode;
+        })
+        .catch(() => {});
+    }
+  },
+  beforeMount() {
+    this.getRestaurantById(this.userId);
   }
 };
 </script>

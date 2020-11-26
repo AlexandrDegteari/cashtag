@@ -51,6 +51,13 @@ const routes = [
         component: () => import("pages/SendEmail.vue")
       },
       {
+        name: "guest-table",
+        path: "guest-table/:userId",
+        params: {},
+        props: true,
+        component: () => import("pages/GuestTable.vue")
+      },
+      {
         name: "review",
         path: "review/:googleId/:userId",
         params: {},
@@ -76,6 +83,11 @@ const routes = [
         component: () => import("pages/Voucher.vue")
       },
       {
+        name: "optout",
+        path: "optout/:userId",
+        component: () => import("pages/OptOut.vue")
+      },
+      {
         name: "reststatistics",
         path: "reststatistics",
         beforeEnter: ifNotAuthenticated,
@@ -87,7 +99,7 @@ const routes = [
         beforeEnter: ifNotAuthenticated,
         component: () => import("pages/Restaurants2.vue")
       },
-      { path: "*", component: () => import("pages/NotFound.vue") }
+      { path: "*", component: () => import("pages/Error404.vue") }
     ]
   }
 ];
@@ -96,7 +108,7 @@ const routes = [
 // if (process.env.MODE !== "ssr") {
 //   routes.push({
 //     path: "*",
-//     component: () => import("pages/NotFound.vue")
+//     component: () => import("pages/Error404.vue")
 //   });
 // }
 

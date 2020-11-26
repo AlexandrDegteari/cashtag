@@ -4,6 +4,7 @@ import jwt_decode from "jwt-decode";
 
 const apiUrl = "https://api.mycashtag.de";
 // const apiUrl = "http://localhost:4000";
+// const apiUrl = "https://api.cashtag.appflex.dev";
 //const apiUrl = "https://protected-garden-19195.herokuapp.com";
 
 const state = {

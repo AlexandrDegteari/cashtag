@@ -220,21 +220,6 @@
       >
         Restaurant Gutschein Code wird benötigt
       </p>
-      <div class="input input2 q-mt-md">
-        <q-input
-          id="input16"
-          type="text"
-          v-model="restaurantChat"
-          outlined
-          label="Chat Code *"
-          stack-label
-          placeholder="7653756797"
-        >
-          <template v-slot:prepend>
-            <q-icon name="code" />
-          </template>
-        </q-input>
-      </div>
       <button
         @click.stop="submitProfileForm()"
         class="btn text-center full-width"
@@ -356,7 +341,6 @@ export default {
       restaurantImage: this.restaurant.restaurantImage,
       restaurantVoucherName: this.restaurant.restaurantVoucherName,
       restaurantVoucherCode: this.restaurant.restaurantVoucherCode,
-      restaurantChat: this.restaurant.restaurantChat,
       userId: this.restaurant.id,
       errors: null,
       successRegistration: false,
@@ -424,7 +408,6 @@ export default {
         restaurantVoucherName: this.restaurantVoucherName,
         restaurantVoucherCode: this.restaurantVoucherCode,
         restaurantImage: this.restaurantImage,
-        restaurantChat: this.restaurantChat,
         userId: this.userId,
         username: this.username,
         referral: this.referral
