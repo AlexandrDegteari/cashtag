@@ -14,7 +14,7 @@
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "@sendgrid/client": "^7.1.1",
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "jwt-decode": "^2.2.0",
     "qrcode.vue": "^1.7.0",
     "quasar": "^1.0.0",
